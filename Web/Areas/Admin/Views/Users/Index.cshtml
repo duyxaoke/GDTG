@@ -1,0 +1,422 @@
+﻿@{
+    ViewData["Title"] = "Danh sách Users";
+}
+<style>
+    ul {
+        list-style-type: none;
+    }
+</style>
+<div ng-controller="IndexController" ng-cloak>
+    <!-- .card -->
+    <section class="card">
+        <!-- .card-body -->
+        <div class="card-body">
+            <div class="container-fluid d-flex justify-content-between mb-5">
+                <div class="col-md-6 pl-0">
+                    <h3>@ViewData["Title"].</h3>
+                </div>
+                <div class="col-md-6 text-right pr-0">
+                    <button type="button" class="btn btn-primary btn-fw" ng-click="Create()"><i class="icon-plus circle"></i> Thêm mới</button>
+                </div>
+            </div>
+            <table id="myTable" class="table table-hover"></table>
+        </div>
+        <!-- /.card-body -->
+    </section>
+    <!-- Large modal -->
+    <div id="PnModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="PnModalLabel" aria-hidden="true">
+        <!-- .modal-dialog -->
+        <div class="modal-dialog" role="document">
+            <!-- .modal-content -->
+            <div class="modal-content">
+                <!-- .modal-header -->
+                <div class="modal-header">
+                    <h5 class="modal-title"> {{ UpdateMode ? "Cập nhật" : "Thêm mới" }} </h5>
+                    <button type="button" class="close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <!-- /.modal-header -->
+                <!-- .modal-body -->
+                <!-- form .needs-validation -->
+                <form id="frmModal" name="frmModal" class="needs-validation" novalidate="">
+                    <!-- /form .needs-validation -->
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>
+                                Tên người dùng
+                            </label>
+                            <input type="text" class="form-control" ng-model="User.Name" required="">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                E-mail
+                            </label>
+                            <input type="email" class="form-control" ng-model="User.Email" required="">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Tên tài khoản
+                            </label>
+                            <input type="text" class="form-control" ng-model="User.UserName" required="">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Mật khẩu
+                            </label>
+                            <input type="password" class="form-control" ng-model="User.Password">
+                        </div>
+                    </div>
+                    <!-- /.modal-body -->
+                    <!-- .modal-footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary" ng-disabled="frmModal.$invalid" ng-click="Save()">{{ UpdateMode ? "Cập nhật" : "Thêm" }}</button>
+                    </div>
+                </form>
+                <!-- /.modal-footer -->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- Menu in role modal -->
+    <div id="UserInRoleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="UserInRoleLabel" aria-hidden="true">
+        <!-- .modal-dialog -->
+        <div class="modal-dialog" role="document">
+            <!-- .modal-content -->
+            <div class="modal-content">
+                <!-- .modal-header -->
+                <div class="modal-header">
+                    <h5 class="modal-title">Cập nhật phân quyền user</h5>
+                    <button type="button" class="close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <!-- /.modal-header -->
+                <!-- .modal-body -->
+                <!-- form .needs-validation -->
+                <form id="frmUserInRoleModal" name="frmUserInRoleModal" class="needs-validation" novalidate="">
+                    <!-- /form .needs-validation -->
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>
+                                Tên đăng nhập
+                            </label>
+                            <input type="hidden" class="form-control" ng-model="UserInRole.UserId">
+                            <input type="text" class="form-control" ng-model="UserInRole.Username" readonly required="">
+                        </div>
+                        <div class="form-inline">
+                            <div class="form-check mr-3" ng-repeat="item in UserInRole.UserRoles">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" id="{{item.Value}}" ng-checked="item.Selected" ng-model="item.Selected">
+                                    {{item.Text}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-body -->
+                    <!-- .modal-footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary" ng-disabled="frmMeneInRoleModal.$invalid" ng-click="SaveUserInRole(roleId)">Cập nhật</button>
+                    </div>
+                </form>
+                <!-- /.modal-footer -->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</div>
+
+@section scripts{
+    <script>
+        var IndexController = ($scope, $rootScope, $timeout, $filter, $compile, ApiHelper, CommonHelper, $q) => {
+            //#region declare variable
+            $scope.UpdateMode = false;
+            $scope.User = {};
+            $scope.UserInRole = {};
+            $scope.Claim = {};
+            //#endregion
+
+            //#region Datatable
+            $(function () {
+                var peopleList = $('#myTable').DataTable({
+                    "bProcessing": true,
+                    "bSort": true,
+                    "bServerSide": true,
+                    "language": {
+                        paginate: {
+                            previous: '<i class="fa fa-lg fa-angle-left"></i>',
+                            next: '<i class="fa fa-lg fa-angle-right"></i>'
+                        }
+                    },
+                    "sAjaxSource": "/Users/Data",
+                    "aoColumnDefs": [
+                        {
+                            "sName": "UserName",
+                            "sTitle": "Tên đăng nhập",
+                            "bSearchable": true,
+                            "bSortable": true,
+                            "aTargets": [0]
+                        },
+                        {
+                            "sName": "Email",
+                            "sTitle": "E-mail",
+                            "bSearchable": true,
+                            "bSortable": true,
+                            "aTargets": [1]
+                        },
+                        {
+                            "sName": "Name",
+                            "sTitle": "Họ tên",
+                            "bSearchable": true,
+                            "bSortable": true,
+                            "aTargets": [2]
+                        },
+                        {
+                            "sName": "Balance",
+                            "sTitle": "Số dư",
+                            "className": "text-center",
+                            "bSearchable": true,
+                            "bSortable": true,
+                            "aTargets": [3]
+                        },
+                        {
+                            "sName": "LockoutEnabled",
+                            "sTitle": "Khóa đăng nhập",
+                            "className": "text-center",
+                            "bSearchable": true,
+                            "bSortable": true,
+                            "aTargets": [4],
+                            'mRender': function (data, type, row, meta) {
+                                return data == 'False' ? '<label class="badge badge-success">Hoạt động</label>' : '<label class="badge badge-danger">Ngưng hoạt động</label>';
+                            }
+                        },
+                        {
+                            "sName": "AccessFailedCount",
+                            "sTitle": "Đăng nhập thất bại",
+                            "className": "text-center",
+                            "bSearchable": true,
+                            "bSortable": true,
+                            "aTargets": [5]
+                        },
+                        {
+                            'mRender': function (data, type, row, meta) {
+                                return `
+                                    <button class="btn btn-outline-warning btn-sm" ng-click="ChangeBlockout('` + data + `');" data-toggle="tooltip" data-placement="top" title="Block / Unblock"><i class="fa fa-unlock-alt"></i></button>
+                                    <button class="btn btn-outline-success btn-sm" ng-click="Update('` + data + `');" data-toggle="tooltip" data-placement="top" title="Cập nhật user"><i class="fa fa-edit"></i></button>
+                                    <button class="btn btn-outline-primary btn-sm" ng-click="ReadUserInRole('` + data + `');" data-toggle="tooltip" data-placement="top" title="Cập nhật phân quyền"><i class="fa fa-list"></i></button>
+                                    <button class="btn btn-outline-danger btn-sm" ng-click="Delete('` + data + `');" data-toggle="tooltip" data-placement="top" title="Xóa user"><i class="fa fa-times"></i></button>`;
+                            },
+                            "sName": "Id",
+                            "sTitle": "Thao tác",
+                            "className": "text-center",
+                            "bSortable": false,
+                            "aTargets": [6],
+                            "sWidth": "180px",
+                        }
+                    ],
+                    createdRow: function (row, data, dataIndex) {
+                        $compile(angular.element(row).contents())($scope);
+                    }
+                });
+            });
+            //#endregion
+
+            //#region ReadById
+            var ReadById = (Id) => {
+                let defer = $q.defer();
+                $rootScope.MasterPage.IsLoading = true;
+                let strApiEndPoint = CommonHelper.UserUrl + Id;
+                ApiHelper.GetMethod(strApiEndPoint)
+                    .then(function (response) {
+                        $rootScope.MasterPage.IsLoading = false;
+                        $scope.User = response.Data;
+                        defer.resolve(response);
+                    })
+                    .catch(function (response) {
+                        sys.Alert(false, response.Message);
+                        defer.reject(response);
+                        $rootScope.MasterPage.IsLoading = false;
+                    });
+                return defer.promise;
+            };
+            //#endregion
+
+            //#region ReadUserInRoleById
+            var ReadUserInRoleById = (Id) => {
+                let defer = $q.defer();
+                $rootScope.MasterPage.IsLoading = true;
+                let strApiEndPoint = CommonHelper.UserUrl + "EditRoles/" + Id;
+                ApiHelper.GetMethod(strApiEndPoint)
+                    .then(function (response) {
+                        $rootScope.MasterPage.IsLoading = false;
+                        $scope.UserInRole = response.Data;
+                        defer.resolve(response);
+                    })
+                    .catch(function (response) {
+                        sys.Alert(false, response.Message);
+                        defer.reject(response);
+                        $rootScope.MasterPage.IsLoading = false;
+                    });
+                return defer.promise;
+            };
+            //#endregion
+
+            //#region Create
+            $scope.Create = function () {
+                $scope.UpdateMode = false;
+                $scope.User = {};
+                $('#PnModal').modal('show');
+            };
+            //#endregion
+
+            //#region Update
+            $scope.Update = function (Id) {
+                $scope.UpdateMode = true;
+                ReadById(Id);
+                $('#PnModal').modal('show');
+            }
+            //#endregion
+
+            //#region ChangeBlockUsers
+            $scope.ChangeBlockout = function (Id) {
+                swal({
+                    title: "Xác nhận thay đổi trạng thái tài khoản?",
+                    text: "Thay đổi từ ngưng hoạt động => hoạt động, và ngược lại",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            ReadById(Id).then(function (response) {
+                                $rootScope.MasterPage.IsLoading = true;
+                                //mặc định lock user
+                                let strApiEndPoint = CommonHelper.UserUrl + "LockUser/" + Id;
+                                if ($scope.User.LockoutEnabled) {
+                                    strApiEndPoint = CommonHelper.UserUrl + "UnlockUser/" + Id;
+                                }
+                                ApiHelper.PostMethod(strApiEndPoint)
+                                    .then(function (response) {
+                                        $rootScope.MasterPage.IsLoading = false;
+                                        $('#myTable').DataTable().ajax.reload(null, false);
+                                        sys.Alert(true, 'Cập nhật thành công!');
+                                    })
+                                    .catch(function (response) {
+                                        sys.Alert(false, response.Message);
+                                        defer.reject(response);
+                                        $rootScope.MasterPage.IsLoading = false;
+                                    });
+                            })
+                        }
+                    });
+            }
+
+            //#region UserInRole
+            $scope.ReadUserInRole = function (Id) {
+                ReadUserInRoleById(Id);
+                $('#UserInRoleModal').modal('show');
+            }
+            //#endregion
+
+            //#region Delete
+            $scope.Delete = function (Id) {
+                swal({
+                    title: "Xác nhận xóa?",
+                    text: "Một khi đã xóa, bạn không thể khôi phục lại",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $rootScope.MasterPage.IsLoading = true;
+                            let strApiEndPoint = CommonHelper.UserUrl + "?id=" + Id;
+                            ApiHelper.DeleteMethod(strApiEndPoint)
+                                .then(function (response) {
+                                    $rootScope.MasterPage.IsLoading = false;
+                                    $('#myTable').DataTable().ajax.reload(null, false);
+                                    sys.Alert(true, 'Xóa thành công!');
+                                })
+                                .catch(function (response) {
+                                    sys.Alert(false, response.Message);
+                                    defer.reject(response);
+                                    $rootScope.MasterPage.IsLoading = false;
+                                });
+                        }
+                    });
+            };
+            //#endregion
+
+            //#region Save
+            $scope.Save = function () {
+                if (!$scope.UpdateMode) {
+                    $rootScope.MasterPage.IsLoading = true;
+                    let strApiEndPoint = CommonHelper.UserUrl + "Create";
+                    ApiHelper.PostMethod(strApiEndPoint, $scope.User)
+                        .then(function (response) {
+                            $rootScope.MasterPage.IsLoading = false;
+                            $('#myTable').DataTable().ajax.reload(null, false);
+                            sys.Alert(true, 'Thêm thành công');
+                        })
+                        .catch(function (response) {
+                            sys.Alert(false, response.Message);
+                            defer.reject(response);
+                            $rootScope.MasterPage.IsLoading = false;
+                        });
+                    $('#PnModal').modal('hide');
+                }
+                else {
+                    $rootScope.MasterPage.IsLoading = true;
+                    let strApiEndPoint = CommonHelper.UserUrl + "Update";
+                    ApiHelper.PutMethod(strApiEndPoint, $scope.User)
+                        .then(function (response) {
+                            $rootScope.MasterPage.IsLoading = false;
+                            $('#myTable').DataTable().ajax.reload(null, false);
+                            sys.Alert(true, 'Cập nhật thành công');
+                        })
+                        .catch(function (response) {
+                            sys.Alert(false, response.Message);
+                            defer.reject(response);
+                            $rootScope.MasterPage.IsLoading = false;
+                        });
+                    $('#PnModal').modal('hide');
+                }
+            };
+            //#endregion
+
+            //#region Save UserInRole
+            $scope.SaveUserInRole = function () {
+                $rootScope.MasterPage.IsLoading = true;
+                let SelectedRoles = [];
+                $scope.UserInRole.UserRoles.forEach((item) => {
+                    if (item.Selected) SelectedRoles.push(item.Value);
+                });
+                $scope.UserInRole.SelectedRoles = SelectedRoles;
+                let strApiEndPoint = CommonHelper.UserUrl + "EditRoles";
+                ApiHelper.PostMethod(strApiEndPoint, $scope.UserInRole)
+                    .then(function (response) {
+                        $rootScope.MasterPage.IsLoading = false;
+                        $('#myTable').DataTable().ajax.reload(null, false);
+                        sys.Alert(true, 'Cập nhật thành công');
+                    })
+                    .catch(function (response) {
+                        sys.Alert(false, response.Message);
+                        defer.reject(response);
+                        $rootScope.MasterPage.IsLoading = false;
+                    });
+                $('#UserInRoleModal').modal('hide');
+            };
+            //#endregion
+
+        }
+        IndexController.$inject = ["$scope", "$rootScope", "$timeout", "$filter", "$compile", "ApiHelper", "CommonHelper", "$q"];
+        addController("IndexController", IndexController);
+
+    </script>
+}

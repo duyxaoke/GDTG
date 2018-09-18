@@ -1,0 +1,34 @@
+﻿@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Quản lý tài khoản";
+}
+
+<!-- .card -->
+<section class="card">
+    <!-- .card-body -->
+    <div class="card-body">
+        <fieldset>
+            <legend>@ViewBag.Title.</legend>
+            <p class="text-success">@ViewBag.StatusMessage</p>
+            @if (ViewBag.HasLocalPassword)
+            {
+                @Html.Partial("_ChangePasswordPartial")
+            }
+            else
+            {
+                @Html.Partial("_SetPasswordPartial")
+            }
+            <!--
+            <section id="externalLogins">
+                @Html.Action("RemoveAccountList")
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+                -->
+        </fieldset>
+    </div>
+    <!-- /.card-body -->
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

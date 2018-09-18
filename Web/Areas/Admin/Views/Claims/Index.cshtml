@@ -1,0 +1,26 @@
+﻿@model Web.Controllers.ClaimsIndexViewModel
+
+@{
+    ViewBag.Title = "List of Claims";
+}
+
+<div class="col-sm-12">
+    <div class="panel panel-default">
+        <div class="panel-heading b-b b-light">
+            <a class="font-bold">@ViewBag.Title.</a>
+        </div>
+        <div class="panel-body">
+            @foreach (var claim in Model.Claims)
+    {
+        <h2>@claim.GroupName (id = @claim.GroupId)</h2>
+        <ul class="list-inline">
+            @foreach (var actionClaim in @claim.Claims)
+    {
+        <li>@actionClaim</li>
+}
+        </ul>
+}
+        </div>
+    </div>
+</div>
+

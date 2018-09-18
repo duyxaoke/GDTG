@@ -1,0 +1,50 @@
+﻿[
+  {
+    "outputFileName": "Content/assets/app/controller/Master/indexcontroller.js",
+    "inputFiles": [
+      "Content/assets/app/controller/Master/master-page-controller.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/assets/app/directive/directive.js",
+    "inputFiles": [
+      "Content/assets/app/directive/formatMoney.js",
+      "Content/assets/app/directive/getWidth.js",
+      "Content/assets/app/directive/lazyLoad.js",
+      "Content/assets/app/directive/noInput.js",
+      "Content/assets/app/directive/whenEnter.js",
+      "Content/assets/app/directive/compile.js",
+      "Content/assets/app/directive/inputFormat.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/assets/app/factory/factory.js",
+    "inputFiles": [
+      "Content/assets/app/factory/ApiHelper.js",
+      "Content/assets/app/factory/CommonHelper.js",
+      "Content/assets/app/factory/DataFactory.js",
+      "Content/assets/app/factory/UtilFactory.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/assets/app/app-bundle.js",
+    "inputFiles": [
+      "Content/assets/app/controller/Master/indexcontroller.js",
+      "Content/assets/app/directive/directive.js",
+      "Content/assets/app/factory/factory.js",
+      "Content/assets/app/app.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/assets/app/controller/Master/master-page-controller.min.js",
+    "inputFiles": [
+      "Content/assets/app/controller/Master/master-page-controller.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/assets/app/app-bundle.min.js",
+    "inputFiles": [
+      "Content/assets/app/app-bundle.js"
+    ]
+  }
+]

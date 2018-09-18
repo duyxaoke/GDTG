@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- End Required meta tags -->
+    <!-- Begin SEO tag -->
+    <title>@ViewData["Title"] - Manage account</title>
+    <meta property="og:title" content="Starter Template">
+    <meta name="author" content="Beni Arisandi">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Responsive admin theme build on top of Bootstrap 4">
+    <meta property="og:description" content="Responsive admin theme build on top of Bootstrap 4">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+    <meta property="og:site_name" content="Looper - Bootstrap 4 Admin Theme">
+    <!-- End SEO tag -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Flare Premium Bootstrap Admin Dashboard Template</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/Content/assets/flare/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
+    <link rel="stylesheet" href="~/Content/assets/flare/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/Content/assets/flare/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="~/Content/assets/flare/vendors/iconfonts/font-awesome/css/font-awesome.min.css" />
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link href="~/Content/assets/flare/css/style.css" rel="stylesheet" />
+    <!-- endinject -->
+</head>
+<body ng-app="MyApp">
+    <!-- .app -->
+    @Html.Action("Header", "Template", new { Area = "" })
+    <div ng-controller="MasterPageController" ng-cloak>
+        <div id="cover-spin" ng-show="MasterPage.IsLoading"></div>
+    </div>s
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+            @RenderBody()
+            @*<div class="content-wrapper">
+        </div>*@
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+            @Html.Action("Footer", "Template", new { Area = "" })
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    <!-- Alert Danger Modal -->
+    <div class="modal modal-alert fade" id="ExpiredModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="ExpiredLabel" aria-hidden="true">
+        <!-- .modal-dialog -->
+        <div class="modal-dialog" role="document">
+            <!-- .modal-content -->
+            <div class="modal-content">
+                <!-- .modal-header -->
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fa fa-exclamation-triangle text-red mr-1"></i> Phiên làm viêc đã hết hạn
+                    </h5>
+                </div>
+                <!-- /.modal-header -->
+                <!-- .modal-body -->
+                <div class="modal-body">
+                    <p> Phiên làm việc của bạn đã hết hạn, vui lòng đăng nhập lại! </p>
+                </div>
+                <!-- /.modal-body -->
+                <!-- .modal-footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger">Đăng nhập lại</button>
+                </div>
+                <!-- /.modal-footer -->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- /.app -->
+    <script src="~/Content/assets/flare/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/Content/assets/flare/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="~/Content/assets/flare/js/template.js"></script>
+    <!-- Custom js for this page-->
+    <script src="~/Content/assets/flare/vendors/js/popover.js"></script>
+    <script src="~/Content/assets/flare/vendors/js/tooltips.js"></script>
+    <script src="~/Content/assets/flare/vendors/js/alerts.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <!-- End custom js for this page-->
+    <script src="~/Content/assets/javascript/site.js"></script>
+    <script src="~/Content/assets/vendor/lodash/core.js"></script>
+    <script src="~/Content/assets/angular-1.6.3/angular.min.js"></script>
+    <script src="~/Content/assets/angular-1.6.3/angular-route.min.js"></script>
+    <script src="~/Content/assets/app/app-bundle.js"></script>
+    <!--ANGULAR-->
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,128 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- End Required meta tags -->
+    <!-- Begin SEO tag -->
+    <title>AuthorizationServer</title>
+    <meta property="og:title" content="Starter Template">
+    <meta name="author" content="Beni Arisandi">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Responsive admin theme build on top of Bootstrap 4">
+    <meta property="og:description" content="Responsive admin theme build on top of Bootstrap 4">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+    <meta property="og:site_name" content="Looper - Bootstrap 4 Admin Theme">
+    <!-- End SEO tag -->
+    <!-- FAVICONS -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/assets/apple-touch-icon.png">
+    <link rel="shortcut icon" href="~/Content/assets/favicon.ico">
+    <meta name="theme-color" content="#3063A0">
+    <!-- End FAVICONS -->
+    <script src="~/Content/assets/vendor/pace/pace.min.js"></script>
+    <!-- BEGIN BASE STYLES -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/fontawesome/css/fontawesome.all.css">
+    <!-- END BASE STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link rel="stylesheet" href="~/Content/assets/stylesheets/main.min.css">
+    <link rel="stylesheet" href="~/Content/assets/stylesheets/custom.css">
+    <!-- END THEME STYLES -->
+</head>
+<body>
+    <!-- .auth -->
+    <main class="auth">
+        <header id="auth-header" class="auth-header" style="background-image: url(/Content/assets/images/illustration/img-1.png);">
+            <h1>
+                <img src="~/Content/assets/images/brand-inverse.png" alt="" height="72">
+                <span class="sr-only">Register</span>
+            </h1>
+            <p>
+                Already have an account? please
+                <a href="@Url.Action("Login", "Account", new { returnUrl = ViewData["returnUrl"] })" asp-route-returnurl="@ViewData["ReturnUrl"]">Log in</a>
+            </p>
+        </header>
+        <!-- form -->
+        <form action="@Url.Action("Register", "Account", new { returnUrl = ViewData["returnUrl"] })" method="post" class="auth-form">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <!-- .form-group -->
+            <div class="form-group">
+                <div class="form-label-group">
+                    <input name="Name" class="form-control" placeholder="Full name" required="">
+                    <label>Full name</label>
+                </div>
+            </div>
+            <!-- /.form-group -->
+            <!-- .form-group -->
+            <div class="form-group">
+                <div class="form-label-group">
+                    <input name="Username" class="form-control" placeholder="Username" required="">
+                    <label>Username</label>
+                </div>
+            </div>
+            <!-- /.form-group -->
+            <!-- .form-group -->
+            <div class="form-group">
+                <div class="form-label-group">
+                    <input type="password" name="Password" placeholder="Password" class="form-control" required="">
+                    <label>Password</label>
+                </div>
+            </div>
+            <!-- /.form-group -->
+            <!-- .form-group -->
+            <div class="form-group">
+                <div class="form-label-group">
+                    <input type="password" name="ConfirmPassword" placeholder="Confirm password" class="form-control" required="">
+                    <label>Confirm password</label>
+                </div>
+            </div>
+            <!-- /.form-group -->
+            <!-- .form-group -->
+            <div class="form-group">
+                <div class="form-label-group">
+                    <input type="email" name="Email" class="form-control" placeholder="Email" required="">
+                    <label>Email</label>
+                </div>
+            </div>
+            <!-- .form-group -->
+
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+            </div>
+            <!-- /.form-group -->
+            <!-- /.form-group -->
+            <!-- recovery links -->
+            <p class="text-center text-muted mb-0">
+                By creating an account you agree to the
+                <a href="#">Terms of Use</a> and
+                <a href="#">Privacy Policy</a>.
+            </p>
+            <!-- /recovery links -->
+        </form>
+        <!-- /.auth-form -->
+        <!-- copyright -->
+        <footer class="auth-footer">
+            © 2018 All Rights Reserved.
+            <a href="#">Privacy</a> and
+            <a href="#">Terms</a>
+        </footer>
+    </main>
+    <!-- /.auth -->
+    <!-- BEGIN PLUGINS JS -->
+    <script src="~/Content/assets/vendor/particles.js/particles.min.js"></script>
+    <script>
+      particlesJS.load('auth-header', '/Content/assets/javascript/particles.json');
+    </script>
+    <!-- END PLUGINS JS -->
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+﻿@model SendCodeViewModel
+@{
+    ViewData["Title"] = "Send Verification Code";
+}
+
+<!-- .card -->
+<section class="card">
+    <!-- .card-body -->
+    <div class="card-body">
+        <fieldset>
+            <legend>@ViewData["Title"].</legend>
+            <form asp-controller="Account" asp-action="SendCode" asp-route-returnurl="@Model.ReturnUrl" method="post" class="form-horizontal" role="form">
+                <input asp-for="RememberMe" type="hidden" />
+                <div class="row">
+                    <div class="col-md-8">
+                        Select Two-Factor Authentication Provider:
+                        <select asp-for="SelectedProvider" asp-items="Model.Providers"></select>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+    <!-- /.card-body -->
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

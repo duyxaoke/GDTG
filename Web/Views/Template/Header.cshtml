@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Shared.Models.MenuViewModel>
+    <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
+        <div class="nav-top flex-grow-1">
+            <div class="container d-flex flex-row h-100">
+                <div class="text-center navbar-brand-wrapper d-flex align-items-top">
+                    @*<a class="navbar-brand brand-logo" href="../../index.html"><img src="../../images/logo.svg" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg" alt="logo" /></a>*@
+                </div>
+                <div class="navbar-menu-wrapper align-items-center text-center">
+                </div>
+                <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end" style="width:200px">
+
+
+                    <ul class="navbar-nav navbar-nav-right mr-0">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item nav-profile dropdown">
+                                <a class="nav-link dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                                    <span class="nav-profile-text">@User.Identity.Name</span>
+                                    <img src="~/Content/assets/flare/images/faces/face1.jpg" class="rounded-circle" alt="profile" />
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                                    <a class="dropdown-item" href="/Account/Manage">
+                                        <span class="dropdown-icon oi oi-person"></span> Tài khoản
+                                    </a>
+                                    <a class="dropdown-item" href="/Account/LogOff">
+                                        <span class="dropdown-icon oi oi-account-logout"></span> Đăng xuất
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Hướng dẫn sử dụng</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                    <button class="navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                        <span class="icon-menu text-white"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <div class="container">
+                <ul class="nav page-navigation">
+                    @foreach (var item in Model)
+                    {
+                    <!-- co item con -->
+                    if (item.Childrens.Count() > 0)
+                    {
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"><i class="link-icon icon-wallet"></i><span class="menu-title">@item.Name</span><i class="menu-arrow"></i></a>
+                        <div class="submenu">
+                            <ul class="submenu-item">
+                                @foreach (var itemChild in item.Childrens)
+                                {
+                                <li class="nav-item"><a class="nav-link" href="@itemChild.Url">@itemChild.Name</a></li>
+
+                                }
+                            </ul>
+                        </div>
+                    </li>
+                    }
+                    else
+                    {
+                    <li class="nav-item">
+                        <a href="@item.Url" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">@item.Name</span></a>
+                    </li>
+                    }
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
