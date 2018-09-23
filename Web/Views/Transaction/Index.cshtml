@@ -1,107 +1,90 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- End Required meta tags -->
-    <!-- Begin SEO tag -->
-    <title>@ViewData["Title"] - Manage account</title>
-    <meta property="og:title" content="Starter Template">
-    <meta name="author" content="Beni Arisandi">
-    <meta property="og:locale" content="en_US">
-    <meta name="description" content="Responsive admin theme build on top of Bootstrap 4">
-    <meta property="og:description" content="Responsive admin theme build on top of Bootstrap 4">
-    <link rel="canonical" href="index.html">
-    <meta property="og:url" content="index.html">
-    <meta property="og:site_name" content="Looper - Bootstrap 4 Admin Theme">
-    <!-- End SEO tag -->
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Flare Premium Bootstrap Admin Dashboard Template</title>
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="~/Content/assets/flare/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
-    <link rel="stylesheet" href="~/Content/assets/flare/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="~/Content/assets/flare/vendors/css/vendor.bundle.addons.css">
-    <link rel="stylesheet" href="~/Content/assets/flare/vendors/iconfonts/font-awesome/css/font-awesome.min.css" />
-    <!-- endinject -->
-    <!-- plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link href="~/Content/assets/flare/css/style.css" rel="stylesheet" />
-    <!-- endinject -->
-</head>
-<body ng-app="MyApp">
-    <!-- .app -->
-    @Html.Action("Header", "Template", new { Area = "" })
-    <div ng-controller="MasterPageController" ng-cloak>
-        <div id="cover-spin" ng-show="MasterPage.IsLoading"></div>
-    </div>s
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-        <div class="main-panel">
-            @RenderBody()
-            @*<div class="content-wrapper">
-                </div>*@
-            <!-- content-wrapper ends -->
-            <!-- partial:../../partials/_footer.html -->
-            @Html.Action("Footer", "Template", new { Area = "" })
-            <!-- partial -->
+﻿@{
+    ViewData["Title"] = "Index";
+}
+<div>
+    <!-- .card -->
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Giao dịch #212535: 0.55 BTC = 65.500.000đ</h4>
+            <p class="mt-2 font-weight-bold mb-5">Trạng thái hiện tại: <span class="text-success ">Chờ xác nhận giao dịch...</span></p>
+            <form id="frmTransaction" action="#">
+                <div>
+                    <h3>Xác nhận đồng ý giao dịch từ 2 bên <i class="fa fa-check"></i></h3>
+                    <section>
+                        <h6>Xác nhận đồng ý giao dịch từ 2 bên</h6>
+                        <div class="form-group">
+                            <label for="userName">User name *</label>
+                            <input id="userName" name="userName" type="text" class="required form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password *</label>
+                            <input id="password" name="password" type="password" class="required form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm">Confirm Password *</label>
+                            <input id="confirm" name="confirm" type="password" class="required form-control">
+                            <small>(*) Mandatory</small>
+                        </div>
+                    </section>
+                    <h3>Người mua chuyển tiền cho MEEX <i class="fa fa-check"></i></h3>
+                    <section>
+                        <h6>Profile</h6>
+                        <div class="form-group">
+                            <label for="name">First name *</label>
+                            <input id="name" name="name" type="text" class="required form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Last name *</label>
+                            <input id="surname" name="surname" type="text" class="required form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input id="email" name="email" type="text" class="required email form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input id="address" name="address" type="text" class="form-control">
+                            <small>(*) Mandatory</small>
+                        </div>
+                    </section>
+                    <h3>Người bán giao hàng  <i class="fa fa-check"></i></h3>
+                    <section>
+                        <h6>Finish</h6>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="checkbox" type="checkbox">
+                                I agree with the Terms and Conditions.
+                            </label>
+                        </div>
+                    </section>
+                    <h3>MEEX chuyển tiền  <i class="fa fa-check"></i></h3>
+                    <section>
+                        <h6>Finish</h6>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="checkbox" type="checkbox">
+                                I agree with the Terms and Conditions.
+                            </label>
+                        </div>
+                    </section>
+                    <h3>Kết thúc giao dịch  <i class="fa fa-check"></i></h3>
+                    <section>
+                        <h6>Finish</h6>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="checkbox" type="checkbox">
+                                I agree with the Terms and Conditions.
+                            </label>
+                        </div>
+                    </section>
+                </div>
+            </form>
         </div>
-        <!-- main-panel ends -->
     </div>
-    <!-- page-body-wrapper ends -->
-    <!-- Alert Danger Modal -->
-    <div class="modal modal-alert fade" id="ExpiredModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="ExpiredLabel" aria-hidden="true">
-        <!-- .modal-dialog -->
-        <div class="modal-dialog" role="document">
-            <!-- .modal-content -->
-            <div class="modal-content">
-                <!-- .modal-header -->
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        <i class="fa fa-exclamation-triangle text-red mr-1"></i> Phiên làm viêc đã hết hạn
-                    </h5>
-                </div>
-                <!-- /.modal-header -->
-                <!-- .modal-body -->
-                <div class="modal-body">
-                    <p> Phiên làm việc của bạn đã hết hạn, vui lòng đăng nhập lại! </p>
-                </div>
-                <!-- /.modal-body -->
-                <!-- .modal-footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger">Đăng nhập lại</button>
-                </div>
-                <!-- /.modal-footer -->
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
-    <!-- /.app -->
-    <script src="~/Content/assets/flare/vendors/js/vendor.bundle.base.js"></script>
-    <script src="~/Content/assets/flare/vendors/js/vendor.bundle.addons.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page-->
-    <!-- End plugin js for this page-->
-    <!-- inject:js -->
-    <script src="~/Content/assets/flare/js/template.js"></script>
+</div>
+@section scripts{
     <!-- Custom js for this page-->
-    <script src="~/Content/assets/flare/vendors/js/popover.js"></script>
-    <script src="~/Content/assets/flare/vendors/js/tooltips.js"></script>
-    <script src="~/Content/assets/flare/vendors/js/alerts.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page-->
+    <script src="~/Content/assets/flare/js/wizard.js"></script>
     <!-- End custom js for this page-->
-    <script src="~/Content/assets/site.js"></script>
-    <script src="~/Content/assets/vendor/lodash/core.js"></script>
-    <script src="~/Content/assets/angular-1.6.3/angular.min.js"></script>
-    <script src="~/Content/assets/angular-1.6.3/angular-route.min.js"></script>
-    <script src="~/Content/assets/app/app-bundle.js"></script>
-    <!--ANGULAR-->
-    @RenderSection("scripts", required: false)
-</body>
-</html>
+
+}

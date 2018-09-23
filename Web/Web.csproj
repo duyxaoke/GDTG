@@ -308,12 +308,14 @@
     <Content Include="Content\assets\flare\images\faces\face3.jpg" />
     <Content Include="Content\assets\flare\images\faces\face6.jpg" />
     <Content Include="Content\assets\flare\images\favicon.png" />
+    <Content Include="Content\assets\flare\images\file-icons\icon-google.svg" />
     <Content Include="Content\assets\flare\images\logo-mini.svg" />
     <Content Include="Content\assets\flare\images\logo.svg" />
     <Content Include="Content\assets\flare\images\samples\profile_page\profile_header_banner.jpg" />
     <Content Include="Content\assets\flare\images\sprites\jsgrid-icons.png" />
     <Content Include="Content\assets\flare\js\dashboard.js" />
     <Content Include="Content\assets\flare\js\template.js" />
+    <Content Include="Content\assets\flare\js\wizard.js" />
     <Content Include="Content\assets\flare\js\todolist.js" />
     <Content Include="Content\assets\flare\vendors\css\vendor.bundle.addons.css" />
     <Content Include="Content\assets\flare\vendors\css\vendor.bundle.base.css" />
