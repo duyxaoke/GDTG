@@ -83,7 +83,6 @@ $.fn.extend({
 			completed: null
 		}, settings);
 
-
 		defs = $.mask.definitions;
 		tests = [];
 		partialPosition = len = mask.length;
@@ -333,6 +332,4 @@ $.fn.extend({
 		});
 	}
 });
-
-
 })(jQuery);

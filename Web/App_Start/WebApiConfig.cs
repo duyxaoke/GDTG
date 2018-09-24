@@ -86,7 +86,7 @@ namespace Web
             //        //scope to IPs
             //        IpThrottling = true,
             //        IpRules = new Dictionary<string, RateLimits>
-            //        { 
+            //        {
             //            { "::1/10", new RateLimits { PerSecond = 2 } },
             //            { "192.168.2.1", new RateLimits { PerMinute = 30, PerHour = 30*60, PerDay = 30*60*24 } }
             //        },
@@ -96,7 +96,7 @@ namespace Web
             //        //scope to clients (if IP throttling is applied then the scope becomes a combination of IP and client key)
             //        ClientThrottling = true,
             //        ClientRules = new Dictionary<string, RateLimits>
-            //        { 
+            //        {
             //            { "api-client-key-1", new RateLimits { PerMinute = 60, PerHour = 600 } },
             //            { "api-client-key-9", new RateLimits { PerDay = 5000 } }
             //        },
@@ -111,7 +111,7 @@ namespace Web
             //    logger: new TracingThrottleLogger(traceWriter)));
 
             //Web API throttling filter load policy from web.config
-            //config.Filters.Add(new ThrottlingFilter(           
+            //config.Filters.Add(new ThrottlingFilter(
             //    policy: ThrottlePolicy.FromStore(new PolicyConfigurationProvider()),
             //    policyRepository: new PolicyCacheRepository(),
             //    repository: new CacheRepository(),

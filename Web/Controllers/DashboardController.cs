@@ -12,7 +12,8 @@ namespace Web.Controllers
         #region Fields
 
         private readonly UserManager _userManager;
-        #endregion
+
+        #endregion Fields
 
         #region Constructor
 
@@ -21,7 +22,7 @@ namespace Web.Controllers
             _userManager = userManager;
         }
 
-        #endregion
+        #endregion Constructor
 
         public ActionResult Index()
         {

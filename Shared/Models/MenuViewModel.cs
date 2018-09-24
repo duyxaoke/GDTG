@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System;
-using FluentValidation;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using FluentValidation.Attributes;
 
 namespace Shared.Models
 {
@@ -20,13 +18,16 @@ namespace Shared.Models
         public int Order { get; set; }
         public bool Checked { get; set; } // in role - checked
         public string RoleName { get; set; } // in role - checked
+
         [NotMapped]
         public IEnumerable<SelectListViewModel> Parents { get; set; }
+
         [NotMapped]
         public IEnumerable<MenuViewModel> Childrens { get; set; }
-        public List<int> MenuIds { get; set; }
 
+        public List<int> MenuIds { get; set; }
     }
+
     public class MenuViewModelValidator : AbstractValidator<MenuViewModel>
     {
         public MenuViewModelValidator()
@@ -37,5 +38,4 @@ namespace Shared.Models
             RuleFor(x => x.RoleName).Length(0, 255);
         }
     }
-
 }

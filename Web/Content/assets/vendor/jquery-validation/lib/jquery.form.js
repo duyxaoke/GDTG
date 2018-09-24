@@ -326,7 +326,6 @@ $.fn.ajaxSubmit = function(options) {
         }
         io = $io[0];
 
-
         xhr = { // mock object
             aborted: 0,
             responseText: null,
@@ -680,7 +679,6 @@ $.fn.ajaxSubmit = function(options) {
         };
 
         var httpData = function( xhr, type, s ) { // mostly lifted from jq1.4.4
-
             var ct = xhr.getResponseHeader('content-type') || '',
                 xml = type === 'xml' || !type && ct.indexOf('xml') >= 0,
                 data = xml ? xhr.responseXML : xhr.responseText;
@@ -794,7 +792,6 @@ function captureSubmittingElement(e) {
     // clear form vars
     setTimeout(function() { form.clk = form.clk_x = form.clk_y = null; }, 100);
 }
-
 
 // ajaxFormUnbind unbinds the event handlers that were bound by ajaxForm
 $.fn.ajaxFormUnbind = function() {
@@ -1117,5 +1114,4 @@ function log() {
         window.opera.postError(msg);
     }
 }
-
 })(jQuery);

@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
-
-namespace Shared.Models
+﻿namespace Shared.Models
 {
     public class SelectListViewModel
     {

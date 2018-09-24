@@ -1,6 +1,5 @@
 /*! highlight.js v9.10.0 | BSD3 License | git.io/hljslicense */
 (function(factory) {
-
   // Find the global object for export to both the browser and web workers.
   var globalObject = typeof window === 'object' && window ||
                      typeof self === 'object' && self;
@@ -21,7 +20,6 @@
       });
     }
   }
-
 }(function(hljs) {
   // Convenience variables for build-in objects
   var ArrayProto = [],
@@ -229,7 +227,6 @@
   }
 
   function compileLanguage(language) {
-
     function reStr(re) {
         return (re && re.source) || re;
     }
@@ -325,7 +322,6 @@
 
   */
   function highlight(name, value, ignore_illegals, continuation) {
-
     function subMode(lexeme, mode) {
       var i, length;
 
@@ -427,7 +423,6 @@
     }
 
     function processLexeme(buffer, lexeme) {
-
       mode_buffer += buffer;
 
       if (lexeme == null) {
@@ -1225,7 +1220,6 @@ function(hljs) {
                         // we are done with functions
                         endsParent: true,
                         illegal: BAD_CHARS
-
                     },
                 ]
             },
@@ -3281,7 +3275,6 @@ hljs.registerLanguage('coq', function(hljs) {
 });
 
 hljs.registerLanguage('cos', function cos (hljs) {
-
   var STRINGS = {
     className: 'string',
     variants: [
@@ -3849,7 +3842,7 @@ hljs.registerLanguage('csp', function(hljs) {
     keywords: {
       keyword: 'base-uri child-src connect-src default-src font-src form-action' +
         ' frame-ancestors frame-src img-src media-src object-src plugin-types' +
-        ' report-uri sandbox script-src style-src', 
+        ' report-uri sandbox script-src style-src',
     },
     contains: [
     {
@@ -5522,7 +5515,7 @@ hljs.registerLanguage('excel', function(hljs) {
     },
     contains: [
       {
-        /* matches a beginning equal sign found in Excel formula examples */ 
+        /* matches a beginning equal sign found in Excel formula examples */
         begin: /^=/,
         end: /[^=]/, returnEnd: true, illegal: /=/, /* only allow single equal sign at front of line */
         relevance: 10
@@ -5589,7 +5582,6 @@ hljs.registerLanguage('fix', function(hljs) {
 });
 
 hljs.registerLanguage('flix', function (hljs) {
-
     var CHAR = {
         className: 'string',
         begin: /'(.|\\[xXuU][a-zA-Z0-9]+)'/
@@ -8935,7 +8927,6 @@ hljs.registerLanguage('llvm', function(hljs) {
 });
 
 hljs.registerLanguage('lsl', function(hljs) {
-
     var LSL_STRING_ESCAPE_CHARS = {
         className: 'subst',
         begin: /\\[tn"\\]/
@@ -11481,7 +11472,7 @@ hljs.registerLanguage('powershell', function(hljs) {
   var PS_HELPTAGS = {
     className: 'doctag',
     variants: [
-      /* no paramater help tags */ 
+      /* no paramater help tags */
       { begin: /\.(synopsis|description|example|inputs|outputs|notes|link|component|role|functionality)/ },
       /* one parameter help tags */
       { begin: /\.(parameter|forwardhelptargetname|forwardhelpcategory|remotehelprunspace|externalhelp)\s+\S+/ }
@@ -11600,15 +11591,12 @@ hljs.registerLanguage('profile', function(hljs) {
 });
 
 hljs.registerLanguage('prolog', function(hljs) {
-
   var ATOM = {
-
     begin: /[a-z][A-Za-z0-9_]*/,
     relevance: 0
   };
 
   var VAR = {
-
     className: 'symbol',
     variants: [
       {begin: /[A-Z][a-zA-Z0-9_]*/},
@@ -11618,40 +11606,34 @@ hljs.registerLanguage('prolog', function(hljs) {
   };
 
   var PARENTED = {
-
     begin: /\(/,
     end: /\)/,
     relevance: 0
   };
 
   var LIST = {
-
     begin: /\[/,
     end: /\]/
   };
 
   var LINE_COMMENT = {
-
     className: 'comment',
     begin: /%/, end: /$/,
     contains: [hljs.PHRASAL_WORDS_MODE]
   };
 
   var BACKTICK_STRING = {
-
     className: 'string',
     begin: /`/, end: /`/,
     contains: [hljs.BACKSLASH_ESCAPE]
   };
 
   var CHAR_CODE = {
-
     className: 'string', // 0'a etc.
     begin: /0\'(\\\'|.)/
   };
 
   var SPACE_CODE = {
-
     className: 'string',
     begin: /0\'\\s/ // 0'\s
   };
@@ -11724,7 +11706,6 @@ hljs.registerLanguage('protobuf', function(hljs) {
 });
 
 hljs.registerLanguage('puppet', function(hljs) {
-
   var PUPPET_KEYWORDS = {
     keyword:
     /* language keywords */
@@ -12574,7 +12555,6 @@ hljs.registerLanguage('rust', function(hljs) {
 });
 
 hljs.registerLanguage('scala', function(hljs) {
-
   var ANNOTATION = { className: 'meta', begin: '@[A-Za-z]+' };
 
   // used in strings for escaping/interpolation/substitution
@@ -12610,7 +12590,6 @@ hljs.registerLanguage('scala', function(hljs) {
         relevance: 10
       }
     ]
-
   };
 
   var SYMBOL = {
@@ -12833,7 +12812,6 @@ hljs.registerLanguage('scheme', function(hljs) {
 });
 
 hljs.registerLanguage('scilab', function(hljs) {
-
   var COMMON_CONTAINS = [
     hljs.C_NUMBER_MODE,
     {
@@ -13856,7 +13834,6 @@ hljs.registerLanguage('step21', function(hljs) {
 });
 
 hljs.registerLanguage('stylus', function(hljs) {
-
   var VARIABLE = {
     className: 'variable',
     begin: '\\$' + hljs.IDENT_RE
@@ -14450,7 +14427,6 @@ hljs.registerLanguage('swift', function(hljs) {
                   '@noreturn|@IBAction|@IBDesignable|@IBInspectable|@IBOutlet|' +
                   '@infix|@prefix|@postfix|@autoclosure|@testable|@available|' +
                   '@nonobjc|@NSApplicationMain|@UIApplicationMain)'
-
       },
       {
         beginKeywords: 'import', end: /$/,
@@ -14461,7 +14437,6 @@ hljs.registerLanguage('swift', function(hljs) {
 });
 
 hljs.registerLanguage('taggerscript', function(hljs) {
-
   var COMMENT = {
     className: 'comment',
     begin: /\$noop\(/,
@@ -15780,7 +15755,6 @@ hljs.registerLanguage('xquery', function(hljs) {
     METHOD
   ];
   METHOD.contains = CONTAINS;
-
 
   return {
     aliases: ['xpath', 'xq'],

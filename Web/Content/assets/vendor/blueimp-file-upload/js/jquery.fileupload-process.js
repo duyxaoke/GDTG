@@ -40,7 +40,6 @@
     // The File Upload Processing plugin extends the fileupload widget
     // with file processing functionality:
     $.widget('blueimp.fileupload', $.blueimp.fileupload, {
-
         options: {
             // The list of processing actions:
             processQueue: [
@@ -121,7 +120,6 @@
                     } else {
                         settings[key] = value;
                     }
-
                 });
                 processQueue.push(settings);
             });
@@ -172,7 +170,5 @@
             this._processingQueue = $.Deferred().resolveWith(this)
                 .promise();
         }
-
     });
-
 }));

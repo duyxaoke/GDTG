@@ -10,7 +10,6 @@
  */
 
 ;(function( $, undefined ) {
-
 var rkeyEvent = /^key/,
 	rmouseEvent = /^(?:mouse|contextmenu)|click/;
 
@@ -34,7 +33,6 @@ $.simulate = function( elem, type, options ) {
 };
 
 $.extend( $.simulate, {
-
 	keyCode: {
 		BACKSPACE: 8,
 		COMMA: 188,
@@ -68,7 +66,6 @@ $.extend( $.simulate, {
 });
 
 $.extend( $.simulate.prototype, {
-
 	simulateEvent: function( elem, type, options ) {
 		var event = this.createEvent( type, options );
 		this.dispatchEvent( elem, type, event, options );
@@ -263,8 +260,6 @@ $.extend( $.simulate.prototype, {
 	}
 });
 
-
-
 /** complex events **/
 
 function findCenter( elem ) {
@@ -310,5 +305,4 @@ $.extend( $.simulate.prototype, {
 		this.simulateEvent( target, "click", coord );
 	}
 });
-
 })( jQuery );

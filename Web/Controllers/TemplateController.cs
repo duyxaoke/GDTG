@@ -28,7 +28,6 @@ namespace Web.Controllers
 
         public PartialViewResult Header()
         {
-
             var lsCurrentRole = new List<string>();
             //Da login => lay list role
             if (User.Identity.IsAuthenticated)
@@ -112,7 +111,5 @@ namespace Web.Controllers
             var currentRole = userManager.GetRoles(UserId);
             return currentRole.ToList();
         }
-
-
     }
 }

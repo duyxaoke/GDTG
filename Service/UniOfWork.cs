@@ -2,7 +2,6 @@
 using Data.DAL;
 using Data.Models;
 using Shared.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 
 namespace Service
@@ -12,6 +11,7 @@ namespace Service
         #region Fields
 
         #region System
+
         public readonly DatabaseContext Context = new DatabaseContext();
         private BaseRepository<Config> _configRepository;
         private BaseRepository<Menu> _menuRepository;
@@ -22,9 +22,10 @@ namespace Service
         private BaseRepository<ApplicationUser> _applicationUserRepository;
         private BaseRepository<IdentityUserRole> _identityUserRoleRepository;
         private BaseRepository<DB_LOG> _dbLogRepository;
-        #endregion
 
-        #endregion
+        #endregion System
+
+        #endregion Fields
 
         #region Constructors and Destructors
 
@@ -39,6 +40,7 @@ namespace Service
                 return _dbLogRepository;
             }
         }
+
         public BaseRepository<ApplicationRole> IdentityRoleRepository
         {
             get
@@ -48,6 +50,7 @@ namespace Service
                 return _identityRoleRepository;
             }
         }
+
         public BaseRepository<MenuViewModel> MenuViewRepository
         {
             get
@@ -57,6 +60,7 @@ namespace Service
                 return _menuViewRepository;
             }
         }
+
         public BaseRepository<MenuInRoles> MenuInRolesRepository
         {
             get
@@ -66,6 +70,7 @@ namespace Service
                 return _menuInRolesRepository;
             }
         }
+
         public BaseRepository<Menu> MenuRepository
         {
             get
@@ -75,6 +80,7 @@ namespace Service
                 return _menuRepository;
             }
         }
+
         public BaseRepository<Config> ConfigRepository
         {
             get
@@ -84,6 +90,7 @@ namespace Service
                 return _configRepository;
             }
         }
+
         public BaseRepository<ApplicationUser> ApplicationUserRepository
         {
             get
@@ -93,6 +100,7 @@ namespace Service
                 return _applicationUserRepository;
             }
         }
+
         public BaseRepository<IdentityUserRole> IdentityUserRoleRepository
         {
             get
@@ -102,6 +110,7 @@ namespace Service
                 return _identityUserRoleRepository;
             }
         }
+
         public BaseRepository<UserViewModel> UserViewRepository
         {
             get
@@ -111,13 +120,10 @@ namespace Service
                 return _userViewRepository;
             }
         }
-        #endregion
 
-        #region Bussiness
+        #endregion System
 
-        #endregion
-
-        #endregion
+        #endregion Constructors and Destructors
 
         #region Public Methods and Operators
 
@@ -125,7 +131,8 @@ namespace Service
         {
             Context.SaveChanges();
         }
-        #endregion
+
+        #endregion Public Methods and Operators
 
         #region Disposed
 
@@ -153,6 +160,7 @@ namespace Service
         {
             Dispose(false);
         }
-        #endregion
+
+        #endregion Disposed
     }
 }

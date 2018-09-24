@@ -5,24 +5,19 @@
 
 (function( factory ) {
   if ( typeof define === "function" && define.amd ) {
-
     // AMD. Register as an anonymous module.
     define([ "jquery" ], factory );
   } else if ( typeof exports === "object" ) {
-
     // Node/CommonJS
     factory( require( "jquery" ) );
   } else {
-
     // Browser globals
     factory( jQuery );
   }
 }(function( $ ) {
-
   $.ui = $.ui || {};
 
   var version = $.ui.version = "1.12.1";
-
 
   /*!
    * jQuery UI Widget 1.12.1
@@ -39,8 +34,6 @@
   //>>docs: http://api.jqueryui.com/jQuery.widget/
   //>>demos: http://jqueryui.com/widget/
 
-
-
   var widgetUuid = 0;
   var widgetSlice = Array.prototype.slice;
 
@@ -49,7 +42,6 @@
       var events, elem, i;
       for ( i = 0; ( elem = elems[ i ] ) != null; i++ ) {
         try {
-
           // Only trigger remove when necessary to save time
           events = $._data( elem, "events" );
           if ( events && events.remove ) {
@@ -91,7 +83,6 @@
     $[ namespace ] = $[ namespace ] || {};
     existingConstructor = $[ namespace ][ name ];
     constructor = $[ namespace ][ name ] = function( options, element ) {
-
       // Allow instantiation without "new" keyword
       if ( !this._createWidget ) {
         return new constructor( options, element );
@@ -155,7 +146,6 @@
       } )();
     } );
     constructor.prototype = $.widget.extend( basePrototype, {
-
       // TODO: remove support for widgetEventPrefix
       // always use the name + a colon as the prefix, e.g., draggable:start
       // don't prefix for widgets that aren't DOM-based
@@ -204,7 +194,6 @@
       for ( key in input[ inputIndex ] ) {
         value = input[ inputIndex ][ key ];
         if ( input[ inputIndex ].hasOwnProperty( key ) && value !== undefined ) {
-
           // Clone objects
           if ( $.isPlainObject( value ) ) {
             target[ key ] = $.isPlainObject( target[ key ] ) ?
@@ -231,7 +220,6 @@
       var returnValue = this;
 
       if ( isMethodCall ) {
-
         // If this is an empty collection, we need to have the instance method
         // return undefined instead of the jQuery instance
         if ( !this.length && options === "instance" ) {
@@ -268,7 +256,6 @@
           } );
         }
       } else {
-
         // Allow multiple hashes to be passed on init
         if ( args.length ) {
           options = $.widget.extend.apply( null, [ options ].concat( args ) );
@@ -396,13 +383,11 @@
       var i;
 
       if ( arguments.length === 0 ) {
-
         // Don't return a reference to the internal hash
         return $.widget.extend( {}, this.options );
       }
 
       if ( typeof key === "string" ) {
-
         // Handle nested keys, e.g., "foo.bar" => { foo: { bar: ___ } }
         options = {};
         parts = key.split( "." );
@@ -597,7 +582,6 @@
 
       $.each( handlers, function( event, handler ) {
         function handlerProxy() {
-
           // Allow widgets to customize the disabled handling
           // - disabled as an array instead of boolean
           // - disabled class as method for disabling individual parts
@@ -745,8 +729,4 @@
   } );
 
   var widget = $.widget;
-
-
-
-
 }));

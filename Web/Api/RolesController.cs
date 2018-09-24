@@ -22,7 +22,6 @@ namespace Web.Api
         private IMenuServices _menuService;
         private IMenuInRolesServices _menuInRolesService;
 
-
         public RolesController(IRoleServices roleServices, RoleManager roleManager, ClaimedActionsProvider claimedActionsProvider,
             IMenuServices menuService, IMenuInRolesServices menuInRolesService)
         {
@@ -87,7 +86,6 @@ namespace Web.Api
             _menuInRolesService.Save();
             return ApiHelper.ReturnHttpAction(result, this);
         }
-
 
         [HttpPost]
         [Route("Create")]
@@ -166,7 +164,6 @@ namespace Web.Api
                     return new Claim(tokens[0], tokens[1]);
                 }).ToList();
 
-
             roleClaims = await _roleManager.GetClaimsAsync(role.Name);
 
             foreach (var submittedClaim in submittedClaims)
@@ -206,6 +203,7 @@ namespace Web.Api
         }
 
         #region Helper
+
         private List<MenuViewModel> GetChildrens(int parentId, Guid? roleId)
         {
             var lsmodel = new List<MenuViewModel>();
@@ -233,6 +231,6 @@ namespace Web.Api
             return lsmodel;
         }
 
-        #endregion
+        #endregion Helper
     }
 }

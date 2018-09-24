@@ -22,7 +22,6 @@ namespace Web.Areas.Admin.Controllers
         private readonly ClaimedActionsProvider _claimedActionsProvider;
         private readonly RoleManager _roleManager;
 
-
         public UsersController(UserManager userManager, ClaimedActionsProvider claimedActionsProvider, RoleManager roleManager)
         {
             _userManager = userManager;

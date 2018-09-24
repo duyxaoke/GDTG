@@ -8,7 +8,6 @@
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
 ; (function () {
-
     /** Used as a safe reference for `undefined` in pre-ES5 environments. */
     var undefined;
 
@@ -1241,7 +1240,6 @@
      */
     function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
         switch (tag) {
-
             case boolTag:
             case dateTag:
             case numberTag:
@@ -1258,7 +1256,6 @@
                 // as equal. See http://www.ecma-international.org/ecma-262/7.0/#sec-regexp.prototype.tostring
                 // for more details.
                 return object == (other + '');
-
         }
         return false;
     }

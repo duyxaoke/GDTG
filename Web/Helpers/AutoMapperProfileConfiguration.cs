@@ -13,5 +13,4 @@ namespace Web.Helpers
             CreateMap<MenuViewModel, Menu>().ForMember(d => d.Id, o => o.Ignore());
         }
     }
-
 }

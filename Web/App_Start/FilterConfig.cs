@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using Web.Infrastructure;
 
-
 namespace Web
 {
     public class FilterConfig

@@ -37,5 +37,4 @@ $.validator.addMethod( "currency", function( value, element, param ) {
     regex = "^[" + symbol + "([1-9]{1}[0-9]{0,2}(\\,[0-9]{3})*(\\.[0-9]{0,2})?|[1-9]{1}[0-9]{0,}(\\.[0-9]{0,2})?|0(\\.[0-9]{0,2})?|(\\.[0-9]{1,2})?)$";
     regex = new RegExp( regex );
     return this.optional( element ) || regex.test( value );
-
 }, "Please specify a valid currency" );

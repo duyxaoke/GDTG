@@ -4,14 +4,14 @@
 
         scope: {
             noInput: "="
-        }, 
+        },
 
-        link: function (scope, element, attrs) {  
-            element.bind("keydown keypress", function (event) { 
+        link: function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
                 var c = String.fromCharCode(event.which);
-                if (_.contains(scope.noInput, c)) { 
+                if (_.contains(scope.noInput, c)) {
                     event.preventDefault();
-                } 
+                }
             });
 
             //scope.KeyCode = [];
@@ -25,6 +25,6 @@
             //    }
             //});
         }
-    }; 
+    };
 };
 noInput.$inject = [];

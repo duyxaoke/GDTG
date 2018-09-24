@@ -1,30 +1,32 @@
-﻿using Core.DTO.Response;
-using Data.DAL;
+﻿using Data.DAL;
 using Data.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Transactions;
 
 namespace Service
 {
     public interface IAccountServices
     {
-        CRUDResult<IEnumerable<ApplicationRole>>  GetAllRoles();
-        CRUDResult<IEnumerable<ApplicationUser>>  GetAllUsers();
-        CRUDResult<IEnumerable<IdentityUserRole>>  GetAllUserRole();
+        CRUDResult<IEnumerable<ApplicationRole>> GetAllRoles();
+
+        CRUDResult<IEnumerable<ApplicationUser>> GetAllUsers();
+
+        CRUDResult<IEnumerable<IdentityUserRole>> GetAllUserRole();
+
         CRUDResult<ApplicationUser> GetUser(string id);
+
         CRUDResult<ApplicationUser> GetUserbyUsername(string username);
+
         CRUDResult<bool> AddOrUpdateUser(ApplicationUser user, IList<string> lstRole);
     }
+
     public class AccountServices : IAccountServices
     {
         private readonly UnitOfWork _unitOfWork;
         private readonly DatabaseContext _context;
+
         public AccountServices(UnitOfWork unitOfWork, DatabaseContext context)
         {
             _unitOfWork = unitOfWork;
@@ -36,37 +38,38 @@ namespace Service
             var result = _unitOfWork.IdentityRoleRepository.GetAll();
             return new CRUDResult<IEnumerable<ApplicationRole>> { StatusCode = CRUDStatusCodeRes.Success, Data = result };
         }
-        public CRUDResult<IEnumerable<ApplicationUser>>  GetAllUsers()
+
+        public CRUDResult<IEnumerable<ApplicationUser>> GetAllUsers()
         {
             var result = _unitOfWork.ApplicationUserRepository.GetAll();
             return new CRUDResult<IEnumerable<ApplicationUser>> { StatusCode = CRUDStatusCodeRes.Success, Data = result };
-
         }
-        public CRUDResult<IEnumerable<IdentityUserRole>>  GetAllUserRole()
+
+        public CRUDResult<IEnumerable<IdentityUserRole>> GetAllUserRole()
         {
             var result = _unitOfWork.IdentityUserRoleRepository.GetAll();
             return new CRUDResult<IEnumerable<IdentityUserRole>> { StatusCode = CRUDStatusCodeRes.Success, Data = result };
-
         }
-        public CRUDResult<ApplicationUser>  GetUser(string id)
+
+        public CRUDResult<ApplicationUser> GetUser(string id)
         {
             var result = _unitOfWork.ApplicationUserRepository.GetById(id);
             return new CRUDResult<ApplicationUser> { StatusCode = CRUDStatusCodeRes.Success, Data = result };
-
         }
-        public CRUDResult<ApplicationUser>  GetUserbyUsername(string username)
+
+        public CRUDResult<ApplicationUser> GetUserbyUsername(string username)
         {
             var result = _unitOfWork.ApplicationUserRepository.Get(c => c.UserName == username);
             return new CRUDResult<ApplicationUser> { StatusCode = CRUDStatusCodeRes.Success, Data = result };
-
         }
+
         /// <summary>
         /// Lưu hoặc Sửa thông tin User (demo async)
         /// </summary>
         /// <param name="user"></param>
         /// <param name="roleId"></param>
         /// <returns></returns>
-        public CRUDResult<bool>  AddOrUpdateUser(ApplicationUser user, IList<string> lstRole)
+        public CRUDResult<bool> AddOrUpdateUser(ApplicationUser user, IList<string> lstRole)
         {
             bool result = false;
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
@@ -101,10 +104,9 @@ namespace Service
                                 scope.Complete();
                                 result = true;
                             }
-
-                        }                        
-                    }                    
-                } 
+                        }
+                    }
+                }
                 catch (Exception)
                 {
                     return new CRUDResult<bool> { StatusCode = CRUDStatusCodeRes.ResetContent, Data = result };

@@ -26,5 +26,4 @@ $.validator.addMethod( "nifES", function( value, element ) {
 	}
 
 	return false;
-
 }, "Please specify a valid NIF number." );

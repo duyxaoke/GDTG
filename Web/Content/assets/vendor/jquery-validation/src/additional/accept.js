@@ -1,6 +1,5 @@
 // Accept a value from a file input based on a required mimetype
 $.validator.addMethod( "accept", function( value, element, param ) {
-
 	// Split mime on commas in case we have multiple types we can accept
 	var typeParam = typeof param === "string" ? param.replace( /\s/g, "" ) : "image/*",
 		optionalValue = this.optional( element ),
@@ -12,7 +11,6 @@ $.validator.addMethod( "accept", function( value, element, param ) {
 	}
 
 	if ( $( element ).attr( "type" ) === "file" ) {
-
 		// Escape string to be used in the regex
 		// see: https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
 		// Escape also "/*" as "/.*" as a wildcard

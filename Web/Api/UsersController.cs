@@ -22,7 +22,6 @@ namespace Web.Api
         private readonly UserManager _userManager;
         private readonly ClaimedActionsProvider _claimedActionsProvider;
 
-
         public UsersController(RoleManager roleManager, UserManager userManager, ClaimedActionsProvider claimedActionsProvider)
         {
             _roleManager = roleManager;
@@ -36,7 +35,6 @@ namespace Web.Api
             var result = _userManager.Users.ToList();
             return CCOk(result);
         }
-
 
         [HttpPost]
         [Route("GetBalance")]
@@ -104,7 +102,6 @@ namespace Web.Api
                 return CCOk(result.Succeeded);
             }
             return CCNotAcceptable(result.Errors);
-
         }
         [HttpGet]
         [Route("{id}")]
@@ -113,7 +110,6 @@ namespace Web.Api
         {
             ApplicationUser result = await _userManager.FindByIdAsync(id);
             return CCOk(result);
-
         }
         [HttpPut]
         [Route("Update")]
@@ -236,7 +232,6 @@ namespace Web.Api
         public List<ApplicationUser> Users { get; set; }
     }
 
-
     public class UserClaimsViewModel
     {
         public UserClaimsViewModel()
@@ -252,7 +247,6 @@ namespace Web.Api
 
         public IEnumerable<String> SelectedClaims { get; set; }
 
-
         public class ClaimGroup
         {
             public ClaimGroup()
@@ -267,8 +261,6 @@ namespace Web.Api
         }
     }
 
-
-
     public class UserRolesViewModel
     {
         public UserRolesViewModel()
@@ -282,5 +274,4 @@ namespace Web.Api
         public List<SelectListViewModel> UserRoles { get; set; }
         public List<String> SelectedRoles { get; set; }
     }
-
 }

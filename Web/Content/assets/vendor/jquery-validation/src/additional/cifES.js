@@ -80,7 +80,6 @@ $.validator.addMethod( "cifES", function( value, element ) {
 
 		// Odd positions
 		if ( isOdd( i ) ) {
-
 			// Odd positions are multiplied first.
 			n *= 2;
 
@@ -110,5 +109,4 @@ $.validator.addMethod( "cifES", function( value, element ) {
 
 	// Can be either
 	return control === control_digit || control === control_letter;
-
 }, "Please specify a valid CIF number." );

@@ -16,7 +16,6 @@ function methodTest( methodName ) {
  * @returns {{}}
  */
 function acceptFileDummyInput( filename, mimeType ) {
-
 	function dummy() {
 		return file;
 	}
@@ -1217,7 +1216,6 @@ function fillFormWithValuesAndExpect( assert, formSelector, inputValues, expecte
 	}
 	actual = $( formSelector ).valid();
 	assert.equal( actual, expected, $.validator.format( "Filled inputs of form '{0}' with {1} values ({2})", formSelector, inputValues.length, inputValues.toString() ) );
-
 }
 
 QUnit.test( "require_from_group", function( assert ) {

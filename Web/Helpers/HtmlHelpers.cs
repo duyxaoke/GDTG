@@ -18,7 +18,6 @@ namespace Web.Helpers
             return htmlHelper.CheckBoxList(listName, items, htmlAttributes);
         }
 
-
         /// <summary>
         /// Stolen from Ben: https://github.com/benfoster/Fabrik.Common/blob/master/src/Fabrik.Common.Web/HtmlHelperExtensions.cs
         /// Returns a checkbox for each of the provided <paramref name="items"/>.

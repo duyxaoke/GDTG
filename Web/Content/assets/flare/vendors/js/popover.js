@@ -16,7 +16,6 @@
         var _show = Popover.prototype.show;
 
         Popover.prototype.show = function () {
-
             // invoke parent method
             _show.apply(this, Array.prototype.slice.apply(arguments));
 
@@ -24,7 +23,6 @@
                 var tip = this.getTipElement();
                 $(tip).addClass(this.config.customClass);
             }
-
         };
 
         $('[data-toggle="popover"]').popover()

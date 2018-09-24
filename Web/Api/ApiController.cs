@@ -1,6 +1,4 @@
-﻿
-
-using System.Net;
+﻿using System.Net;
 using System.Web.Http;
 
 namespace Web.Api

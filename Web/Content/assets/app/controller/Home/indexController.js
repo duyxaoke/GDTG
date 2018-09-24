@@ -1,5 +1,4 @@
 ﻿var IndexController = ($scope, $rootScope, $timeout, $filter, $compile, ApiHelper, CommonHelper, $q) => {
-
     //#region declare variable
     $scope.UpdateMode = false;
     $scope.Config = {};

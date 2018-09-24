@@ -441,7 +441,6 @@ typeof navigator === "object" && (function (global, factory) {
     function emptyElement(element) {
         var length = element.childNodes.length;
 
-
         while (length > 0) {
             element.removeChild(element.lastChild);
             length -= 1;
@@ -697,7 +696,6 @@ typeof navigator === "object" && (function (global, factory) {
             };
         },
 
-
         // Picture-in-picture support
         // Safari only currently
         pip: function () {
@@ -743,7 +741,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
         },
 
-
         // Check for textTracks support
         textTracks: 'textTracks' in document.createElement('video'),
 
@@ -783,7 +780,6 @@ typeof navigator === "object" && (function (global, factory) {
                 return support.mime.call(_this, source.getAttribute('type'));
             });
         },
-
 
         // Get quality levels
         getQualityOptions: function getQualityOptions() {
@@ -859,7 +855,6 @@ typeof navigator === "object" && (function (global, factory) {
                 }
             });
         },
-
 
         // Cancel current network requests
         // See https://github.com/sampotts/plyr/issues/174
@@ -1099,7 +1094,6 @@ typeof navigator === "object" && (function (global, factory) {
         }
 
         // Check for actual support (see if we can use it)
-
 
         createClass(Storage, [{
             key: 'get',
@@ -1342,7 +1336,6 @@ typeof navigator === "object" && (function (global, factory) {
             };
         },
 
-
         // Find the UI controls
         findElements: function findElements() {
             try {
@@ -1396,7 +1389,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
         },
 
-
         // Create <svg> icon
         createIcon: function createIcon(type, attributes) {
             var namespace = 'http://www.w3.org/2000/svg';
@@ -1429,7 +1421,6 @@ typeof navigator === "object" && (function (global, factory) {
             return icon;
         },
 
-
         // Create hidden text label
         createLabel: function createLabel(type) {
             var attr = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -1447,7 +1438,6 @@ typeof navigator === "object" && (function (global, factory) {
             return createElement('span', attributes, text);
         },
 
-
         // Create a badge
         createBadge: function createBadge(text) {
             if (is.empty(text)) {
@@ -1464,7 +1454,6 @@ typeof navigator === "object" && (function (global, factory) {
 
             return badge;
         },
-
 
         // Create a <button>
         createButton: function createButton(buttonType, attr) {
@@ -1583,7 +1572,6 @@ typeof navigator === "object" && (function (global, factory) {
             return button;
         },
 
-
         // Create an <input type='range'>
         createRange: function createRange(type, attributes) {
             // Seek input
@@ -1609,7 +1597,6 @@ typeof navigator === "object" && (function (global, factory) {
 
             return input;
         },
-
 
         // Create a <progress>
         createProgress: function createProgress(type, attributes) {
@@ -1639,7 +1626,6 @@ typeof navigator === "object" && (function (global, factory) {
             return progress;
         },
 
-
         // Create time display
         createTime: function createTime(type) {
             var attributes = getAttributesFromSelector(this.config.selectors.display[type]);
@@ -1654,7 +1640,6 @@ typeof navigator === "object" && (function (global, factory) {
 
             return container;
         },
-
 
         // Create a settings menu item
         createMenuItem: function createMenuItem(_ref) {
@@ -1695,7 +1680,6 @@ typeof navigator === "object" && (function (global, factory) {
             list.appendChild(item);
         },
 
-
         // Format a time for display
         formatTime: function formatTime$$1() {
             var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
@@ -1712,7 +1696,6 @@ typeof navigator === "object" && (function (global, factory) {
             return formatTime(time, forceHours, inverted);
         },
 
-
         // Update the displayed time
         updateTimeDisplay: function updateTimeDisplay() {
             var target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
@@ -1727,7 +1710,6 @@ typeof navigator === "object" && (function (global, factory) {
             // eslint-disable-next-line no-param-reassign
             target.innerText = controls.formatTime(time, inverted);
         },
-
 
         // Update volume UI and storage
         updateVolume: function updateVolume() {
@@ -1746,7 +1728,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
         },
 
-
         // Update seek value and lower fill
         setRange: function setRange(target) {
             var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
@@ -1761,7 +1742,6 @@ typeof navigator === "object" && (function (global, factory) {
             // Webkit range fill
             controls.updateRangeFill.call(this, target);
         },
-
 
         // Update <progress> elements
         updateProgress: function updateProgress(event) {
@@ -1817,7 +1797,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
         },
 
-
         // Webkit polyfill for lower fill range
         updateRangeFill: function updateRangeFill(target) {
             // Get range from event if event passed
@@ -1851,7 +1830,6 @@ typeof navigator === "object" && (function (global, factory) {
             // Set CSS custom property
             range.style.setProperty('--value', range.value / range.max * 100 + '%');
         },
-
 
         // Update hover tooltip for seeking
         updateSeekTooltip: function updateSeekTooltip(event) {
@@ -1906,7 +1884,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
         },
 
-
         // Handle time change event
         timeUpdate: function timeUpdate(event) {
             // Only invert if only one time element is displayed and used for both duration and currentTime
@@ -1923,7 +1900,6 @@ typeof navigator === "object" && (function (global, factory) {
             // Playing progress
             controls.updateProgress.call(this, event);
         },
-
 
         // Show the duration on metadataloaded or durationchange events
         durationUpdate: function durationUpdate() {
@@ -1954,12 +1930,10 @@ typeof navigator === "object" && (function (global, factory) {
             controls.updateSeekTooltip.call(this);
         },
 
-
         // Hide/show a tab
         toggleTab: function toggleTab(setting, toggle) {
             toggleHidden(this.elements.settings.tabs[setting], !toggle);
         },
-
 
         // Set the quality menu
         setQualityMenu: function setQualityMenu(options) {
@@ -2023,7 +1997,6 @@ typeof navigator === "object" && (function (global, factory) {
             controls.updateSetting.call(this, type, list);
         },
 
-
         // Translate a value into a nice label
         getLabel: function getLabel(setting, value) {
             switch (setting) {
@@ -2050,7 +2023,6 @@ typeof navigator === "object" && (function (global, factory) {
                     return null;
             }
         },
-
 
         // Update the selected setting
         updateSetting: function updateSetting(setting, container, input) {
@@ -2102,7 +2074,6 @@ typeof navigator === "object" && (function (global, factory) {
                 target.checked = true;
             }
         },
-
 
         // Set the looping options
         /* setLoopMenu() {
@@ -2193,7 +2164,6 @@ typeof navigator === "object" && (function (global, factory) {
             controls.updateSetting.call(this, type, list);
         },
 
-
         // Set a list of available captions languages
         setSpeedMenu: function setSpeedMenu(options) {
             var _this5 = this;
@@ -2253,7 +2223,6 @@ typeof navigator === "object" && (function (global, factory) {
             controls.updateSetting.call(this, type, list);
         },
 
-
         // Check if we need to hide/show the settings menu
         checkMenu: function checkMenu() {
             var tabs = this.elements.settings.tabs;
@@ -2264,7 +2233,6 @@ typeof navigator === "object" && (function (global, factory) {
 
             toggleHidden(this.elements.settings.menu, !visible);
         },
-
 
         // Show/hide menu
         toggleMenu: function toggleMenu(event) {
@@ -2313,7 +2281,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
         },
 
-
         // Get the natural size of a tab
         getTabSize: function getTabSize(tab) {
             var clone = tab.cloneNode(true);
@@ -2342,7 +2309,6 @@ typeof navigator === "object" && (function (global, factory) {
                 height: height
             };
         },
-
 
         // Toggle Menu
         showTab: function showTab() {
@@ -2422,7 +2388,6 @@ typeof navigator === "object" && (function (global, factory) {
             // Focus the first item
             pane.querySelectorAll('button:not(:disabled), input:not(:disabled), [tabindex]')[0].focus();
         },
-
 
         // Build the default HTML
         // TODO: Set order based on order in the config.controls array?
@@ -2663,7 +2628,6 @@ typeof navigator === "object" && (function (global, factory) {
 
             return container;
         },
-
 
         // Insert controls
         inject: function inject() {
@@ -2916,7 +2880,6 @@ typeof navigator === "object" && (function (global, factory) {
             setTimeout(captions.update.bind(this), 0);
         },
 
-
         // Update available language options in settings based on tracks
         update: function update() {
             var _this = this;
@@ -2968,7 +2931,6 @@ typeof navigator === "object" && (function (global, factory) {
                 controls.setCaptionsMenu.call(this);
             }
         },
-
 
         // Toggle captions display
         // Used internally for the toggleCaptions method, with the passive option forced to false
@@ -3025,7 +2987,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
         },
 
-
         // Set captions by track index
         // Used internally for the currentTrack setter with the passive option forced to false
         set: function set$$1(index) {
@@ -3058,7 +3019,6 @@ typeof navigator === "object" && (function (global, factory) {
 
                 // Store reference to node for invalidation on remove
 
-
                 this.captions.currentTrackNode = track;
 
                 // Update settings menu
@@ -3088,7 +3048,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
         },
 
-
         // Set captions by language
         // Used internally for the language setter with the passive option forced to false
         setLanguage: function setLanguage(input) {
@@ -3108,7 +3067,6 @@ typeof navigator === "object" && (function (global, factory) {
             captions.set.call(this, tracks.indexOf(track), passive);
         },
 
-
         // Get current valid caption tracks
         // If update is false it will also ignore tracks without metadata
         // This is used to "freeze" the language options when captions.update is false
@@ -3127,7 +3085,6 @@ typeof navigator === "object" && (function (global, factory) {
                 return ['captions', 'subtitles'].includes(track.kind);
             });
         },
-
 
         // Match tracks based on languages and get the first
         findTrack: function findTrack(languages) {
@@ -3153,12 +3110,10 @@ typeof navigator === "object" && (function (global, factory) {
             return track || (force ? sorted[0] : undefined);
         },
 
-
         // Get the current track
         getCurrentTrack: function getCurrentTrack() {
             return captions.getTracks.call(this)[this.currentTrack];
         },
-
 
         // Get UI label for track
         getLabel: function getLabel(track) {
@@ -3182,7 +3137,6 @@ typeof navigator === "object" && (function (global, factory) {
 
             return i18n.get('disabled', this.config);
         },
-
 
         // Update captions using current track's active cues
         // Also optional array argument in case there isn't any track (ex: vimeo)
@@ -3730,10 +3684,8 @@ typeof navigator === "object" && (function (global, factory) {
 
         // Determine if native supported
 
-
         createClass(Fullscreen, [{
             key: 'update',
-
 
             // Update UI
             value: function update() {
@@ -3748,7 +3700,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
 
             // Make an element fullscreen
-
         }, {
             key: 'enter',
             value: function enter() {
@@ -3771,7 +3722,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
 
             // Bail from fullscreen
-
         }, {
             key: 'exit',
             value: function exit() {
@@ -3794,7 +3744,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
 
             // Toggle state
-
         }, {
             key: 'toggle',
             value: function toggle() {
@@ -3807,14 +3756,12 @@ typeof navigator === "object" && (function (global, factory) {
         }, {
             key: 'enabled',
 
-
             // Determine if fullscreen is enabled
             get: function get$$1() {
                 return (Fullscreen.native || this.player.config.fullscreen.fallback) && this.player.config.fullscreen.enabled && this.player.supported.ui && this.player.isVideo;
             }
 
             // Get active state
-
         }, {
             key: 'active',
             get: function get$$1() {
@@ -3833,7 +3780,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
 
             // Get target element
-
         }, {
             key: 'target',
             get: function get$$1() {
@@ -3846,7 +3792,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
 
             // Get the prefix for handlers
-
         }, {
             key: 'prefix',
             get: function get$$1() {
@@ -3909,7 +3854,6 @@ typeof navigator === "object" && (function (global, factory) {
             toggleClass(this.elements.container, this.config.classNames.uiSupported, this.supported.ui);
         },
 
-
         // Toggle native HTML5 media controls
         toggleNativeControls: function toggleNativeControls() {
             var toggle = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
@@ -3920,7 +3864,6 @@ typeof navigator === "object" && (function (global, factory) {
                 this.media.removeAttribute('controls');
             }
         },
-
 
         // Setup the UI
         build: function build() {
@@ -4017,7 +3960,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
         },
 
-
         // Setup aria attribute for play and iframe title
         setTitle: function setTitle() {
             // Find the current text
@@ -4050,12 +3992,10 @@ typeof navigator === "object" && (function (global, factory) {
             }
         },
 
-
         // Toggle poster
         togglePoster: function togglePoster(enable) {
             toggleClass(this.elements.container, this.config.classNames.posterEnabled, enable);
         },
-
 
         // Set the poster image (async)
         // Used internally for the poster setter, with the passive option forced to false
@@ -4100,7 +4040,6 @@ typeof navigator === "object" && (function (global, factory) {
             });
         },
 
-
         // Check playing state
         checkPlaying: function checkPlaying(event) {
             var _this3 = this;
@@ -4124,7 +4063,6 @@ typeof navigator === "object" && (function (global, factory) {
             ui.toggleControls.call(this);
         },
 
-
         // Check if media is loading
         checkLoading: function checkLoading(event) {
             var _this4 = this;
@@ -4144,11 +4082,9 @@ typeof navigator === "object" && (function (global, factory) {
             }, this.loading ? 250 : 0);
         },
 
-
         // Toggle controls based on state and `force` argument
         toggleControls: function toggleControls(force) {
             var controls$$1 = this.elements.controls;
-
 
             if (controls$$1 && this.config.hideControls) {
                 // Show controls if force, loading, paused, or button interaction, otherwise hide
@@ -4172,7 +4108,6 @@ typeof navigator === "object" && (function (global, factory) {
         }
 
         // Handle key presses
-
 
         createClass(Listeners, [{
             key: 'handleKey',
@@ -4317,7 +4252,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
 
             // Toggle menu
-
         }, {
             key: 'toggleMenu',
             value: function toggleMenu(event) {
@@ -4325,7 +4259,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
 
             // Device is touch enabled
-
         }, {
             key: 'firstTouch',
             value: function firstTouch() {
@@ -4336,7 +4269,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
 
             // Global window & document listeners
-
         }, {
             key: 'global',
             value: function global() {
@@ -4355,7 +4287,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
 
             // Container listeners
-
         }, {
             key: 'container',
             value: function container() {
@@ -4416,7 +4347,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
 
             // Listen for media events
-
         }, {
             key: 'media',
             value: function media() {
@@ -4566,7 +4496,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
 
             // Listen for control events
-
         }, {
             key: 'controls',
             value: function controls$$1() {
@@ -4821,7 +4750,6 @@ typeof navigator === "object" && (function (global, factory) {
 
                     // Using the biggest delta, normalize to 1 or -1 (or 0 if no delta)
 
-
                     var direction = Math.sign(Math.abs(x) > Math.abs(y) ? x : y);
 
                     // Change the volume by 2%
@@ -4862,7 +4790,6 @@ typeof navigator === "object" && (function (global, factory) {
         bundleIdCache = {},
         bundleResultCache = {},
         bundleCallbackQueue = {};
-
 
     /**
      * Subscribe to bundle load event.
@@ -4906,7 +4833,6 @@ typeof navigator === "object" && (function (global, factory) {
       }
     }
 
-
     /**
      * Publish bundle load event.
      * @param {string} bundleId - Bundle id
@@ -4931,7 +4857,6 @@ typeof navigator === "object" && (function (global, factory) {
       }
     }
 
-
     /**
      * Execute callbacks.
      * @param {Object or Function} args - The callback args
@@ -4945,7 +4870,6 @@ typeof navigator === "object" && (function (global, factory) {
       if (depsNotFound.length) (args.error || devnull)(depsNotFound);
       else (args.success || devnull)(args);
     }
-
 
     /**
      * Load individual file.
@@ -4973,7 +4897,7 @@ typeof navigator === "object" && (function (global, factory) {
       } else if (/(^img!|\.(png|gif|jpg|svg)$)/.test(path)) {
         // image
         e = doc.createElement('img');
-        e.src = pathStripped;    
+        e.src = pathStripped;
       } else {
         // javascript
         e = doc.createElement('script');
@@ -5015,7 +4939,6 @@ typeof navigator === "object" && (function (global, factory) {
       if (beforeCallbackFn(path, e) !== false) doc.head.appendChild(e);
     }
 
-
     /**
      * Load multiple files.
      * @param {string[]} paths - The file paths
@@ -5050,7 +4973,6 @@ typeof navigator === "object" && (function (global, factory) {
       // load scripts
       for (i=0; i < x; i++) loadFile(paths[i], fn, args);
     }
-
 
     /**
      * Initiate script load and register bundle.
@@ -5088,7 +5010,6 @@ typeof navigator === "object" && (function (global, factory) {
       }, args);
     }
 
-
     /**
      * Execute callbacks when dependencies have been satisfied.
      * @param {(string|string[])} deps - List of bundle ids
@@ -5104,7 +5025,6 @@ typeof navigator === "object" && (function (global, factory) {
       return loadjs;
     };
 
-
     /**
      * Manually satisfy bundle dependencies.
      * @param {string} bundleId - The bundle id
@@ -5112,7 +5032,6 @@ typeof navigator === "object" && (function (global, factory) {
     loadjs.done = function done(bundleId) {
       publish(bundleId, []);
     };
-
 
     /**
      * Reset loadjs dependencies statuses
@@ -5123,7 +5042,6 @@ typeof navigator === "object" && (function (global, factory) {
       bundleCallbackQueue = {};
     };
 
-
     /**
      * Determine if bundle has already been defined
      * @param String} bundleId - The bundle id
@@ -5132,10 +5050,8 @@ typeof navigator === "object" && (function (global, factory) {
       return bundleId in bundleIdCache;
     };
 
-
     // export
     return loadjs;
-
     }));
     });
 
@@ -5208,7 +5124,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
         },
 
-
         // Set aspect ratio
         // For Vimeo we have an extra 300% height <div> to hide the standard controls and UI
         setAspectRatio: function setAspectRatio(input) {
@@ -5227,7 +5142,6 @@ typeof navigator === "object" && (function (global, factory) {
                 this.media.style.transform = 'translateY(-' + offset + '%)';
             }
         },
-
 
         // API Ready
         ready: function ready$$1() {
@@ -5669,7 +5583,6 @@ typeof navigator === "object" && (function (global, factory) {
             }
         },
 
-
         // Get the media title
         getTitle: function getTitle(videoId) {
             var _this2 = this;
@@ -5702,13 +5615,11 @@ typeof navigator === "object" && (function (global, factory) {
             }
         },
 
-
         // Set aspect ratio
         setAspectRatio: function setAspectRatio() {
             var ratio = this.config.ratio.split(':');
             this.elements.wrapper.style.paddingBottom = 100 / ratio[0] * ratio[1] + '%';
         },
-
 
         // API ready
         ready: function ready$$1() {
@@ -6158,7 +6069,6 @@ typeof navigator === "object" && (function (global, factory) {
         createClass(Ads, [{
             key: 'load',
 
-
             /**
              * Load the IMA SDK
              */
@@ -6183,7 +6093,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Get the ads instance ready
              */
-
         }, {
             key: 'ready',
             value: function ready$$1() {
@@ -6206,10 +6115,8 @@ typeof navigator === "object" && (function (global, factory) {
             }
 
             // Build the default tag URL
-
         }, {
             key: 'setupIMA',
-
 
             /**
              * In order for the SDK to display ads for our video, we need to tell it where to put them,
@@ -6243,14 +6150,12 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Request advertisements
              */
-
         }, {
             key: 'requestAds',
             value: function requestAds() {
                 var _this4 = this;
 
                 var container = this.player.elements.container;
-
 
                 try {
                     // Create ads loader
@@ -6291,7 +6196,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Update the ad countdown
              * @param {boolean} start
              */
-
         }, {
             key: 'pollCountdown',
             value: function pollCountdown() {
@@ -6318,7 +6222,6 @@ typeof navigator === "object" && (function (global, factory) {
              * This method is called whenever the ads are ready inside the AdDisplayContainer
              * @param {Event} adsManagerLoadedEvent
              */
-
         }, {
             key: 'onAdsManagerLoaded',
             value: function onAdsManagerLoaded(event) {
@@ -6387,7 +6290,6 @@ typeof navigator === "object" && (function (global, factory) {
              * https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/apis#ima.AdEvent.Type
              * @param {Event} event
              */
-
         }, {
             key: 'onAdEvent',
             value: function onAdEvent(event) {
@@ -6503,7 +6405,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Any ad error handling comes through here
              * @param {Event} event
              */
-
         }, {
             key: 'onAdError',
             value: function onAdError(event) {
@@ -6516,7 +6417,6 @@ typeof navigator === "object" && (function (global, factory) {
              * the mid- and post-roll launch at the correct time. And
              * resize the advertisement when the player resizes
              */
-
         }, {
             key: 'listeners',
             value: function listeners() {
@@ -6563,14 +6463,12 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Initialize the adsManager and start playing advertisements
              */
-
         }, {
             key: 'play',
             value: function play() {
                 var _this9 = this;
 
                 var container = this.player.elements.container;
-
 
                 if (!this.managerPromise) {
                     this.resumeContent();
@@ -6603,7 +6501,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Resume our video
              */
-
         }, {
             key: 'resumeContent',
             value: function resumeContent() {
@@ -6622,7 +6519,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Pause our video
              */
-
         }, {
             key: 'pauseContent',
             value: function pauseContent() {
@@ -6642,7 +6538,6 @@ typeof navigator === "object" && (function (global, factory) {
              * video requests. https://developers.google.com/interactive-
              * media-ads/docs/sdks/android/faq#8
              */
-
         }, {
             key: 'cancel',
             value: function cancel() {
@@ -6661,7 +6556,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Re-create our adsManager
              */
-
         }, {
             key: 'loadAds',
             value: function loadAds() {
@@ -6689,7 +6583,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Handles callbacks after an ad event was invoked
              * @param {string} event - Event type
              */
-
         }, {
             key: 'trigger',
             value: function trigger(event) {
@@ -6716,7 +6609,6 @@ typeof navigator === "object" && (function (global, factory) {
              * @param {function} callback - Callback for when event occurs
              * @return {Ads}
              */
-
         }, {
             key: 'on',
             value: function on$$1(event, callback) {
@@ -6737,7 +6629,6 @@ typeof navigator === "object" && (function (global, factory) {
              * @param {number} time
              * @param {string} from
              */
-
         }, {
             key: 'startSafetyTimer',
             value: function startSafetyTimer(time, from) {
@@ -6755,7 +6646,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Clear our safety timer(s)
              * @param {string} from
              */
-
         }, {
             key: 'clearSafetyTimer',
             value: function clearSafetyTimer(from) {
@@ -6809,7 +6699,6 @@ typeof navigator === "object" && (function (global, factory) {
                 });
             }
         },
-
 
         // Update source
         // Sources are not checked for support so be careful
@@ -7210,10 +7099,8 @@ typeof navigator === "object" && (function (global, factory) {
          * Types and provider helpers
          */
 
-
         createClass(Plyr, [{
             key: 'play',
-
 
             /**
              * Play the media, or play the advertisement (if they are not blocked)
@@ -7230,7 +7117,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Pause the media
              */
-
         }, {
             key: 'pause',
             value: function pause() {
@@ -7244,10 +7130,8 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Get playing state
              */
-
         }, {
             key: 'togglePlay',
-
 
             /**
              * Toggle playback based on current status
@@ -7267,7 +7151,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Stop playback
              */
-
         }, {
             key: 'stop',
             value: function stop() {
@@ -7282,7 +7165,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Restart playback
              */
-
         }, {
             key: 'restart',
             value: function restart() {
@@ -7293,7 +7175,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Rewind
              * @param {number} seekTime - how far to rewind in seconds. Defaults to the config.seekTime
              */
-
         }, {
             key: 'rewind',
             value: function rewind(seekTime) {
@@ -7304,7 +7185,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Fast forward
              * @param {number} seekTime - how far to fast forward in seconds. Defaults to the config.seekTime
              */
-
         }, {
             key: 'forward',
             value: function forward(seekTime) {
@@ -7315,10 +7195,8 @@ typeof navigator === "object" && (function (global, factory) {
              * Seek to a time
              * @param {number} input - where to seek to in seconds. Defaults to 0 (the start)
              */
-
         }, {
             key: 'increaseVolume',
-
 
             /**
              * Increase volume
@@ -7333,7 +7211,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Decrease volume
              * @param {boolean} step - How much to decrease by (between 0 and 1)
              */
-
         }, {
             key: 'decreaseVolume',
             value: function decreaseVolume(step) {
@@ -7344,10 +7221,8 @@ typeof navigator === "object" && (function (global, factory) {
              * Set muted state
              * @param {boolean} mute
              */
-
         }, {
             key: 'toggleCaptions',
-
 
             /**
              * Toggle captions
@@ -7361,10 +7236,8 @@ typeof navigator === "object" && (function (global, factory) {
              * Set the caption track by index
              * @param {number} - Caption index
              */
-
         }, {
             key: 'airplay',
-
 
             /**
              * Trigger the airplay dialog
@@ -7381,7 +7254,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Toggle the player controls
              * @param {boolean} [toggle] - Whether to show the controls
              */
-
         }, {
             key: 'toggleControls',
             value: function toggleControls(toggle) {
@@ -7415,7 +7287,6 @@ typeof navigator === "object" && (function (global, factory) {
              * @param {string} event - Event type
              * @param {function} callback - Callback for when event occurs
              */
-
         }, {
             key: 'on',
             value: function on$$1(event, callback) {
@@ -7426,7 +7297,6 @@ typeof navigator === "object" && (function (global, factory) {
              * @param {string} event - Event type
              * @param {function} callback - Callback for when event occurs
              */
-
         }, {
             key: 'once',
             value: function once$$1(event, callback) {
@@ -7437,7 +7307,6 @@ typeof navigator === "object" && (function (global, factory) {
              * @param {string} event - Event type
              * @param {function} callback - Callback for when event occurs
              */
-
         }, {
             key: 'off',
             value: function off$$1(event, callback) {
@@ -7451,7 +7320,6 @@ typeof navigator === "object" && (function (global, factory) {
              * @param {function} callback - Callback for when destroy is complete
              * @param {boolean} soft - Whether it's a soft destroy (for source changes etc)
              */
-
         }, {
             key: 'destroy',
             value: function destroy(callback) {
@@ -7557,7 +7425,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Check for support for a mime type (HTML5 only)
              * @param {string} type - Mime type
              */
-
         }, {
             key: 'supports',
             value: function supports(type) {
@@ -7570,7 +7437,6 @@ typeof navigator === "object" && (function (global, factory) {
              * @param {string} provider - Provider (html5/youtube/vimeo)
              * @param {bool} inline - Where player has `playsinline` sttribute
              */
-
         }, {
             key: 'isHTML5',
             get: function get$$1() {
@@ -7610,7 +7476,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Get paused state
              */
-
         }, {
             key: 'paused',
             get: function get$$1() {
@@ -7620,7 +7485,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Get stopped state
              */
-
         }, {
             key: 'stopped',
             get: function get$$1() {
@@ -7630,7 +7494,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Get ended state
              */
-
         }, {
             key: 'ended',
             get: function get$$1() {
@@ -7665,7 +7528,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Get buffered
              */
-
         }, {
             key: 'buffered',
             get: function get$$1() {
@@ -7690,7 +7552,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Get seeking status
              */
-
         }, {
             key: 'seeking',
             get: function get$$1() {
@@ -7700,7 +7561,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Get the duration of the current media
              */
-
         }, {
             key: 'duration',
             get: function get$$1() {
@@ -7718,7 +7578,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Set the player volume
              * @param {number} value - must be between 0 and 1. Defaults to the value from local storage and config.volume if not set in storage
              */
-
         }, {
             key: 'volume',
             set: function set$$1(value) {
@@ -7801,7 +7660,6 @@ typeof navigator === "object" && (function (global, factory) {
             /**
              * Check if the media has audio
              */
-
         }, {
             key: 'hasAudio',
             get: function get$$1() {
@@ -7822,7 +7680,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Set playback speed
              * @param {number} speed - the speed of playback (0.5-2.0)
              */
-
         }, {
             key: 'speed',
             set: function set$$1(input) {
@@ -7873,7 +7730,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Currently HTML5 & YouTube only
              * @param {number} input - Quality level
              */
-
         }, {
             key: 'quality',
             set: function set$$1(input) {
@@ -7915,7 +7771,6 @@ typeof navigator === "object" && (function (global, factory) {
              * TODO: Finish fancy new logic. Set the indicator on load as user may pass loop as config
              * @param {boolean} input - Whether to loop or not
              */
-
         }, {
             key: 'loop',
             set: function set$$1(input) {
@@ -7974,7 +7829,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Set new media source
              * @param {object} input - The new source object (see docs)
              */
-
         }, {
             key: 'source',
             set: function set$$1(input) {
@@ -7993,7 +7847,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Set the poster image for a video
              * @param {input} - the URL for the new poster image
              */
-
         }, {
             key: 'poster',
             set: function set$$1(input) {
@@ -8021,7 +7874,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Set the autoplay state
              * @param {boolean} input - Whether to autoplay or not
              */
-
         }, {
             key: 'autoplay',
             set: function set$$1(input) {
@@ -8059,7 +7911,6 @@ typeof navigator === "object" && (function (global, factory) {
              * Since tracks can be added later it won't update the actual caption track until there is a matching track
              * @param {string} - Two character ISO language code (e.g. EN, FR, PT, etc)
              */
-
         }, {
             key: 'language',
             set: function set$$1(input) {
@@ -8079,7 +7930,6 @@ typeof navigator === "object" && (function (global, factory) {
              * TODO: update player with state, support, enabled
              * TODO: detect outside changes
              */
-
         }, {
             key: 'pip',
             set: function set$$1(input) {
@@ -8122,7 +7972,6 @@ typeof navigator === "object" && (function (global, factory) {
              * @param {string} url - URL for the SVG sprite
              * @param {string} [id] - Unique ID
              */
-
         }, {
             key: 'loadSprite',
             value: function loadSprite$$1(url, id) {
@@ -8134,7 +7983,6 @@ typeof navigator === "object" && (function (global, factory) {
              * @param {*} selector
              * @param {object} options
              */
-
         }, {
             key: 'setup',
             value: function setup(selector) {
@@ -8165,7 +8013,6 @@ typeof navigator === "object" && (function (global, factory) {
     Plyr.defaults = cloneDeep(defaults$1);
 
     return Plyr;
-
 })));
 
 //# sourceMappingURL=plyr.js.map

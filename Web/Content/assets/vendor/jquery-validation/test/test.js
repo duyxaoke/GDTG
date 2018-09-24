@@ -140,7 +140,6 @@ QUnit.test( "valid() plugin method, multiple inputs", function( assert ) {
 } );
 
 QUnit.test( "valid() plugin method, special handling for checkable groups", function( assert ) {
-
 	// Rule is defined on first checkbox, must apply to others, too
 	var checkable = $( "#checkable2" );
 	assert.ok( !checkable.valid(), "must be invalid, not checked yet" );
@@ -411,7 +410,6 @@ QUnit.test( "submitHandler keeps submitting button", function( assert ) {
 	$( "#userForm" ).validate( {
 		debug: true,
 		submitHandler: function( form ) {
-
 			// Dunno how to test this better; this tests the implementation that uses a hidden input
 			var hidden = $( form ).find( "input:hidden" )[ 0 ];
 			assert.deepEqual( hidden.value, button.value );
@@ -431,7 +429,6 @@ QUnit.test( "submitHandler keeps submitting button, even if descendants are clic
 	var v = $( "#testForm27" ).validate( {
 		debug: true,
 		submitHandler: function( form ) {
-
 			// Compare the button with the `submitButton` property
 			assert.deepEqual(
 				v.submitButton, button, "The submitButton property should be the same as button"
@@ -468,7 +465,6 @@ QUnit.test( "handle() should ensure the value of the used submit button is passe
 
 	// Register a `submit` event after the one registred by this plugin
 	$form.on( "submit", function() {
-
 		// Ignoring the first submit that was triggered manually by clicking
 		// the submit button. The first submit will be aborted by this plugin
 		// in order to wait for `remote` method to finish validating the input
@@ -534,7 +530,6 @@ QUnit.test( "validation triggered on radio/checkbox when using keyboard", functi
 	}
 
 	setTimeout( function() {
-
 		// Assert all event handlers fired
 		assert.equal( triggeredEvents, 6 );
 		done();
@@ -570,7 +565,6 @@ QUnit.test( "validation triggered on button", function( assert ) {
 	}
 
 	setTimeout( function() {
-
 		// Assert all event handlers fired
 		assert.equal( triggeredEvents, 6 );
 		done();
@@ -603,7 +597,6 @@ QUnit.test( "validation triggered on radio/checkbox when using mouseclick", func
 	}
 
 	setTimeout( function() {
-
 		// Assert all event handlers fired
 		assert.equal( triggeredEvents, 2 );
 		done();
@@ -940,7 +933,6 @@ QUnit.test( "findByName()", function( assert ) {
 } );
 
 QUnit.test( "focusInvalid()", function( assert ) {
-
 	// TODO when using custom focusin, this is triggered just once
 	// TODO when using 1.4 focusin, triggered twice; fix once not testing against 1.3 anymore
 	// assert.expect( 1 );
@@ -1784,7 +1776,6 @@ QUnit.test( "don't revalidate the field when pressing special characters", funct
 } );
 
 QUnit.test( "#1508: Validation fails to trigger when next field is already filled out", function( assert ) {
-
 	// The next field is already filled out.
 	$( "#box2" ).val( "something" );
 
@@ -1802,7 +1793,6 @@ QUnit.test( "#1508: Validation fails to trigger when next field is already fille
 			}
 		} ),
 		check = function( value ) {
-
 			// Fill the first element
 			element.val( "something" );
 
@@ -1852,7 +1842,6 @@ QUnit.test( "[Remote rule] #1508: Validation fails to trigger when next field is
 			}
 		} ),
 		check = function( value ) {
-
 			// Fill the first element
 			element.val( "something" );
 
@@ -1863,7 +1852,6 @@ QUnit.test( "[Remote rule] #1508: Validation fails to trigger when next field is
 
 			// Make sure all events will be called before the bellow code
 			setTimeout( function() {
-
 				// Tab back to element
 				nextE.blur();
 				element.trigger( event );
@@ -2320,7 +2308,6 @@ QUnit.test( "Min, Max and Step type absent set by attributes valid", function( a
 } );
 
 QUnit.test( "Min, Max and Step range set by attributes valid", function( assert ) {
-
 	//
 	// Cannot test for overflow:
 	// When the element is suffering from an underflow,

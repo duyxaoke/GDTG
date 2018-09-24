@@ -1,8 +1,6 @@
 ﻿using Data.DAL;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Validation;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -39,7 +37,9 @@ namespace Service
         int CountInt(Expression<Func<T, bool>> expression);
 
         void Save();
+
         IEnumerable<T> ExecWithStoreProcedure(string query, params object[] parameters);
+
         void ExecStore(string query);
     }
 
@@ -47,6 +47,7 @@ namespace Service
     {
         //internal DatabaseContext Context;
         internal DatabaseContext _context;
+
         internal DbSet<T> Table;
 
         public BaseRepository(DatabaseContext context)
@@ -239,7 +240,6 @@ namespace Service
                 result = false;
             }
             return result;
-
         }
 
         public virtual bool Update(IEnumerable<T> entities)
@@ -294,7 +294,6 @@ namespace Service
                 result = false;
             }
             return result;
-
         }
 
         public virtual long Count(Expression<Func<T, bool>> expression)
@@ -316,6 +315,7 @@ namespace Service
         {
             return _context.Database.SqlQuery<T>(query, parameters);
         }
+
         public virtual void ExecStore(string query)
         {
             _context.Database.ExecuteSqlCommand(query);

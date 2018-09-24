@@ -1,15 +1,11 @@
-﻿using System;
-using System.Data.Entity;
-using System.Data.Entity.Validation;
+﻿using Data.DAL;
+using System;
 using System.Linq;
-using Core;
-using Data.DAL;
-using System.Collections.Generic;
 
 namespace Data
 {
-   public class Repository<T> : IRepository<T> where T: class
-    { 
+    public class Repository<T> : IRepository<T> where T : class
+    {
         private readonly DatabaseContext _context;
         private IDbSet<T> _entities;
 
@@ -22,7 +18,7 @@ namespace Data
         {
             return this.Entities.Find(id);
         }
-     
+
         public void Insert(T entity)
         {
             try
@@ -46,7 +42,7 @@ namespace Data
                     }
                 }
 
-                var fail = new Exception(msg, dbEx);                
+                var fail = new Exception(msg, dbEx);
                 throw fail;
             }
         }
@@ -71,7 +67,7 @@ namespace Data
                         msg += Environment.NewLine + string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                     }
                 }
-                var fail = new Exception(msg, dbEx);                
+                var fail = new Exception(msg, dbEx);
                 throw fail;
             }
         }
@@ -98,7 +94,7 @@ namespace Data
                         msg += Environment.NewLine + string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                     }
                 }
-                var fail = new Exception(msg, dbEx);                
+                var fail = new Exception(msg, dbEx);
                 throw fail;
             }
         }

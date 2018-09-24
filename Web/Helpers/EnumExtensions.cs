@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace Web.Helpers
 {
     public static class EnumExtensions

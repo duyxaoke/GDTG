@@ -43,4 +43,3 @@ QUnit.test( "resetForm(): removes all aria-invalid attributes", function( assert
 	validator.resetForm();
 	assert.equal( $( "#ariaInvalid [aria-invalid]" ).length, 0, "resetForm() should remove any aria-invalid attributes" );
 } );
-

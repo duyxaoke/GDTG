@@ -1,11 +1,11 @@
 /*! jQuery Mockjax
  * A Plugin providing simple and flexible mocking of ajax requests and responses
- * 
+ *
  * Version: 2.2.1
  * Home: https://github.com/jakerella/jquery-mockjax
  * Copyright (c) 2016 Jordan Kasper, formerly appendTo;
  * NOTE: This repository was taken over by Jordan Kasper (@jakerella) October, 2014
- * 
+ *
  * Dual licensed under the MIT or GPL licenses.
  * http://opensource.org/licenses/MIT OR http://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -20,7 +20,6 @@
 
 	// CommonJS module definition
 	} else if ( typeof exports === 'object') {
-
 		// NOTE: To use Mockjax as a Node module you MUST provide the factory with
 		// a valid version of jQuery and a window object (the global scope):
 		// var mockjax = require('jquery.mockjax')(jQuery, window);
@@ -173,7 +172,6 @@
 				return null;
 			}
 		} else {
-
 			// Apply namespace prefix to the mock handler's url.
 			var namespace = handler.namespace || $.mockjaxSettings.namespace;
 			if (!!namespace) {
@@ -362,7 +360,6 @@
 				this.responseTimer = setTimeout(process, parseResponseTimeOpt(mockHandler.responseTime));
 			}
 		}
-
 	}
 
 	// Construct a mocked XHR Object
@@ -481,14 +478,10 @@
 
 		// If the response handler on the moock is a function, call it
 		if ( mockHandler.response && $.isFunction(mockHandler.response) ) {
-
 			mockHandler.response(origSettings);
-
-
 		} else if ( typeof mockHandler.responseText === 'object' ) {
 			// Evaluate the responseText javascript in a global context
 			$.globalEval( '(' + JSON.stringify( mockHandler.responseText ) + ')');
-
 		} else if (mockHandler.proxy) {
 			logger.info( mockHandler, ['Performing JSONP proxy request: ' + mockHandler.proxy, mockHandler] );
 
@@ -507,7 +500,6 @@
 			});
 
 			return newMock;
-
 		} else {
 			$.globalEval( '(' +
 				((typeof mockHandler.responseText === 'string') ?
@@ -539,7 +531,6 @@
 		}, parseResponseTimeOpt( mockHandler.responseTime ));
 	}
 
-
 	// Create the required JSONP callback function for the request
 	function createJsonpCallback( requestSettings, mockHandler, origSettings ) {
 		var callbackContext = origSettings && origSettings.context || requestSettings;
@@ -551,7 +542,6 @@
 		}
 
 		requestSettings.url = requestSettings.url.replace(CALLBACK_REGEX, '=' + jsonp + '$1');
-
 
 		// Handle JSONP-style loading
 		window[ jsonp ] = window[ jsonp ] || function() {
@@ -599,7 +589,6 @@
 			$.event.trigger( 'ajaxStop' );
 		}
 	}
-
 
 	// The core $.ajax replacement.
 	function handleAjax( url, origSettings ) {
@@ -657,7 +646,6 @@
 				$.ajaxSetup({}, requestSettings)
 			] );
 
-
 			if ( requestSettings.dataType && requestSettings.dataType.toUpperCase() === 'JSONP' ) {
 				if ((mockRequest = processJsonpMock( requestSettings, mockHandler, origSettings ))) {
 					// This mock will handle the JSONP request
@@ -704,7 +692,6 @@
 
 			/* jshint loopfunc:true */
 			(function(mockHandler, requestSettings, origSettings, origHandler) {
-
 				mockRequest = _ajax.call($, $.extend(true, {}, origSettings, {
 					// Mock the XHR object
 					xhr: function() { return xhr( mockHandler, requestSettings, origSettings, origHandler ); }
@@ -787,7 +774,6 @@
 		}
 		return results;
 	}
-
 
 	// Public
 
@@ -999,5 +985,4 @@
 	};
 
 	return $.mockjax;
-
 }));

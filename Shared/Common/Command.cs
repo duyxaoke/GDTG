@@ -1,16 +1,15 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
-using System.Drawing;
-using System.Reflection;
-using System.ComponentModel;
-using System.Collections.Generic;
 
 namespace Shared.Common
 {
@@ -24,6 +23,7 @@ namespace Shared.Common
         public const string MessageError = "Có lỗi xảy ra, vui lòng thử lại!";
 
         #region Helpers
+
         // http://stackoverflow.com/questions/1097331/enumerate-with-return-type-other-than-string/1097387#1097387
         public static Guid GetGuid(this Enum e)
         {
@@ -40,7 +40,7 @@ namespace Shared.Common
             throw new ArgumentException($"Enum {e.ToString()} has no EnumGuid defined!");
         }
 
-        #endregion
+        #endregion Helpers
 
         public static string GetEnumDescription(this Enum value)
         {
@@ -54,6 +54,7 @@ namespace Shared.Common
             else
                 return value.ToString();
         }
+
         public static int CountWords(string text, string separator, int index)
         {
             var array = Regex.Split(text, separator);
@@ -106,6 +107,7 @@ namespace Shared.Common
             Bitmap bitmapMasterImage = new System.Drawing.Bitmap(img);
             bitmapMasterImage.Save(path + "/" + imageSave);
         }
+
         public static Image ResizeImage(HttpPostedFileBase filePost, int maxWidth, int maxHeight)
         {
             Image image = Image.FromStream(filePost.InputStream);
@@ -123,6 +125,7 @@ namespace Shared.Common
 
             return newImage;
         }
+
         public static string GetNameImage(HttpPostedFileBase input)
         {
             string type = "." + getFormatFile(input.ContentType).ToString();
@@ -148,18 +151,22 @@ namespace Shared.Common
                 case "image/png":
                     format = "png";
                     break;
+
                 case "image/gif":
                     format = "gif";
                     break;
+
                 case "application/x-shockwave-flash":
                     format = "swf";
                     break;
+
                 default:
                     format = "jpg";
                     break;
             }
             return format;
         }
+
         public static string GetSiteRoot()
         {
             string port = System.Web.HttpContext.Current.Request.ServerVariables["SERVER_PORT"];
@@ -186,7 +193,6 @@ namespace Shared.Common
 
         public static string toFriendly(string title, int maxLength)//bo dau
         {
-
             string titleUni = toFriendly1(title);
             var match = Regex.Match(titleUni.ToLower(), "[\\w]+");
             StringBuilder result = new StringBuilder("");
@@ -251,6 +257,7 @@ namespace Shared.Common
                 return text;
             }
         }
+
         public static string TextClearNormal(string text, int length)
         {
             string result = "";
@@ -413,7 +420,7 @@ namespace Shared.Common
             SmtpClient client = new SmtpClient();
             //Add the Creddentials- use your own email id and password
             client.UseDefaultCredentials = false;
-            client.Host = "smtp.gmail.com"; //Or Your SMTP Server Address  
+            client.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
             client.Port = 25;
             client.EnableSsl = true;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
@@ -428,6 +435,7 @@ namespace Shared.Common
                 return ex.Message.ToString();
             }
         }
+
         //Image to Base64 String
         public static string ImageToBase64(HttpPostedFileBase filePost, System.Drawing.Imaging.ImageFormat format)
         {
@@ -444,6 +452,7 @@ namespace Shared.Common
                 return base64String;
             }
         }
+
         //Base64 String to Image
         public static Image Base64ToImage(string base64String)
         {
@@ -458,6 +467,7 @@ namespace Shared.Common
             return image;
         }
     }
+
     public class EnumGuid : Attribute
     {
         public Guid Guid;
@@ -467,5 +477,4 @@ namespace Shared.Common
             Guid = new Guid(guid);
         }
     }
-
 }

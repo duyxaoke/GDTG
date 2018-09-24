@@ -1,23 +1,15 @@
 (function (factory) {
-
     if ( typeof define === 'function' && define.amd ) {
-
         // AMD. Register as an anonymous module.
         define([], factory);
-
     } else if ( typeof exports === 'object' ) {
-
         // Node/CommonJS
         module.exports = factory();
-
     } else {
-
         // Browser globals
         window.wNumb = factory();
     }
-
 }(function(){
-
 	'use strict';
 
 var FormatOptions = [
@@ -72,12 +64,10 @@ var FormatOptions = [
 		return (+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp))).toFixed(exp);
 	}
 
-
 // Formatting
 
 	// Accept a number as input, output formatted string.
 	function formatTo ( decimals, thousand, mark, prefix, suffix, encoder, decoder, negativeBefore, negative, edit, undo, input ) {
-
 		var originalInput = input, inputIsNegative, inputPieces, inputBase, inputDecimals = '', output = '';
 
 		// Apply user encoder to the input.
@@ -121,9 +111,7 @@ var FormatOptions = [
 			if ( mark ) {
 				inputDecimals = mark + inputPieces[1];
 			}
-
 		} else {
-
 		// If it isn't split, the entire number will do.
 			inputBase = input;
 		}
@@ -169,7 +157,6 @@ var FormatOptions = [
 
 	// Accept a sting as input, output decoded number.
 	function formatFrom ( decimals, thousand, mark, prefix, suffix, encoder, decoder, negativeBefore, negative, edit, undo, input ) {
-
 		var originalInput = input, inputIsNegative, output = '';
 
 		// User defined pre-decoder. Result must be a non empty string.
@@ -248,12 +235,10 @@ var FormatOptions = [
 		return output;
 	}
 
-
 // Framework
 
 	// Validate formatting options
 	function validate ( inputOptions ) {
-
 		var i, optionName, optionValue,
 			filteredOptions = {};
 
@@ -262,12 +247,10 @@ var FormatOptions = [
 		}
 
 		for ( i = 0; i < FormatOptions.length; i+=1 ) {
-
 			optionName = FormatOptions[i];
 			optionValue = inputOptions[optionName];
 
 			if ( optionValue === undefined ) {
-
 				// Only default if negativeBefore isn't set.
 				if ( optionName === 'negative' && !filteredOptions.negativeBefore ) {
 					filteredOptions[optionName] = '-';
@@ -296,7 +279,6 @@ var FormatOptions = [
 
 			// Other options are strings.
 			} else {
-
 				if ( typeof optionValue === 'string' ) {
 					filteredOptions[optionName] = optionValue;
 				} else {
@@ -330,7 +312,6 @@ var FormatOptions = [
 	}
 
 	function wNumb ( options ) {
-
 		if ( !(this instanceof wNumb) ) {
 			return new wNumb ( options );
 		}
@@ -353,5 +334,4 @@ var FormatOptions = [
 	}
 
 	return wNumb;
-
 }));

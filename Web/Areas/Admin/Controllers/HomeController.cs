@@ -12,7 +12,8 @@ namespace Web.Areas.Admin.Controllers
         #region Fields
 
         private readonly UserManager _userManager;
-        #endregion
+
+        #endregion Fields
 
         #region Constructor
 
@@ -22,7 +23,7 @@ namespace Web.Areas.Admin.Controllers
             _userManager = userManager;
         }
 
-        #endregion
+        #endregion Constructor
 
         // GET: /Home/
         public ActionResult Index()
@@ -34,7 +35,5 @@ namespace Web.Areas.Admin.Controllers
         {
             return View();
         }
-
-
     }
 }

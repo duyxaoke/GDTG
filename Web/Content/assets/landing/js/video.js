@@ -15,14 +15,9 @@
 	typeof define === 'function' && define.amd ? define(factory) :
 	(global.videojs = factory());
 }(this, (function () {
-
 var version = "6.6.3";
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-
-
-
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -44,7 +39,6 @@ var window_1 = win;
 
 var empty = {};
 
-
 var empty$1 = (Object.freeze || Object)({
 	'default': empty
 });
@@ -53,7 +47,6 @@ var minDoc = ( empty$1 && empty ) || empty$1;
 
 var topLevel = typeof commonjsGlobal !== 'undefined' ? commonjsGlobal :
     typeof window !== 'undefined' ? window : {};
-
 
 var doccy;
 
@@ -186,31 +179,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 };
 
-
-
-
-
-
-
-
-
-
-
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 };
-
-
-
-
-
-
-
-
-
-
 
 var inherits = function (subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
@@ -228,16 +201,6 @@ var inherits = function (subClass, superClass) {
   if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 };
 
-
-
-
-
-
-
-
-
-
-
 var possibleConstructorReturn = function (self, call) {
   if (!self) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -245,16 +208,6 @@ var possibleConstructorReturn = function (self, call) {
 
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
-
-
-
-
-
-
-
-
-
-
 
 var taggedTemplateLiteralLoose = function (strings, raw) {
   strings.raw = raw;
@@ -436,7 +389,6 @@ var logByType = function logByType(type, args) {
   var lvlRegExp = new RegExp('^(' + lvl + ')$');
 
   if (type !== 'log') {
-
     // Add the type to the front of the message when it's not "log".
     args.unshift(type.toUpperCase() + ':');
   }
@@ -655,7 +607,6 @@ function clean (s) {
   return s.replace(/\n\r?\s*/g, '')
 }
 
-
 var tsml = function tsml (sa) {
   var s = ''
     , i = 0;
@@ -792,7 +743,6 @@ function isEl(value) {
  *
  */
 function isInFrame() {
-
   // We need a try/catch here because Safari will throw errors when attempting
   // to get either `parent` or `self`
   try {
@@ -1027,7 +977,6 @@ function removeClass(element, classToRemove) {
  *         The element with a class that has been toggled.
  */
 function toggleClass(element, classToToggle, predicate) {
-
   // This CANNOT use `classList` internally because IE does not support the
   // second parameter to the `classList.toggle()` method! Which is fine because
   // `classList` will be used by the add/remove functions.
@@ -1384,7 +1333,6 @@ function emptyEl(el) {
  *         All of the content that was passed in normalized.
  */
 function normalizeContent(content) {
-
   // First, invoke content if it is a function. If it produces an array,
   // that needs to happen before normalization.
   if (typeof content === 'function') {
@@ -1394,7 +1342,6 @@ function normalizeContent(content) {
   // Next up, normalize to an array, so one or many items can be normalized,
   // filtered, and returned.
   return (Array.isArray(content) ? content : [content]).map(function (value) {
-
     // First, invoke value if it is a function to produce a new value,
     // which will be subsequently normalized to a Node of some kind.
     if (typeof value === 'function') {
@@ -1543,8 +1490,6 @@ var $ = createQuerier('querySelector');
  *
  */
 var $$ = createQuerier('querySelectorAll');
-
-
 
 var Dom = (Object.freeze || Object)({
 	isReal: isReal,
@@ -1775,7 +1720,6 @@ function _handleMultipleEvents(fn, elem, types, callback) {
  *         Fixed event object.
  */
 function fixEvent(event) {
-
   function returnTrue() {
     return true;
   }
@@ -1871,7 +1815,6 @@ function fixEvent(event) {
     // Fix button for mouse clicks:
     // 0 == left; 1 == middle; 2 == right
     if (event.button !== null && event.button !== undefined) {
-
       // The following is disabled because it does not pass videojs-standard
       // and... yikes.
       /* eslint-disable */
@@ -1950,7 +1893,6 @@ function on(elem, type, fn) {
     data.disabled = false;
 
     data.dispatcher = function (event, hash) {
-
       if (data.disabled) {
         return;
       }
@@ -2173,7 +2115,6 @@ var videojs$2 = void 0;
  * Set up any tags that have a data-setup `attribute` when the player is started.
  */
 var autoSetup = function autoSetup() {
-
   // Protect against breakage in non-browser environments.
   if (!isReal()) {
     return;
@@ -2211,7 +2152,6 @@ var autoSetup = function autoSetup() {
 
   // Check if any media elements exist
   if (mediaEls && mediaEls.length > 0) {
-
     for (var _i3 = 0, _e3 = mediaEls.length; _i3 < _e3; _i3++) {
       var mediaEl = mediaEls[_i3];
 
@@ -2219,7 +2159,6 @@ var autoSetup = function autoSetup() {
       // IE seems to consider typeof el.getAttribute == 'object' instead of
       // 'function' like expected, at least when loading the player immediately.
       if (mediaEl && mediaEl.getAttribute) {
-
         // Make sure this player hasn't already been set up.
         if (mediaEl.player === undefined) {
           var options = mediaEl.getAttribute('data-setup');
@@ -2642,7 +2581,6 @@ var validateListener = function validateListener(listener) {
  *         An object containing useful values for `on()` or `one()` calls.
  */
 var normalizeListenArgs = function normalizeListenArgs(self, args) {
-
   // If the number of arguments is less than 3, the target is always the
   // evented object itself.
   var isTargetingSelf = args.length < 3 || args[0] === self || args[0] === self.eventBusEl_;
@@ -2710,7 +2648,6 @@ var listen = function listen(target, method, type, listener) {
  * @mixin EventedMixin
  */
 var EventedMixin = {
-
   /**
    * Add a listener to an event (or events) on this object or another evented
    * object.
@@ -2751,7 +2688,6 @@ var EventedMixin = {
 
     // If this object is listening to another evented object.
     if (!isTargetingSelf) {
-
       // If this object is disposed, remove the listener.
       var removeListenerOnDispose = function removeListenerOnDispose() {
         return _this.off(target, type, listener);
@@ -2776,7 +2712,6 @@ var EventedMixin = {
       listen(target, 'on', 'dispose', removeRemoverOnTargetDispose);
     }
   },
-
 
   /**
    * Add a listener to an event (or events) on this object or another evented
@@ -2816,7 +2751,6 @@ var EventedMixin = {
 
     // Targeting this evented object.
 
-
     if (isTargetingSelf) {
       listen(target, 'one', type, listener);
 
@@ -2838,7 +2772,6 @@ var EventedMixin = {
     }
   },
 
-
   /**
    * Removes listener(s) from event(s) on an evented object.
    *
@@ -2859,7 +2792,6 @@ var EventedMixin = {
    *         event type(s) will be removed.
    */
   off: function off$$1(targetOrType, typeOrListener, listener) {
-
     // Targeting this evented object.
     if (!targetOrType || isValidEventType(targetOrType)) {
       off(this.eventBusEl_, targetOrType, typeOrListener);
@@ -2890,7 +2822,6 @@ var EventedMixin = {
       }
     }
   },
-
 
   /**
    * Fire an event on this evented object, causing its listeners to be called.
@@ -2965,7 +2896,6 @@ function evented(target) {
  * @mixin StatefulMixin
  */
 var StatefulMixin = {
-
   /**
    * A hash containing arbitrary keys and values representing the state of
    * the object.
@@ -2998,7 +2928,6 @@ var StatefulMixin = {
     var changes = void 0;
 
     each(stateUpdates, function (value, key) {
-
       // Record the change if the value is different from what's in the
       // current state.
       if (_this.state[key] !== value) {
@@ -3016,7 +2945,6 @@ var StatefulMixin = {
     // function. This allows us to not require that the target object be an
     // evented object.
     if (changes && isEvented(this)) {
-
       /**
        * An event triggered on an object that is both
        * {@link module:stateful|stateful} and {@link module:evented|evented}
@@ -3167,7 +3095,6 @@ function mergeOptions() {
  */
 
 var Component = function () {
-
   /**
    * A callback that is called when a component is ready. Does not have any
    * paramters and any callback value will be ignored.
@@ -3195,7 +3122,6 @@ var Component = function () {
    */
   function Component(player, options, ready) {
     classCallCheck(this, Component);
-
 
     // The component might be the player itself and we can't pass `this` to super
     if (!player && this.play) {
@@ -3261,9 +3187,7 @@ var Component = function () {
    * @fires Component#dispose
    */
 
-
   Component.prototype.dispose = function dispose() {
-
     /**
      * Triggered when a `Component` is disposed.
      *
@@ -3311,7 +3235,6 @@ var Component = function () {
    *         The player that this `Component` has attached to.
    */
 
-
   Component.prototype.player = function player() {
     return this.player_;
   };
@@ -3330,7 +3253,6 @@ var Component = function () {
    * @deprecated since version 5
    */
 
-
   Component.prototype.options = function options(obj) {
     log$1.warn('this.options() has been deprecated and will be moved to the constructor in 6.0');
 
@@ -3348,7 +3270,6 @@ var Component = function () {
    * @return {Element}
    *         The DOM element for this `Component`.
    */
-
 
   Component.prototype.el = function el() {
     return this.el_;
@@ -3369,7 +3290,6 @@ var Component = function () {
    * @return {Element}
    *         The element that gets created.
    */
-
 
   Component.prototype.createEl = function createEl$$1(tagName, properties, attributes) {
     return createEl(tagName, properties, attributes);
@@ -3414,7 +3334,6 @@ var Component = function () {
    *         The localized string or if no localization exists the english string.
    */
 
-
   Component.prototype.localize = function localize(string, tokens) {
     var defaultValue = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : string;
 
@@ -3456,7 +3375,6 @@ var Component = function () {
    *         The content element for this `Component`.
    */
 
-
   Component.prototype.contentEl = function contentEl() {
     return this.contentEl_ || this.el_;
   };
@@ -3467,7 +3385,6 @@ var Component = function () {
    * @return {string}
    *         The id of this `Component`
    */
-
 
   Component.prototype.id = function id() {
     return this.id_;
@@ -3481,7 +3398,6 @@ var Component = function () {
    *         The name of this `Component`.
    */
 
-
   Component.prototype.name = function name() {
     return this.name_;
   };
@@ -3492,7 +3408,6 @@ var Component = function () {
    * @return {Array}
    *         The children
    */
-
 
   Component.prototype.children = function children() {
     return this.children_;
@@ -3508,7 +3423,6 @@ var Component = function () {
    *         The child `Component` with the given `id` or undefined.
    */
 
-
   Component.prototype.getChildById = function getChildById(id) {
     return this.childIndex_[id];
   };
@@ -3522,7 +3436,6 @@ var Component = function () {
    * @return {Component|undefined}
    *         The child `Component` with the given `name` or undefined.
    */
-
 
   Component.prototype.getChild = function getChild(name) {
     if (!name) {
@@ -3552,7 +3465,6 @@ var Component = function () {
    *         The `Component` that gets added as a child. When using a string the
    *         `Component` will get created by this process.
    */
-
 
   Component.prototype.addChild = function addChild(child) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -3628,7 +3540,6 @@ var Component = function () {
    *        The child `Component` to remove.
    */
 
-
   Component.prototype.removeChild = function removeChild(component) {
     if (typeof component === 'string') {
       component = this.getChild(component);
@@ -3665,7 +3576,6 @@ var Component = function () {
   /**
    * Add and initialize default child `Component`s based upon options.
    */
-
 
   Component.prototype.initChildren = function initChildren() {
     var _this = this;
@@ -3768,7 +3678,6 @@ var Component = function () {
    * @abstract
    */
 
-
   Component.prototype.buildCSSClass = function buildCSSClass() {
     // Child classes can include a function that does:
     // return 'CLASS NAME' + this._super();
@@ -3783,7 +3692,6 @@ var Component = function () {
    * @return {Component}
    *         Returns itself; method can be chained.
    */
-
 
   Component.prototype.ready = function ready(fn) {
     var sync = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -3811,7 +3719,6 @@ var Component = function () {
    *
    * @fires Component#ready
    */
-
 
   Component.prototype.triggerReady = function triggerReady() {
     this.isReady_ = true;
@@ -3859,7 +3766,6 @@ var Component = function () {
    * @see [Information on CSS Selectors](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Selectors)
    */
 
-
   Component.prototype.$ = function $$$1(selector, context) {
     return $(selector, context || this.contentEl());
   };
@@ -3883,7 +3789,6 @@ var Component = function () {
    * @see [Information on CSS Selectors](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Selectors)
    */
 
-
   Component.prototype.$$ = function $$$$1(selector, context) {
     return $$(selector, context || this.contentEl());
   };
@@ -3899,7 +3804,6 @@ var Component = function () {
    *         - False if the `Component` does not have the class`
    */
 
-
   Component.prototype.hasClass = function hasClass$$1(classToCheck) {
     return hasClass(this.el_, classToCheck);
   };
@@ -3911,7 +3815,6 @@ var Component = function () {
    *        CSS class name to add
    */
 
-
   Component.prototype.addClass = function addClass$$1(classToAdd) {
     addClass(this.el_, classToAdd);
   };
@@ -3922,7 +3825,6 @@ var Component = function () {
    * @param {string} classToRemove
    *        CSS class name to remove
    */
-
 
   Component.prototype.removeClass = function removeClass$$1(classToRemove) {
     removeClass(this.el_, classToRemove);
@@ -3940,7 +3842,6 @@ var Component = function () {
    *         An {@link Dom~predicate} function or a boolean
    */
 
-
   Component.prototype.toggleClass = function toggleClass$$1(classToToggle, predicate) {
     toggleClass(this.el_, classToToggle, predicate);
   };
@@ -3950,7 +3851,6 @@ var Component = function () {
    * 'vjs-hidden' class name from it.
    */
 
-
   Component.prototype.show = function show() {
     this.removeClass('vjs-hidden');
   };
@@ -3959,7 +3859,6 @@ var Component = function () {
    * Hide the `Component`s element if it is currently showing by adding the
    * 'vjs-hidden` class name to it.
    */
-
 
   Component.prototype.hide = function hide() {
     this.addClass('vjs-hidden');
@@ -3972,7 +3871,6 @@ var Component = function () {
    * @private
    */
 
-
   Component.prototype.lockShowing = function lockShowing() {
     this.addClass('vjs-lock-showing');
   };
@@ -3983,7 +3881,6 @@ var Component = function () {
    *
    * @private
    */
-
 
   Component.prototype.unlockShowing = function unlockShowing() {
     this.removeClass('vjs-lock-showing');
@@ -4005,7 +3902,6 @@ var Component = function () {
    * @see [DOM API]{@link https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute}
    */
 
-
   Component.prototype.getAttribute = function getAttribute$$1(attribute) {
     return getAttribute(this.el_, attribute);
   };
@@ -4022,7 +3918,6 @@ var Component = function () {
    * @see [DOM API]{@link https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute}
    */
 
-
   Component.prototype.setAttribute = function setAttribute$$1(attribute, value) {
     setAttribute(this.el_, attribute, value);
   };
@@ -4035,7 +3930,6 @@ var Component = function () {
    *
    * @see [DOM API]{@link https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute}
    */
-
 
   Component.prototype.removeAttribute = function removeAttribute$$1(attribute) {
     removeAttribute(this.el_, attribute);
@@ -4056,7 +3950,6 @@ var Component = function () {
    *           postpixed with '%' or 'px'.
    */
 
-
   Component.prototype.width = function width(num, skipListeners) {
     return this.dimension('width', num, skipListeners);
   };
@@ -4076,7 +3969,6 @@ var Component = function () {
    *         postpixed with '%' or 'px'.
    */
 
-
   Component.prototype.height = function height(num, skipListeners) {
     return this.dimension('height', num, skipListeners);
   };
@@ -4090,7 +3982,6 @@ var Component = function () {
    * @param  {number|string} height
    *         Height to set the `Component`s element to.
    */
-
 
   Component.prototype.dimensions = function dimensions(width, height) {
     // Skip componentresize listeners on width for optimization
@@ -4126,7 +4017,6 @@ var Component = function () {
    * @return {number}
    *         The dimension when getting or 0 if unset
    */
-
 
   Component.prototype.dimension = function dimension(widthOrHeight, num, skipListeners) {
     if (num !== undefined) {
@@ -4191,7 +4081,6 @@ var Component = function () {
    *         for that dimension.
    */
 
-
   Component.prototype.currentDimension = function currentDimension(widthOrHeight) {
     var computedWidthOrHeight = 0;
 
@@ -4241,7 +4130,6 @@ var Component = function () {
    *         The dimensions of the components element
    */
 
-
   Component.prototype.currentDimensions = function currentDimensions() {
     return {
       width: this.currentDimension('width'),
@@ -4256,7 +4144,6 @@ var Component = function () {
    *           The width of the `Component`s computed style.
    */
 
-
   Component.prototype.currentWidth = function currentWidth() {
     return this.currentDimension('width');
   };
@@ -4268,7 +4155,6 @@ var Component = function () {
    *           The height of the `Component`s computed style.
    */
 
-
   Component.prototype.currentHeight = function currentHeight() {
     return this.currentDimension('height');
   };
@@ -4277,7 +4163,6 @@ var Component = function () {
    * Set the focus to this component
    */
 
-
   Component.prototype.focus = function focus() {
     this.el_.focus();
   };
@@ -4285,7 +4170,6 @@ var Component = function () {
   /**
    * Remove the focus from this component
    */
-
 
   Component.prototype.blur = function blur() {
     this.el_.blur();
@@ -4304,7 +4188,6 @@ var Component = function () {
    * @listens Component#touchcancel
    * @listens Component#touchend
     */
-
 
   Component.prototype.emitTapEvents = function emitTapEvents() {
     // Track the start time so we can determine how long the touch lasted
@@ -4413,7 +4296,6 @@ var Component = function () {
    * @listens Component#touchcancel
    */
 
-
   Component.prototype.enableTouchActivity = function enableTouchActivity() {
     // Don't continue if the root player doesn't support reporting user activity
     if (!this.player() || !this.player().reportUserActivity) {
@@ -4480,7 +4362,6 @@ var Component = function () {
    * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout}
    */
 
-
   Component.prototype.setTimeout = function setTimeout(fn, timeout) {
     var _this2 = this;
 
@@ -4513,7 +4394,6 @@ var Component = function () {
    *
    * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearTimeout}
    */
-
 
   Component.prototype.clearTimeout = function clearTimeout(timeoutId) {
     window_1.clearTimeout(timeoutId);
@@ -4548,7 +4428,6 @@ var Component = function () {
    * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval}
    */
 
-
   Component.prototype.setInterval = function setInterval(fn, interval) {
     var _this3 = this;
 
@@ -4582,7 +4461,6 @@ var Component = function () {
    *
    * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval}
    */
-
 
   Component.prototype.clearInterval = function clearInterval(intervalId) {
     window_1.clearInterval(intervalId);
@@ -4622,7 +4500,6 @@ var Component = function () {
    * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame}
    */
 
-
   Component.prototype.requestAnimationFrame = function requestAnimationFrame(fn) {
     var _this4 = this;
 
@@ -4661,7 +4538,6 @@ var Component = function () {
    * @see [Similar to]{@link https://developer.mozilla.org/en-US/docs/Web/API/window/cancelAnimationFrame}
    */
 
-
   Component.prototype.cancelAnimationFrame = function cancelAnimationFrame(id) {
     if (this.supportsRaf_) {
       window_1.cancelAnimationFrame(id);
@@ -4698,7 +4574,6 @@ var Component = function () {
    * @return {Component}
    *         The `Component` that was registered.
    */
-
 
   Component.registerComponent = function registerComponent(name, ComponentToRegister) {
     if (typeof name !== 'string' || !name) {
@@ -4766,7 +4641,6 @@ var Component = function () {
    *             return that if it exists.
    */
 
-
   Component.getComponent = function getComponent(name) {
     if (!name) {
       return;
@@ -4790,7 +4664,6 @@ var Component = function () {
  * @private
  * @type {Boolean}
  */
-
 
 Component.prototype.supportsRaf_ = typeof window_1.requestAnimationFrame === 'function' && typeof window_1.cancelAnimationFrame === 'function';
 
@@ -5034,7 +4907,6 @@ if (browserApi) {
  * @class MediaError
  */
 function MediaError(value) {
-
   // Allow redundant calls to this constructor to avoid having `instanceof`
   // checks peppered around the code.
   if (value instanceof MediaError) {
@@ -5047,7 +4919,6 @@ function MediaError(value) {
     // default code is zero, so this is a custom error
     this.message = value;
   } else if (isObject(value)) {
-
     // We assign the `code` property manually because native `MediaError` objects
     // do not expose it as an own/enumerable property of the object.
     if (typeof value.code === 'number') {
@@ -5188,7 +5059,6 @@ function silencePromise(value) {
  */
 var trackToJson_ = function trackToJson_(track) {
   var ret = ['kind', 'label', 'language', 'id', 'inBandMetadataTrackDispatchType', 'mode', 'src'].reduce(function (acc, prop, i) {
-
     if (track[prop]) {
       acc[prop] = track[prop];
     }
@@ -5221,7 +5091,6 @@ var trackToJson_ = function trackToJson_(track) {
  *         {@link TextTrackList}.
  */
 var textTracksToJson = function textTracksToJson(tech) {
-
   var trackEls = tech.$$('track');
 
   var trackObjs = Array.prototype.map.call(trackEls, function (t) {
@@ -5356,7 +5225,6 @@ var ModalDialog = function (_Component) {
    *         The DOM element that gets created.
    */
 
-
   ModalDialog.prototype.createEl = function createEl$$1() {
     return _Component.prototype.createEl.call(this, 'div', {
       className: this.buildCSSClass(),
@@ -5384,7 +5252,6 @@ var ModalDialog = function (_Component) {
    *         The DOM `className` for this object.
    */
 
-
   ModalDialog.prototype.buildCSSClass = function buildCSSClass() {
     return MODAL_CLASS_NAME + ' vjs-hidden ' + _Component.prototype.buildCSSClass.call(this);
   };
@@ -5399,7 +5266,6 @@ var ModalDialog = function (_Component) {
    * @listens keydown
    */
 
-
   ModalDialog.prototype.handleKeyPress = function handleKeyPress(e) {
     if (e.which === ESC && this.closeable()) {
       this.close();
@@ -5413,7 +5279,6 @@ var ModalDialog = function (_Component) {
    *         the localized or raw label of this modal.
    */
 
-
   ModalDialog.prototype.label = function label() {
     return this.localize(this.options_.label || 'Modal Window');
   };
@@ -5425,7 +5290,6 @@ var ModalDialog = function (_Component) {
    * @return {string}
    *         The localized or raw description of this modal.
    */
-
 
   ModalDialog.prototype.description = function description() {
     var desc = this.options_.description || this.localize('This is a modal window.');
@@ -5444,7 +5308,6 @@ var ModalDialog = function (_Component) {
    * @fires ModalDialog#beforemodalopen
    * @fires ModalDialog#modalopen
    */
-
 
   ModalDialog.prototype.open = function open() {
     if (!this.opened_) {
@@ -5506,7 +5369,6 @@ var ModalDialog = function (_Component) {
    *         the current open state of the modaldialog
    */
 
-
   ModalDialog.prototype.opened = function opened(value) {
     if (typeof value === 'boolean') {
       this[value ? 'open' : 'close']();
@@ -5521,7 +5383,6 @@ var ModalDialog = function (_Component) {
    * @fires ModalDialog#beforemodalclose
    * @fires ModalDialog#modalclose
    */
-
 
   ModalDialog.prototype.close = function close() {
     if (!this.opened_) {
@@ -5577,7 +5438,6 @@ var ModalDialog = function (_Component) {
    *         Returns the final value of the closable option.
    */
 
-
   ModalDialog.prototype.closeable = function closeable(value) {
     if (typeof value === 'boolean') {
       var closeable = this.closeable_ = !!value;
@@ -5585,7 +5445,6 @@ var ModalDialog = function (_Component) {
 
       // If this is being made closeable and has no close button, add one.
       if (closeable && !close) {
-
         // The close button should be a child of the modal - not its
         // content element, so temporarily change the content element.
         var temp = this.contentEl_;
@@ -5611,7 +5470,6 @@ var ModalDialog = function (_Component) {
    * The content element will be emptied before this change takes place.
    */
 
-
   ModalDialog.prototype.fill = function fill() {
     this.fillWith(this.content());
   };
@@ -5626,7 +5484,6 @@ var ModalDialog = function (_Component) {
    * @param {Mixed} [content]
    *        The same rules apply to this as apply to the `content` option.
    */
-
 
   ModalDialog.prototype.fillWith = function fillWith(content) {
     var contentEl = this.contentEl();
@@ -5677,7 +5534,6 @@ var ModalDialog = function (_Component) {
    * @fires ModalDialog#modalempty
    */
 
-
   ModalDialog.prototype.empty = function empty() {
     /**
      * Fired just before a `ModalDialog` is emptied.
@@ -5713,7 +5569,6 @@ var ModalDialog = function (_Component) {
    *         The current content of the modal dialog
    */
 
-
   ModalDialog.prototype.content = function content(value) {
     if (typeof value !== 'undefined') {
       this.content_ = value;
@@ -5726,7 +5581,6 @@ var ModalDialog = function (_Component) {
    *
    * @private
    */
-
 
   ModalDialog.prototype.conditionalFocus_ = function conditionalFocus_() {
     var activeEl = document_1.activeElement;
@@ -5749,7 +5603,6 @@ var ModalDialog = function (_Component) {
    * @private
    */
 
-
   ModalDialog.prototype.conditionalBlur_ = function conditionalBlur_() {
     if (this.previouslyActiveEl_) {
       this.previouslyActiveEl_.focus();
@@ -5764,7 +5617,6 @@ var ModalDialog = function (_Component) {
    *
    * @listens keydown
    */
-
 
   ModalDialog.prototype.handleKeyDown = function handleKeyDown(event) {
     // exit early if it isn't a tab key
@@ -5802,7 +5654,6 @@ var ModalDialog = function (_Component) {
    * @private
    */
 
-
   ModalDialog.prototype.focusableEls_ = function focusableEls_() {
     var allChildren = this.el_.querySelectorAll('*');
 
@@ -5820,7 +5671,6 @@ var ModalDialog = function (_Component) {
  * @type {Object}
  * @private
  */
-
 
 ModalDialog.prototype.options_ = {
   pauseOnOpen: true,
@@ -5907,7 +5757,6 @@ var TrackList = function (_EventTarget) {
    * @fires TrackList#addtrack
    */
 
-
   TrackList.prototype.addTrack = function addTrack(track) {
     var index = this.tracks_.length;
 
@@ -5945,7 +5794,6 @@ var TrackList = function (_EventTarget) {
    *
    * @fires TrackList#removetrack
    */
-
 
   TrackList.prototype.removeTrack = function removeTrack(rtrack) {
     var track = void 0;
@@ -5990,7 +5838,6 @@ var TrackList = function (_EventTarget) {
    * @private
    */
 
-
   TrackList.prototype.getTrackById = function getTrackById(id) {
     var result = null;
 
@@ -6022,7 +5869,6 @@ var TrackList = function (_EventTarget) {
  * @property {Object} TrackList#allowedEvents_
  * @private
  */
-
 
 TrackList.prototype.allowedEvents_ = {
   change: 'change',
@@ -6123,7 +5969,6 @@ var AudioTrackList = function (_TrackList) {
    *
    * @fires TrackList#addtrack
    */
-
 
   AudioTrackList.prototype.addTrack = function addTrack(track) {
     var _this2 = this;
@@ -6263,7 +6108,6 @@ var VideoTrackList = function (_TrackList) {
    * @fires TrackList#addtrack
    */
 
-
   VideoTrackList.prototype.addTrack = function addTrack(track) {
     var _this2 = this;
 
@@ -6351,7 +6195,6 @@ var TextTrackList = function (_TrackList) {
    * @fires TrackList#addtrack
    */
 
-
   TextTrackList.prototype.addTrack = function addTrack(track) {
     _TrackList.prototype.addTrack.call(this, track);
 
@@ -6384,7 +6227,6 @@ var TextTrackList = function (_TrackList) {
  */
 
 var HtmlTrackElementList = function () {
-
   /**
    * Create an instance of this class.
    *
@@ -6439,7 +6281,6 @@ var HtmlTrackElementList = function () {
    * @private
    */
 
-
   HtmlTrackElementList.prototype.addTrackElement_ = function addTrackElement_(trackElement) {
     var index = this.trackElements_.length;
 
@@ -6470,7 +6311,6 @@ var HtmlTrackElementList = function () {
    * @private
    */
 
-
   HtmlTrackElementList.prototype.getTrackElementByTrack_ = function getTrackElementByTrack_(track) {
     var trackElement_ = void 0;
 
@@ -6493,7 +6333,6 @@ var HtmlTrackElementList = function () {
    *
    * @private
    */
-
 
   HtmlTrackElementList.prototype.removeTrackElement_ = function removeTrackElement_(trackElement) {
     for (var i = 0, length = this.trackElements_.length; i < length; i++) {
@@ -6536,7 +6375,6 @@ var HtmlTrackElementList = function () {
  */
 
 var TextTrackCueList = function () {
-
   /**
    * Create an instance of this class..
    *
@@ -6587,7 +6425,6 @@ var TextTrackCueList = function () {
    * @private
    */
 
-
   TextTrackCueList.prototype.setCues_ = function setCues_(cues) {
     var oldLength = this.length || 0;
     var i = 0;
@@ -6624,7 +6461,6 @@ var TextTrackCueList = function () {
    * @return {TextTrackCueList~TextTrackCue|null}
    *         A single cue or null if none was found.
    */
-
 
   TextTrackCueList.prototype.getCueById = function getCueById(id) {
     var result = null;
@@ -7042,7 +6878,7 @@ function forEach(list, iterator, context) {
     if (arguments.length < 3) {
         context = this;
     }
-    
+
     if (toString$2.call(list) === '[object Array]')
         forEachArray$1(list, iterator, context);
     else if (typeof list === 'string')
@@ -7342,8 +7178,6 @@ function _createXHR(options) {
     xhr.send(body || null);
 
     return xhr
-
-
 }
 
 function getXml(xhr) {
@@ -7542,7 +7376,6 @@ var TextTrack = function (_Track) {
     var activeCues = new TextTrackCueList(tt.activeCues_);
     var changed = false;
     var timeupdateHandler = bind(tt, function () {
-
       // Accessing this.activeCues for the side-effects of updating itself
       // due to it's nature as a getter function. Do not remove or cues will
       // stop updating!
@@ -7598,7 +7431,6 @@ var TextTrack = function (_Track) {
         }
         mode = newMode;
         if (mode === 'showing') {
-
           this.tech_.ready(function () {
             _this2.tech_.on('timeupdate', timeupdateHandler);
           }, true);
@@ -7700,7 +7532,6 @@ var TextTrack = function (_Track) {
    *        The cue to add to our internal list
    */
 
-
   TextTrack.prototype.addCue = function addCue(originalCue) {
     var cue = originalCue;
 
@@ -7737,7 +7568,6 @@ var TextTrack = function (_Track) {
    *        The cue to remove from our internal list
    */
 
-
   TextTrack.prototype.removeCue = function removeCue(_removeCue) {
     var i = this.cues_.length;
 
@@ -7758,7 +7588,6 @@ var TextTrack = function (_Track) {
 /**
  * cuechange - One or more cues in the track have become active or stopped being active.
  */
-
 
 TextTrack.prototype.allowedEvents_ = {
   cuechange: 'cuechange'
@@ -8218,7 +8047,6 @@ ParsingError.Errors = {
 
 // Try to parse input as a time stamp.
 function parseTimeStamp(input) {
-
   function computeSeconds(h, m, s, f) {
     return (h | 0) * 3600 + (m | 0) * 60 + (s | 0) + (f | 0) / 1000;
   }
@@ -8826,7 +8654,6 @@ function BoxPosition(obj) {
     // result in the desired behaviour.
     lh = rects ? Math.max((rects[0] && rects[0].height) || 0, obj.height / rects.length)
                : 0;
-
   }
   this.left = obj.left;
   this.right = obj.right;
@@ -8957,7 +8784,6 @@ BoxPosition.getSimpleBoxPosition = function(obj) {
 // is the box that contains the StyleBox, such as a div. boxPositions are
 // a list of other boxes that the styleBox can't overlap with.
 function moveBoxToLinePosition(window, styleBox, containerBox, boxPositions) {
-
   // Find the best position for a cue box, b, on the video. The axis parameter
   // is a list of axis, the order of which, it will move the box along. For example:
   // Passing ["+x", "-x"] will move the box first along the x axis in the positive
@@ -9039,7 +8865,6 @@ function moveBoxToLinePosition(window, styleBox, containerBox, boxPositions) {
     // Move the box to the specified position. This may not be its best
     // position.
     boxPosition.move(initialAxis, position);
-
   } else {
     // If we have a percentage line value for the cue.
     var calculatedPercentage = (boxPosition.lineHeight / containerBox.height) * 100;
@@ -9344,7 +9169,6 @@ WebVTT$1.Parser.prototype = {
           }
         }, /:/);
       }
-
     }
 
     // 5.1 WebVTT file parsing.
@@ -9956,8 +9780,6 @@ var browserIndex = createCommonjsModule(function (module) {
 // forth between JSON. If we don't then it's not that big of a deal since we're
 // off browser.
 
-
-
 var vttjs = module.exports = {
   WebVTT: vtt$1,
   VTTCue: vttcue,
@@ -10149,7 +9971,6 @@ var Tech = function (_Component) {
    * @see {@link Tech#trackProgress}
    */
 
-
   Tech.prototype.manualProgressOn = function manualProgressOn() {
     this.on('durationchange', this.onDurationChange);
 
@@ -10163,7 +9984,6 @@ var Tech = function (_Component) {
    * Turn off the polyfill for `progress` events that was created in
    * {@link Tech#manualProgressOn}
    */
-
 
   Tech.prototype.manualProgressOff = function manualProgressOff() {
     this.manualProgress = false;
@@ -10185,7 +10005,6 @@ var Tech = function (_Component) {
    * @listens Tech#ready
    * @fires Tech#progress
    */
-
 
   Tech.prototype.trackProgress = function trackProgress(event) {
     this.stopTrackingProgress();
@@ -10222,7 +10041,6 @@ var Tech = function (_Component) {
    * @listens Tech#durationchange
    */
 
-
   Tech.prototype.onDurationChange = function onDurationChange(event) {
     this.duration_ = this.duration();
   };
@@ -10233,7 +10051,6 @@ var Tech = function (_Component) {
    * @return {TimeRange}
    *         The time range object that was created.
    */
-
 
   Tech.prototype.buffered = function buffered() {
     return createTimeRanges(0, 0);
@@ -10248,7 +10065,6 @@ var Tech = function (_Component) {
    *
    */
 
-
   Tech.prototype.bufferedPercent = function bufferedPercent$$1() {
     return bufferedPercent(this.buffered(), this.duration_);
   };
@@ -10260,7 +10076,6 @@ var Tech = function (_Component) {
    * {@link Tech#trackProgress}.
    */
 
-
   Tech.prototype.stopTrackingProgress = function stopTrackingProgress() {
     this.clearInterval(this.progressInterval);
   };
@@ -10270,7 +10085,6 @@ var Tech = function (_Component) {
    *
    * @see {@link Tech#trackCurrentTime}
    */
-
 
   Tech.prototype.manualTimeUpdatesOn = function manualTimeUpdatesOn() {
     this.manualTimeUpdates = true;
@@ -10283,7 +10097,6 @@ var Tech = function (_Component) {
    * Turn off the polyfill for `timeupdate` events that was created in
    * {@link Tech#manualTimeUpdatesOn}
    */
-
 
   Tech.prototype.manualTimeUpdatesOff = function manualTimeUpdatesOff() {
     this.manualTimeUpdates = false;
@@ -10299,7 +10112,6 @@ var Tech = function (_Component) {
    * @listens Tech#play
    * @triggers Tech#timeupdate
    */
-
 
   Tech.prototype.trackCurrentTime = function trackCurrentTime() {
     if (this.currentTimeInterval) {
@@ -10325,7 +10137,6 @@ var Tech = function (_Component) {
    * @listens {Tech#pause}
    */
 
-
   Tech.prototype.stopTrackingCurrentTime = function stopTrackingCurrentTime() {
     this.clearInterval(this.currentTimeInterval);
 
@@ -10341,9 +10152,7 @@ var Tech = function (_Component) {
    * @fires Component#dispose
    */
 
-
   Tech.prototype.dispose = function dispose() {
-
     // clear out all tracks because we can't reuse them between techs
     this.clearTracks(NORMAL.names);
 
@@ -10370,7 +10179,6 @@ var Tech = function (_Component) {
    *        `text`.
    */
 
-
   Tech.prototype.clearTracks = function clearTracks(types) {
     var _this2 = this;
 
@@ -10396,7 +10204,6 @@ var Tech = function (_Component) {
    * flagged for automatic garbage collection
    */
 
-
   Tech.prototype.cleanupAutoTextTracks = function cleanupAutoTextTracks() {
     var list = this.autoRemoteTextTracks_ || [];
     var i = list.length;
@@ -10414,7 +10221,6 @@ var Tech = function (_Component) {
    * @abstract
    */
 
-
   Tech.prototype.reset = function reset() {};
 
   /**
@@ -10426,7 +10232,6 @@ var Tech = function (_Component) {
    * @return {MediaError|null}
    *         The current error object on the tech, or null if there isn't one.
    */
-
 
   Tech.prototype.error = function error(err) {
     if (err !== undefined) {
@@ -10447,7 +10252,6 @@ var Tech = function (_Component) {
    *         - An empty set of ranges if not.
    */
 
-
   Tech.prototype.played = function played() {
     if (this.hasStarted_) {
       return createTimeRanges(0, 0);
@@ -10461,7 +10265,6 @@ var Tech = function (_Component) {
    *
    * @fires Tech#timeupdate
    */
-
 
   Tech.prototype.setCurrentTime = function setCurrentTime() {
     // improve the accuracy of manual timeupdates
@@ -10486,7 +10289,6 @@ var Tech = function (_Component) {
    * @fires Tech#videotrackchange
    * @fires Tech#texttrackchange
    */
-
 
   Tech.prototype.initTrackListeners = function initTrackListeners() {
     var _this3 = this;
@@ -10536,7 +10338,6 @@ var Tech = function (_Component) {
    * @fires Tech#vttjserror
    */
 
-
   Tech.prototype.addWebVttScript_ = function addWebVttScript_() {
     var _this4 = this;
 
@@ -10548,7 +10349,6 @@ var Tech = function (_Component) {
     // signals that the Tech is ready at which point Tech.el_ is part of the DOM
     // before inserting the WebVTT script
     if (document_1.body.contains(this.el())) {
-
       // load via require if available and vtt.js script location was not passed in
       // as an option. novtt builds will turn the above require call into an empty object
       // which will cause this if check to always fail.
@@ -10597,7 +10397,6 @@ var Tech = function (_Component) {
    * Emulate texttracks
    *
    */
-
 
   Tech.prototype.emulateTextTracks = function emulateTextTracks() {
     var _this5 = this;
@@ -10669,7 +10468,6 @@ var Tech = function (_Component) {
    *         The TextTrack that gets created.
    */
 
-
   Tech.prototype.addTextTrack = function addTextTrack(kind, label, language) {
     if (!kind) {
       throw new Error('TextTrack kind is required but was not provided');
@@ -10700,7 +10498,6 @@ var Tech = function (_Component) {
    *         The track element that gets created.
    */
 
-
   Tech.prototype.createRemoteTextTrack = function createRemoteTextTrack(options) {
     var track = mergeOptions(options, {
       tech: this
@@ -10729,7 +10526,6 @@ var Tech = function (_Component) {
    *             to "manualCleanup=false" in the future. The manualCleanup parameter will
    *             also be removed.
    */
-
 
   Tech.prototype.addRemoteTextTrack = function addRemoteTextTrack() {
     var _this6 = this;
@@ -10766,7 +10562,6 @@ var Tech = function (_Component) {
    *        `TextTrack` to remove from the `TextTrackList`
    */
 
-
   Tech.prototype.removeRemoteTextTrack = function removeRemoteTextTrack(track) {
     var trackElement = this.remoteTextTrackEls().getTrackElementByTrack_(track);
 
@@ -10788,7 +10583,6 @@ var Tech = function (_Component) {
    * @abstract
    */
 
-
   Tech.prototype.getVideoPlaybackQuality = function getVideoPlaybackQuality() {
     return {};
   };
@@ -10799,7 +10593,6 @@ var Tech = function (_Component) {
    * @abstract
    */
 
-
   Tech.prototype.setPoster = function setPoster() {};
 
   /**
@@ -10808,7 +10601,6 @@ var Tech = function (_Component) {
    * @abstract
    */
 
-
   Tech.prototype.playsinline = function playsinline() {};
 
   /**
@@ -10816,7 +10608,6 @@ var Tech = function (_Component) {
    *
    * @abstract
    */
-
 
   Tech.prototype.setPlaysinline = function setPlaysinline() {};
 
@@ -10837,7 +10628,6 @@ var Tech = function (_Component) {
    * @abstract
    */
 
-
   Tech.prototype.canPlayType = function canPlayType() {
     return '';
   };
@@ -10853,7 +10643,6 @@ var Tech = function (_Component) {
    * @return {string} Returns the native video element's response
    */
 
-
   Tech.canPlayType = function canPlayType() {
     return '';
   };
@@ -10866,7 +10655,6 @@ var Tech = function (_Component) {
    *        The options passed to the tech
    * @return {string} 'probably', 'maybe', or '' (empty string)
    */
-
 
   Tech.canPlaySource = function canPlaySource(srcObj, options) {
     return Tech.canPlayType(srcObj.type);
@@ -10885,7 +10673,6 @@ var Tech = function (_Component) {
    *         - False if it is not
    */
 
-
   Tech.isTech = function isTech(component) {
     return component.prototype instanceof Tech || component instanceof Tech || component === Tech;
   };
@@ -10899,7 +10686,6 @@ var Tech = function (_Component) {
    * @param {Object} tech
    *        The `Tech` class to register.
    */
-
 
   Tech.registerTech = function registerTech(name, tech) {
     if (!Tech.techs_) {
@@ -10936,7 +10722,6 @@ var Tech = function (_Component) {
    * @return {Tech|undefined}
    *         The `Tech` or undefined if there was no tech with the name requsted.
    */
-
 
   Tech.getTech = function getTech(name) {
     if (!name) {
@@ -11096,7 +10881,6 @@ Tech.prototype.featuresNativeTextTracks = false;
  * @mixes Tech~SourceHandlerAdditions
  */
 Tech.withSourceHandlers = function (_Tech) {
-
   /**
    * Register a source handler
    *
@@ -11284,7 +11068,6 @@ Tech.withSourceHandlers = function (_Tech) {
     this.cleanupAutoTextTracks();
 
     if (this.sourceHandler_) {
-
       if (this.sourceHandler_.dispose) {
         this.sourceHandler_.dispose();
       }
@@ -11312,8 +11095,6 @@ function use(type, middleware) {
   middlewares[type] = middlewares[type] || [];
   middlewares[type].push(middleware);
 }
-
-
 
 function setSource(player, src, next) {
   player.setTimeout(function () {
@@ -11378,7 +11159,6 @@ function setSourceHelper() {
     var mw = mwFactory(player);
 
     mw.setSource(assign({}, src), function (err, _src) {
-
       // something happened, try the next middleware on the current level
       // make sure to use the old src
       if (err) {
@@ -11564,7 +11344,6 @@ var ClickableComponent = function (_Component) {
    *         The element that gets created.
    */
 
-
   ClickableComponent.prototype.createEl = function createEl$$1() {
     var tag = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'div';
     var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -11614,7 +11393,6 @@ var ClickableComponent = function (_Component) {
    *         The control text element that gets created.
    */
 
-
   ClickableComponent.prototype.createControlTextEl = function createControlTextEl(el) {
     this.controlTextEl_ = createEl('span', {
       className: 'vjs-control-text'
@@ -11642,7 +11420,6 @@ var ClickableComponent = function (_Component) {
    *         - The control text when getting
    */
 
-
   ClickableComponent.prototype.controlText = function controlText(text) {
     var el = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.el();
 
@@ -11667,7 +11444,6 @@ var ClickableComponent = function (_Component) {
    *         The DOM `className` for this object.
    */
 
-
   ClickableComponent.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-control vjs-button ' + _Component.prototype.buildCSSClass.call(this);
   };
@@ -11675,7 +11451,6 @@ var ClickableComponent = function (_Component) {
   /**
    * Enable this `Component`s element.
    */
-
 
   ClickableComponent.prototype.enable = function enable() {
     if (!this.enabled_) {
@@ -11694,7 +11469,6 @@ var ClickableComponent = function (_Component) {
   /**
    * Disable this `Component`s element.
    */
-
 
   ClickableComponent.prototype.disable = function disable() {
     this.enabled_ = false;
@@ -11731,7 +11505,6 @@ var ClickableComponent = function (_Component) {
    * @abstract
    */
 
-
   ClickableComponent.prototype.handleClick = function handleClick(event) {};
 
   /**
@@ -11744,7 +11517,6 @@ var ClickableComponent = function (_Component) {
    *
    * @listens focus
    */
-
 
   ClickableComponent.prototype.handleFocus = function handleFocus(event) {
     on(document_1, 'keydown', bind(this, this.handleKeyPress));
@@ -11760,15 +11532,12 @@ var ClickableComponent = function (_Component) {
    * @listens keydown
    */
 
-
   ClickableComponent.prototype.handleKeyPress = function handleKeyPress(event) {
-
     // Support Space (32) or Enter (13) key operation to fire a click event
     if (event.which === 32 || event.which === 13) {
       event.preventDefault();
       this.trigger('click');
     } else if (_Component.prototype.handleKeyPress) {
-
       // Pass keypress handling up for unsupported keys
       _Component.prototype.handleKeyPress.call(this, event);
     }
@@ -11783,7 +11552,6 @@ var ClickableComponent = function (_Component) {
    *
    * @listens blur
    */
-
 
   ClickableComponent.prototype.handleBlur = function handleBlur(event) {
     off(document_1, 'keydown', bind(this, this.handleKeyPress));
@@ -11829,7 +11597,6 @@ var PosterImage = function (_ClickableComponent) {
    * Clean up and dispose of the `PosterImage`.
    */
 
-
   PosterImage.prototype.dispose = function dispose() {
     this.player().off('posterchange', this.update);
     _ClickableComponent.prototype.dispose.call(this);
@@ -11841,7 +11608,6 @@ var PosterImage = function (_ClickableComponent) {
    * @return {Element}
    *         The element that gets created.
    */
-
 
   PosterImage.prototype.createEl = function createEl$$1() {
     var el = createEl('div', {
@@ -11872,7 +11638,6 @@ var PosterImage = function (_ClickableComponent) {
    *        The `Player#posterchange` event that triggered this function.
    */
 
-
   PosterImage.prototype.update = function update(event) {
     var url = this.player().poster();
 
@@ -11893,7 +11658,6 @@ var PosterImage = function (_ClickableComponent) {
    * @param {string} url
    *        The URL to the source for the `PosterImage`.
    */
-
 
   PosterImage.prototype.setSrc = function setSrc(url) {
     if (this.fallbackImg_) {
@@ -11922,7 +11686,6 @@ var PosterImage = function (_ClickableComponent) {
    * @param {EventTarget~Event} event
    +        The `click`, `tap` or `keydown` event that caused this function to be called.
    */
-
 
   PosterImage.prototype.handleClick = function handleClick(event) {
     // We don't want a click to trigger playback when controls are disabled
@@ -11999,7 +11762,6 @@ function tryUpdateStyle(el, style, rule) {
   try {
     el.style[style] = rule;
   } catch (e) {
-
     // Satisfies linter.
     return;
   }
@@ -12068,7 +11830,6 @@ var TextTrackDisplay = function (_Component) {
   * @listens Player#loadstart
   */
 
-
   TextTrackDisplay.prototype.preselectTrack = function preselectTrack() {
     var modes = { captions: 1, subtitles: 1 };
     var trackList = this.player_.textTracks();
@@ -12125,7 +11886,6 @@ var TextTrackDisplay = function (_Component) {
    * @listens Player#loadstart
    */
 
-
   TextTrackDisplay.prototype.toggleDisplay = function toggleDisplay() {
     if (this.player_.tech_ && this.player_.tech_.featuresNativeTextTracks) {
       this.hide();
@@ -12141,7 +11901,6 @@ var TextTrackDisplay = function (_Component) {
    *         The element that was created.
    */
 
-
   TextTrackDisplay.prototype.createEl = function createEl() {
     return _Component.prototype.createEl.call(this, 'div', {
       className: 'vjs-text-track-display'
@@ -12154,7 +11913,6 @@ var TextTrackDisplay = function (_Component) {
   /**
    * Clear all displayed {@link TextTrack}s.
    */
-
 
   TextTrackDisplay.prototype.clearDisplay = function clearDisplay() {
     if (typeof window_1.WebVTT === 'function') {
@@ -12169,7 +11927,6 @@ var TextTrackDisplay = function (_Component) {
    * @listens Player#texttrackchange
    * @listens Player#fullscreenchange
    */
-
 
   TextTrackDisplay.prototype.updateDisplay = function updateDisplay() {
     var tracks = this.player_.textTracks();
@@ -12215,7 +11972,6 @@ var TextTrackDisplay = function (_Component) {
    * @param {TextTrack} track
    *        Text track object to be added to the list.
    */
-
 
   TextTrackDisplay.prototype.updateForTrack = function updateForTrack(track) {
     if (typeof window_1.WebVTT !== 'function' || !track.activeCues) {
@@ -12376,7 +12132,6 @@ var Button = function (_ClickableComponent) {
 
     // Add attributes for button element
     attributes = assign({
-
       // Necessary since the default button type is "submit"
       'type': 'button',
 
@@ -12408,7 +12163,6 @@ var Button = function (_ClickableComponent) {
    * @deprecated since version 5
    */
 
-
   Button.prototype.addChild = function addChild(child) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
@@ -12425,7 +12179,6 @@ var Button = function (_ClickableComponent) {
    * {@link Button#disable}.
    */
 
-
   Button.prototype.enable = function enable() {
     _ClickableComponent.prototype.enable.call(this);
     this.el_.removeAttribute('disabled');
@@ -12435,7 +12188,6 @@ var Button = function (_ClickableComponent) {
    * Disable the `Button` element so that it cannot be activated or clicked. Use this with
    * {@link Button#enable}.
    */
-
 
   Button.prototype.disable = function disable() {
     _ClickableComponent.prototype.disable.call(this);
@@ -12452,9 +12204,7 @@ var Button = function (_ClickableComponent) {
    * @listens keydown
    */
 
-
   Button.prototype.handleKeyPress = function handleKeyPress(event) {
-
     // Ignore Space (32) or Enter (13) key operation, which is handled by the browser for a button.
     if (event.which === 32 || event.which === 13) {
       return;
@@ -12500,7 +12250,6 @@ var BigPlayButton = function (_Button) {
    *         The DOM `className` for this object. Always returns 'vjs-big-play-button'.
    */
 
-
   BigPlayButton.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-big-play-button';
   };
@@ -12516,7 +12265,6 @@ var BigPlayButton = function (_Button) {
    * @listens tap
    * @listens click
    */
-
 
   BigPlayButton.prototype.handleClick = function handleClick(event) {
     var playPromise = this.player_.play();
@@ -12565,7 +12313,6 @@ var BigPlayButton = function (_Button) {
  * @private
  */
 
-
 BigPlayButton.prototype.controlText_ = 'Play Video';
 
 Component.registerComponent('BigPlayButton', BigPlayButton);
@@ -12608,7 +12355,6 @@ var CloseButton = function (_Button) {
    *         The DOM `className` for this object.
    */
 
-
   CloseButton.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-close-button ' + _Button.prototype.buildCSSClass.call(this);
   };
@@ -12627,9 +12373,7 @@ var CloseButton = function (_Button) {
    * @fires CloseButton#close
    */
 
-
   CloseButton.prototype.handleClick = function handleClick(event) {
-
     /**
      * Triggered when the a `CloseButton` is clicked.
      *
@@ -12687,7 +12431,6 @@ var PlayToggle = function (_Button) {
    *         The DOM `className` for this object.
    */
 
-
   PlayToggle.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-play-control ' + _Button.prototype.buildCSSClass.call(this);
   };
@@ -12703,7 +12446,6 @@ var PlayToggle = function (_Button) {
    * @listens tap
    * @listens click
    */
-
 
   PlayToggle.prototype.handleClick = function handleClick(event) {
     if (this.player_.paused()) {
@@ -12722,7 +12464,6 @@ var PlayToggle = function (_Button) {
    *
    * @listens Player#seeked
    */
-
 
   PlayToggle.prototype.handleSeeked = function handleSeeked(event) {
     this.removeClass('vjs-ended');
@@ -12743,7 +12484,6 @@ var PlayToggle = function (_Button) {
    * @listens Player#play
    */
 
-
   PlayToggle.prototype.handlePlay = function handlePlay(event) {
     this.removeClass('vjs-ended');
     this.removeClass('vjs-paused');
@@ -12761,7 +12501,6 @@ var PlayToggle = function (_Button) {
    * @listens Player#pause
    */
 
-
   PlayToggle.prototype.handlePause = function handlePause(event) {
     this.removeClass('vjs-playing');
     this.addClass('vjs-paused');
@@ -12777,7 +12516,6 @@ var PlayToggle = function (_Button) {
    *
    * @listens Player#ended
    */
-
 
   PlayToggle.prototype.handleEnded = function handleEnded(event) {
     this.removeClass('vjs-playing');
@@ -12798,7 +12536,6 @@ var PlayToggle = function (_Button) {
  * @type {string}
  * @private
  */
-
 
 PlayToggle.prototype.controlText_ = 'Play';
 
@@ -12890,7 +12627,6 @@ var TimeDisplay = function (_Component) {
    *         The element that was created.
    */
 
-
   TimeDisplay.prototype.createEl = function createEl$$1(plainName) {
     var className = this.buildCSSClass();
     var el = _Component.prototype.createEl.call(this, 'div', {
@@ -12926,7 +12662,6 @@ var TimeDisplay = function (_Component) {
    * @private
    */
 
-
   TimeDisplay.prototype.updateTextNode_ = function updateTextNode_() {
     if (!this.contentEl_) {
       return;
@@ -12952,7 +12687,6 @@ var TimeDisplay = function (_Component) {
    * @private
    */
 
-
   TimeDisplay.prototype.formatTime_ = function formatTime_(time) {
     return formatTime(time);
   };
@@ -12966,7 +12700,6 @@ var TimeDisplay = function (_Component) {
    *
    * @private
    */
-
 
   TimeDisplay.prototype.updateFormattedTime_ = function updateFormattedTime_(time) {
     var formattedTime = this.formatTime_(time);
@@ -12989,7 +12722,6 @@ var TimeDisplay = function (_Component) {
    * @listens Player#timeupdate
    */
 
-
   TimeDisplay.prototype.updateContent = function updateContent(event) {};
 
   return TimeDisplay;
@@ -13001,7 +12733,6 @@ var TimeDisplay = function (_Component) {
  * @type {string}
  * @private
  */
-
 
 TimeDisplay.prototype.controlText_ = 'Time';
 
@@ -13044,7 +12775,6 @@ var CurrentTimeDisplay = function (_TimeDisplay) {
    *         The DOM `className` for this object.
    */
 
-
   CurrentTimeDisplay.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-current-time';
   };
@@ -13057,7 +12787,6 @@ var CurrentTimeDisplay = function (_TimeDisplay) {
    *
    * @listens Player#timeupdate
    */
-
 
   CurrentTimeDisplay.prototype.updateContent = function updateContent(event) {
     // Allows for smooth scrubbing, when player can't keep up.
@@ -13077,7 +12806,6 @@ var CurrentTimeDisplay = function (_TimeDisplay) {
    * @listens Player#ended
    */
 
-
   CurrentTimeDisplay.prototype.handleEnded = function handleEnded(event) {
     if (!this.player_.duration()) {
       return;
@@ -13094,7 +12822,6 @@ var CurrentTimeDisplay = function (_TimeDisplay) {
  * @type {string}
  * @private
  */
-
 
 CurrentTimeDisplay.prototype.controlText_ = 'Current Time';
 
@@ -13145,7 +12872,6 @@ var DurationDisplay = function (_TimeDisplay) {
    *         The DOM `className` for this object.
    */
 
-
   DurationDisplay.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-duration';
   };
@@ -13161,7 +12887,6 @@ var DurationDisplay = function (_TimeDisplay) {
    * @listens Player#timeupdate
    * @listens Player#loadedmetadata
    */
-
 
   DurationDisplay.prototype.updateContent = function updateContent(event) {
     var duration = this.player_.duration();
@@ -13181,7 +12906,6 @@ var DurationDisplay = function (_TimeDisplay) {
  * @type {string}
  * @private
  */
-
 
 DurationDisplay.prototype.controlText_ = 'Duration Time';
 
@@ -13261,7 +12985,6 @@ var RemainingTimeDisplay = function (_TimeDisplay) {
    *         The DOM `className` for this object.
    */
 
-
   RemainingTimeDisplay.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-remaining-time';
   };
@@ -13278,7 +13001,6 @@ var RemainingTimeDisplay = function (_TimeDisplay) {
    * @private
    */
 
-
   RemainingTimeDisplay.prototype.formatTime_ = function formatTime_(time) {
     return '-' + _TimeDisplay.prototype.formatTime_.call(this, time);
   };
@@ -13292,7 +13014,6 @@ var RemainingTimeDisplay = function (_TimeDisplay) {
    * @listens Player#timeupdate
    * @listens Player#durationchange
    */
-
 
   RemainingTimeDisplay.prototype.updateContent = function updateContent(event) {
     if (!this.player_.duration()) {
@@ -13319,7 +13040,6 @@ var RemainingTimeDisplay = function (_TimeDisplay) {
    * @listens Player#ended
    */
 
-
   RemainingTimeDisplay.prototype.handleEnded = function handleEnded(event) {
     if (!this.player_.duration()) {
       return;
@@ -13336,7 +13056,6 @@ var RemainingTimeDisplay = function (_TimeDisplay) {
  * @type {string}
  * @private
  */
-
 
 RemainingTimeDisplay.prototype.controlText_ = 'Remaining Time';
 
@@ -13382,7 +13101,6 @@ var LiveDisplay = function (_Component) {
    *         The element that was created.
    */
 
-
   LiveDisplay.prototype.createEl = function createEl$$1() {
     var el = _Component.prototype.createEl.call(this, 'div', {
       className: 'vjs-live-control vjs-control'
@@ -13414,7 +13132,6 @@ var LiveDisplay = function (_Component) {
    *
    * @listens Player#durationchange
    */
-
 
   LiveDisplay.prototype.updateShowing = function updateShowing(event) {
     if (this.player().duration() === Infinity) {
@@ -13473,7 +13190,6 @@ var Slider = function (_Component) {
    *         true if controls are enabled, false otherwise
    */
 
-
   Slider.prototype.enabled = function enabled() {
     return this.enabled_;
   };
@@ -13481,7 +13197,6 @@ var Slider = function (_Component) {
   /**
    * Enable controls for this slider if they are disabled
    */
-
 
   Slider.prototype.enable = function enable() {
     if (this.enabled()) {
@@ -13509,7 +13224,6 @@ var Slider = function (_Component) {
   /**
    * Disable controls for this slider if they are enabled
    */
-
 
   Slider.prototype.disable = function disable() {
     if (!this.enabled()) {
@@ -13553,7 +13267,6 @@ var Slider = function (_Component) {
    *         The element that gets created.
    */
 
-
   Slider.prototype.createEl = function createEl$$1(type) {
     var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     var attributes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
@@ -13585,7 +13298,6 @@ var Slider = function (_Component) {
    * @listens touchstart
    * @fires Slider#slideractive
    */
-
 
   Slider.prototype.handleMouseDown = function handleMouseDown(event) {
     var doc = this.bar.el_.ownerDocument;
@@ -13624,7 +13336,6 @@ var Slider = function (_Component) {
    * @listens touchmove
    */
 
-
   Slider.prototype.handleMouseMove = function handleMouseMove(event) {};
 
   /**
@@ -13637,7 +13348,6 @@ var Slider = function (_Component) {
    * @listens mouseup
    * @fires Slider#sliderinactive
    */
-
 
   Slider.prototype.handleMouseUp = function handleMouseUp() {
     var doc = this.bar.el_.ownerDocument;
@@ -13669,9 +13379,7 @@ var Slider = function (_Component) {
    *          number from 0 to 1.
    */
 
-
   Slider.prototype.update = function update() {
-
     // In VolumeBar init we have a setTimeout for update that pops and update
     // to the end of the execution stack. The player is destroyed before then
     // update will cause an error
@@ -13722,7 +13430,6 @@ var Slider = function (_Component) {
    *         - postition.y for horizontal `Slider`s
    */
 
-
   Slider.prototype.calculateDistance = function calculateDistance(event) {
     var position = getPointerPosition(this.el_, event);
 
@@ -13741,7 +13448,6 @@ var Slider = function (_Component) {
    * @listens focus
    */
 
-
   Slider.prototype.handleFocus = function handleFocus() {
     this.on(this.bar.el_.ownerDocument, 'keydown', this.handleKeyPress);
   };
@@ -13756,7 +13462,6 @@ var Slider = function (_Component) {
    *
    * @listens keydown
    */
-
 
   Slider.prototype.handleKeyPress = function handleKeyPress(event) {
     // Left and Down Arrows
@@ -13792,7 +13497,6 @@ var Slider = function (_Component) {
    *        Event that caused this object to run
    */
 
-
   Slider.prototype.handleClick = function handleClick(event) {
     event.stopImmediatePropagation();
     event.preventDefault();
@@ -13809,7 +13513,6 @@ var Slider = function (_Component) {
    *         - true if slider is vertical, and getting
    *         - false if the slider is horizontal, and getting
    */
-
 
   Slider.prototype.vertical = function vertical(bool) {
     if (bool === undefined) {
@@ -13868,7 +13571,6 @@ var LoadProgressBar = function (_Component) {
    *         The element that was created.
    */
 
-
   LoadProgressBar.prototype.createEl = function createEl$$1() {
     return _Component.prototype.createEl.call(this, 'div', {
       className: 'vjs-load-progress',
@@ -13890,7 +13592,6 @@ var LoadProgressBar = function (_Component) {
    *
    * @listens Player#progress
    */
-
 
   LoadProgressBar.prototype.update = function update(event) {
     var buffered = this.player_.buffered();
@@ -13976,7 +13677,6 @@ var TimeTooltip = function (_Component) {
    *        A number from 0 to 1, representing a horizontal reference point
    *        from the left edge of the {@link SeekBar}
    */
-
 
   TimeTooltip.prototype.update = function update(seekBarRect, seekBarPoint, content) {
     var tooltipRect = getBoundingClientRect(this.el_);
@@ -14074,7 +13774,6 @@ var PlayProgressBar = function (_Component) {
    *        from the left edge of the {@link SeekBar}
    */
 
-
   PlayProgressBar.prototype.update = function update(seekBarRect, seekBarPoint) {
     var _this2 = this;
 
@@ -14104,7 +13803,6 @@ var PlayProgressBar = function (_Component) {
  * @type {Object}
  * @private
  */
-
 
 PlayProgressBar.prototype.options_ = {
   children: []
@@ -14157,7 +13855,6 @@ var MouseTimeDisplay = function (_Component) {
    *         The element that was created.
    */
 
-
   MouseTimeDisplay.prototype.createEl = function createEl() {
     return _Component.prototype.createEl.call(this, 'div', {
       className: 'vjs-mouse-display'
@@ -14175,7 +13872,6 @@ var MouseTimeDisplay = function (_Component) {
    *        A number from 0 to 1, representing a horizontal reference point
    *        from the left edge of the {@link SeekBar}
    */
-
 
   MouseTimeDisplay.prototype.update = function update(seekBarRect, seekBarPoint) {
     var _this2 = this;
@@ -14203,7 +13899,6 @@ var MouseTimeDisplay = function (_Component) {
  * @type {Object}
  * @private
  */
-
 
 MouseTimeDisplay.prototype.options_ = {
   children: ['timeTooltip']
@@ -14278,7 +13973,6 @@ var SeekBar = function (_Slider) {
    *         The element that was created.
    */
 
-
   SeekBar.prototype.createEl = function createEl$$1() {
     return _Slider.prototype.createEl.call(this, 'div', {
       className: 'vjs-progress-holder'
@@ -14299,7 +13993,6 @@ var SeekBar = function (_Slider) {
    *
    * @private
    */
-
 
   SeekBar.prototype.update_ = function update_(currentTime, percent) {
     var duration = this.player_.duration();
@@ -14326,7 +14019,6 @@ var SeekBar = function (_Slider) {
    *          The current percent at a number from 0-1
    */
 
-
   SeekBar.prototype.update = function update(event) {
     var percent = _Slider.prototype.update.call(this);
 
@@ -14344,7 +14036,6 @@ var SeekBar = function (_Slider) {
    * @private
    */
 
-
   SeekBar.prototype.getCurrentTime_ = function getCurrentTime_() {
     return this.player_.scrubbing() ? this.player_.getCache().currentTime : this.player_.currentTime();
   };
@@ -14359,7 +14050,6 @@ var SeekBar = function (_Slider) {
    * @listens Player#ended
    */
 
-
   SeekBar.prototype.handleEnded = function handleEnded(event) {
     this.update_(this.player_.duration(), 1);
   };
@@ -14370,7 +14060,6 @@ var SeekBar = function (_Slider) {
    * @return {number}
    *         The percentage of media played so far (0 to 1).
    */
-
 
   SeekBar.prototype.getPercent = function getPercent() {
     var percent = this.getCurrentTime_() / this.player_.duration();
@@ -14386,7 +14075,6 @@ var SeekBar = function (_Slider) {
    *
    * @listens mousedown
    */
-
 
   SeekBar.prototype.handleMouseDown = function handleMouseDown(event) {
     if (!isSingleLeftClick(event)) {
@@ -14409,7 +14097,6 @@ var SeekBar = function (_Slider) {
    *
    * @listens mousemove
    */
-
 
   SeekBar.prototype.handleMouseMove = function handleMouseMove(event) {
     if (!isSingleLeftClick(event)) {
@@ -14458,7 +14145,6 @@ var SeekBar = function (_Slider) {
    * @listens mouseup
    */
 
-
   SeekBar.prototype.handleMouseUp = function handleMouseUp(event) {
     _Slider.prototype.handleMouseUp.call(this, event);
 
@@ -14481,7 +14167,6 @@ var SeekBar = function (_Slider) {
    * Move more quickly fast forward for keyboard-only users
    */
 
-
   SeekBar.prototype.stepForward = function stepForward() {
     this.player_.currentTime(this.player_.currentTime() + STEP_SECONDS);
   };
@@ -14489,7 +14174,6 @@ var SeekBar = function (_Slider) {
   /**
    * Move more quickly rewind for keyboard-only users
    */
-
 
   SeekBar.prototype.stepBack = function stepBack() {
     this.player_.currentTime(this.player_.currentTime() - STEP_SECONDS);
@@ -14503,7 +14187,6 @@ var SeekBar = function (_Slider) {
    *        The `keydown` event that caused this function to be called
    *
    */
-
 
   SeekBar.prototype.handleAction = function handleAction(event) {
     if (this.player_.paused()) {
@@ -14523,15 +14206,12 @@ var SeekBar = function (_Slider) {
    * @listens keydown
    */
 
-
   SeekBar.prototype.handleKeyPress = function handleKeyPress(event) {
-
     // Support Space (32) or Enter (13) key operation to fire a click event
     if (event.which === 32 || event.which === 13) {
       event.preventDefault();
       this.handleAction(event);
     } else if (_Slider.prototype.handleKeyPress) {
-
       // Pass keypress handling up for unsupported keys
       _Slider.prototype.handleKeyPress.call(this, event);
     }
@@ -14546,7 +14226,6 @@ var SeekBar = function (_Slider) {
  * @type {Object}
  * @private
  */
-
 
 SeekBar.prototype.options_ = {
   children: ['loadProgressBar', 'playProgressBar'],
@@ -14608,7 +14287,6 @@ var ProgressControl = function (_Component) {
    *         The element that was created.
    */
 
-
   ProgressControl.prototype.createEl = function createEl$$1() {
     return _Component.prototype.createEl.call(this, 'div', {
       className: 'vjs-progress-control vjs-control'
@@ -14624,7 +14302,6 @@ var ProgressControl = function (_Component) {
    *
    * @listen mousemove
    */
-
 
   ProgressControl.prototype.handleMouseMove = function handleMouseMove(event) {
     var seekBar = this.getChild('seekBar');
@@ -14668,7 +14345,6 @@ var ProgressControl = function (_Component) {
    * @listens touchmove
    */
 
-
   ProgressControl.prototype.handleMouseSeek = function handleMouseSeek(event) {
     var seekBar = this.getChild('seekBar');
 
@@ -14682,7 +14358,6 @@ var ProgressControl = function (_Component) {
    *         true if controls are enabled, false otherwise
    */
 
-
   ProgressControl.prototype.enabled = function enabled() {
     return this.enabled_;
   };
@@ -14690,7 +14365,6 @@ var ProgressControl = function (_Component) {
   /**
    * Disable all controls on the progress control and its children
    */
-
 
   ProgressControl.prototype.disable = function disable() {
     this.children().forEach(function (child) {
@@ -14713,7 +14387,6 @@ var ProgressControl = function (_Component) {
   /**
    * Enable all controls on the progress control and its children
    */
-
 
   ProgressControl.prototype.enable = function enable() {
     this.children().forEach(function (child) {
@@ -14741,7 +14414,6 @@ var ProgressControl = function (_Component) {
    * @listens touchstart
    */
 
-
   ProgressControl.prototype.handleMouseDown = function handleMouseDown(event) {
     var doc = this.el_.ownerDocument;
 
@@ -14761,7 +14433,6 @@ var ProgressControl = function (_Component) {
    * @listens mouseup
    */
 
-
   ProgressControl.prototype.handleMouseUp = function handleMouseUp(event) {
     var doc = this.el_.ownerDocument;
 
@@ -14780,7 +14451,6 @@ var ProgressControl = function (_Component) {
  * @type {Object}
  * @private
  */
-
 
 ProgressControl.prototype.options_ = {
   children: ['seekBar']
@@ -14825,7 +14495,6 @@ var FullscreenToggle = function (_Button) {
    *         The DOM `className` for this object.
    */
 
-
   FullscreenToggle.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-fullscreen-control ' + _Button.prototype.buildCSSClass.call(this);
   };
@@ -14839,7 +14508,6 @@ var FullscreenToggle = function (_Button) {
    *
    * @listens Player#fullscreenchange
    */
-
 
   FullscreenToggle.prototype.handleFullscreenChange = function handleFullscreenChange(event) {
     if (this.player_.isFullscreen()) {
@@ -14861,7 +14529,6 @@ var FullscreenToggle = function (_Button) {
    * @listens click
    */
 
-
   FullscreenToggle.prototype.handleClick = function handleClick(event) {
     if (!this.player_.isFullscreen()) {
       this.player_.requestFullscreen();
@@ -14879,7 +14546,6 @@ var FullscreenToggle = function (_Button) {
  * @type {string}
  * @private
  */
-
 
 FullscreenToggle.prototype.controlText_ = 'Fullscreen';
 
@@ -14989,7 +14655,6 @@ var VolumeBar = function (_Slider) {
    *         The element that was created.
    */
 
-
   VolumeBar.prototype.createEl = function createEl$$1() {
     return _Slider.prototype.createEl.call(this, 'div', {
       className: 'vjs-volume-bar vjs-slider-bar'
@@ -15008,7 +14673,6 @@ var VolumeBar = function (_Slider) {
    * @listens mousedown
    */
 
-
   VolumeBar.prototype.handleMouseDown = function handleMouseDown(event) {
     if (!isSingleLeftClick(event)) {
       return;
@@ -15026,7 +14690,6 @@ var VolumeBar = function (_Slider) {
    * @listens mousemove
    */
 
-
   VolumeBar.prototype.handleMouseMove = function handleMouseMove(event) {
     if (!isSingleLeftClick(event)) {
       return;
@@ -15039,7 +14702,6 @@ var VolumeBar = function (_Slider) {
   /**
    * If the player is muted unmute it.
    */
-
 
   VolumeBar.prototype.checkMuted = function checkMuted() {
     if (this.player_.muted()) {
@@ -15054,7 +14716,6 @@ var VolumeBar = function (_Slider) {
    *         Volume level percent as a decimal number.
    */
 
-
   VolumeBar.prototype.getPercent = function getPercent() {
     if (this.player_.muted()) {
       return 0;
@@ -15066,7 +14727,6 @@ var VolumeBar = function (_Slider) {
    * Increase volume level for keyboard users
    */
 
-
   VolumeBar.prototype.stepForward = function stepForward() {
     this.checkMuted();
     this.player_.volume(this.player_.volume() + 0.1);
@@ -15075,7 +14735,6 @@ var VolumeBar = function (_Slider) {
   /**
    * Decrease volume level for keyboard users
    */
-
 
   VolumeBar.prototype.stepBack = function stepBack() {
     this.checkMuted();
@@ -15091,7 +14750,6 @@ var VolumeBar = function (_Slider) {
    * @listens Player#volumechange
    */
 
-
   VolumeBar.prototype.updateARIAAttributes = function updateARIAAttributes(event) {
     var ariaValue = this.player_.muted() ? 0 : this.volumeAsPercentage_();
 
@@ -15105,7 +14763,6 @@ var VolumeBar = function (_Slider) {
    * @private
    */
 
-
   VolumeBar.prototype.volumeAsPercentage_ = function volumeAsPercentage_() {
     return Math.round(this.player_.volume() * 100);
   };
@@ -15118,7 +14775,6 @@ var VolumeBar = function (_Slider) {
    * @listens slideractive
    * @private
    */
-
 
   VolumeBar.prototype.updateLastVolume_ = function updateLastVolume_() {
     var _this2 = this;
@@ -15141,7 +14797,6 @@ var VolumeBar = function (_Slider) {
  * @type {Object}
  * @private
  */
-
 
 VolumeBar.prototype.options_ = {
   children: ['volumeLevel'],
@@ -15225,7 +14880,6 @@ var VolumeControl = function (_Component) {
    *         The element that was created.
    */
 
-
   VolumeControl.prototype.createEl = function createEl() {
     var orientationClass = 'vjs-volume-horizontal';
 
@@ -15248,7 +14902,6 @@ var VolumeControl = function (_Component) {
    * @listens touchstart
    */
 
-
   VolumeControl.prototype.handleMouseDown = function handleMouseDown(event) {
     var doc = this.el_.ownerDocument;
 
@@ -15267,7 +14920,6 @@ var VolumeControl = function (_Component) {
    * @listens touchend
    * @listens mouseup
    */
-
 
   VolumeControl.prototype.handleMouseUp = function handleMouseUp(event) {
     var doc = this.el_.ownerDocument;
@@ -15288,7 +14940,6 @@ var VolumeControl = function (_Component) {
    * @listens touchstart
    */
 
-
   VolumeControl.prototype.handleMouseMove = function handleMouseMove(event) {
     this.volumeBar.handleMouseMove(event);
   };
@@ -15302,7 +14953,6 @@ var VolumeControl = function (_Component) {
  * @type {Object}
  * @private
  */
-
 
 VolumeControl.prototype.options_ = {
   children: ['volumeBar']
@@ -15350,7 +15000,6 @@ var MuteToggle = function (_Button) {
    *         The DOM `className` for this object.
    */
 
-
   MuteToggle.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-mute-control ' + _Button.prototype.buildCSSClass.call(this);
   };
@@ -15366,7 +15015,6 @@ var MuteToggle = function (_Button) {
    * @listens tap
    * @listens click
    */
-
 
   MuteToggle.prototype.handleClick = function handleClick(event) {
     var vol = this.player_.volume();
@@ -15394,7 +15042,6 @@ var MuteToggle = function (_Button) {
    * @listens Player#volumechange
    */
 
-
   MuteToggle.prototype.update = function update(event) {
     this.updateIcon_();
     this.updateControlText_();
@@ -15411,7 +15058,6 @@ var MuteToggle = function (_Button) {
    *
    * @private
    */
-
 
   MuteToggle.prototype.updateIcon_ = function updateIcon_() {
     var vol = this.player_.volume();
@@ -15440,7 +15086,6 @@ var MuteToggle = function (_Button) {
    * @private
    */
 
-
   MuteToggle.prototype.updateControlText_ = function updateControlText_() {
     var soundOff = this.player_.muted() || this.player_.volume() === 0;
     var text = soundOff ? 'Unmute' : 'Mute';
@@ -15459,7 +15104,6 @@ var MuteToggle = function (_Button) {
  * @type {string}
  * @private
  */
-
 
 MuteToggle.prototype.controlText_ = 'Mute';
 
@@ -15525,7 +15169,6 @@ var VolumePanel = function (_Component) {
    * @private
    */
 
-
   VolumePanel.prototype.sliderActive_ = function sliderActive_() {
     this.addClass('vjs-slider-active');
   };
@@ -15537,7 +15180,6 @@ var VolumePanel = function (_Component) {
    * @private
    */
 
-
   VolumePanel.prototype.sliderInactive_ = function sliderInactive_() {
     this.removeClass('vjs-slider-active');
   };
@@ -15548,7 +15190,6 @@ var VolumePanel = function (_Component) {
    * @return {Element}
    *         The element that was created.
    */
-
 
   VolumePanel.prototype.createEl = function createEl() {
     var orientationClass = 'vjs-volume-panel-horizontal';
@@ -15571,7 +15212,6 @@ var VolumePanel = function (_Component) {
  * @type {Object}
  * @private
  */
-
 
 VolumePanel.prototype.options_ = {
   children: ['muteToggle', 'volumeControl']
@@ -15625,7 +15265,6 @@ var Menu = function (_Component) {
    *
    */
 
-
   Menu.prototype.addItem = function addItem(component) {
     this.addChild(component);
     component.on('click', bind(this, function (event) {
@@ -15648,7 +15287,6 @@ var Menu = function (_Component) {
    * @return {Element}
    *         the element that was created
    */
-
 
   Menu.prototype.createEl = function createEl$$1() {
     var contentElType = this.options_.contentElType || 'ul';
@@ -15691,7 +15329,6 @@ var Menu = function (_Component) {
    * @listens keydown
    */
 
-
   Menu.prototype.handleKeyPress = function handleKeyPress(event) {
     // Left and Down Arrows
     if (event.which === 37 || event.which === 40) {
@@ -15709,7 +15346,6 @@ var Menu = function (_Component) {
    * Move to next (lower) menu item for keyboard users.
    */
 
-
   Menu.prototype.stepForward = function stepForward() {
     var stepChild = 0;
 
@@ -15722,7 +15358,6 @@ var Menu = function (_Component) {
   /**
    * Move to previous (higher) menu item for keyboard users.
    */
-
 
   Menu.prototype.stepBack = function stepBack() {
     var stepChild = 0;
@@ -15739,7 +15374,6 @@ var Menu = function (_Component) {
    * @param {Object|string} [item=0]
    *        Index of child item set focus on.
    */
-
 
   Menu.prototype.focus = function focus() {
     var item = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
@@ -15826,7 +15460,6 @@ var MenuButton = function (_Component) {
    * Update the menu based on the current state of its items.
    */
 
-
   MenuButton.prototype.update = function update() {
     var menu = this.createMenu();
 
@@ -15860,7 +15493,6 @@ var MenuButton = function (_Component) {
    * @return {Menu}
    *         The constructed menu
    */
-
 
   MenuButton.prototype.createMenu = function createMenu() {
     var menu = new Menu(this.player_, { menuButton: this });
@@ -15907,7 +15539,6 @@ var MenuButton = function (_Component) {
    * @abstract
    */
 
-
   MenuButton.prototype.createItems = function createItems() {};
 
   /**
@@ -15916,7 +15547,6 @@ var MenuButton = function (_Component) {
    * @return {Element}
    *         The element that gets created.
    */
-
 
   MenuButton.prototype.createEl = function createEl$$1() {
     return _Component.prototype.createEl.call(this, 'div', {
@@ -15930,7 +15560,6 @@ var MenuButton = function (_Component) {
    * @return {string}
    *         The constructed wrapper DOM `className`
    */
-
 
   MenuButton.prototype.buildWrapperCSSClass = function buildWrapperCSSClass() {
     var menuButtonClass = 'vjs-menu-button';
@@ -15954,7 +15583,6 @@ var MenuButton = function (_Component) {
    * @return {string}
    *         The DOM `className` for this object.
    */
-
 
   MenuButton.prototype.buildCSSClass = function buildCSSClass() {
     var menuButtonClass = 'vjs-menu-button';
@@ -15984,7 +15612,6 @@ var MenuButton = function (_Component) {
    *         - The control text when getting
    */
 
-
   MenuButton.prototype.controlText = function controlText(text) {
     var el = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.menuButton_.el();
 
@@ -16002,7 +15629,6 @@ var MenuButton = function (_Component) {
    * @listens tap
    * @listens click
    */
-
 
   MenuButton.prototype.handleClick = function handleClick(event) {
     // When you click the button it adds focus, which will show the menu.
@@ -16024,7 +15650,6 @@ var MenuButton = function (_Component) {
    * Set the focus to the actual button, not to this element
    */
 
-
   MenuButton.prototype.focus = function focus() {
     this.menuButton_.focus();
   };
@@ -16032,7 +15657,6 @@ var MenuButton = function (_Component) {
   /**
    * Remove the focus from the actual button, not this element
    */
-
 
   MenuButton.prototype.blur = function blur() {
     this.menuButton_.blur();
@@ -16049,7 +15673,6 @@ var MenuButton = function (_Component) {
    * @listens focus
    */
 
-
   MenuButton.prototype.handleFocus = function handleFocus() {
     on(document_1, 'keydown', bind(this, this.handleKeyPress));
   };
@@ -16063,7 +15686,6 @@ var MenuButton = function (_Component) {
    *
    * @listens blur
    */
-
 
   MenuButton.prototype.handleBlur = function handleBlur() {
     off(document_1, 'keydown', bind(this, this.handleKeyPress));
@@ -16079,9 +15701,7 @@ var MenuButton = function (_Component) {
    * @listens keydown
    */
 
-
   MenuButton.prototype.handleKeyPress = function handleKeyPress(event) {
-
     // Escape (27) key or Tab (9) key unpress the 'button'
     if (event.which === 27 || event.which === 9) {
       if (this.buttonPressed_) {
@@ -16112,9 +15732,7 @@ var MenuButton = function (_Component) {
    * @listens keydown
    */
 
-
   MenuButton.prototype.handleSubmenuKeyPress = function handleSubmenuKeyPress(event) {
-
     // Escape (27) key or Tab (9) key unpress the 'button'
     if (event.which === 27 || event.which === 9) {
       if (this.buttonPressed_) {
@@ -16132,7 +15750,6 @@ var MenuButton = function (_Component) {
   /**
    * Put the current `MenuButton` into a pressed state.
    */
-
 
   MenuButton.prototype.pressButton = function pressButton() {
     if (this.enabled_) {
@@ -16155,7 +15772,6 @@ var MenuButton = function (_Component) {
    * Take the current `MenuButton` out of a pressed state.
    */
 
-
   MenuButton.prototype.unpressButton = function unpressButton() {
     if (this.enabled_) {
       this.buttonPressed_ = false;
@@ -16167,7 +15783,6 @@ var MenuButton = function (_Component) {
   /**
    * Disable the `MenuButton`. Don't allow it to be clicked.
    */
-
 
   MenuButton.prototype.disable = function disable() {
     this.unpressButton();
@@ -16181,7 +15796,6 @@ var MenuButton = function (_Component) {
   /**
    * Enable the `MenuButton`. Allow it to be clicked.
    */
-
 
   MenuButton.prototype.enable = function enable() {
     this.enabled_ = true;
@@ -16306,7 +15920,6 @@ var MenuItem = function (_ClickableComponent) {
    *         The element that gets created.
    */
 
-
   MenuItem.prototype.createEl = function createEl(type, props, attrs) {
     // The control is textual, not just an icon
     this.nonIconControl = true;
@@ -16330,7 +15943,6 @@ var MenuItem = function (_ClickableComponent) {
    * @listens click
    */
 
-
   MenuItem.prototype.handleClick = function handleClick(event) {
     this.selected(true);
   };
@@ -16341,7 +15953,6 @@ var MenuItem = function (_ClickableComponent) {
    * @param {boolean} selected
    *        if the menu item is selected or not
    */
-
 
   MenuItem.prototype.selected = function selected(_selected) {
     if (this.selectable) {
@@ -16468,7 +16079,6 @@ var TextTrackMenuItem = function (_MenuItem) {
    * @listens click
    */
 
-
   TextTrackMenuItem.prototype.handleClick = function handleClick(event) {
     var kind = this.track.kind;
     var kinds = this.track.kinds;
@@ -16505,7 +16115,6 @@ var TextTrackMenuItem = function (_MenuItem) {
    *
    * @listens TextTrackList#change
    */
-
 
   TextTrackMenuItem.prototype.handleTracksChange = function handleTracksChange(event) {
     this.selected(this.track.mode === 'showing');
@@ -16597,7 +16206,6 @@ var OffTextTrackMenuItem = function (_TextTrackMenuItem) {
    *        The event that caused this function to run
    */
 
-
   OffTextTrackMenuItem.prototype.handleTracksChange = function handleTracksChange(event) {
     var tracks = this.player().textTracks();
     var selected = true;
@@ -16679,11 +16287,9 @@ var TextTrackButton = function (_TrackButton) {
    *         Array of menu items that were created
    */
 
-
   TextTrackButton.prototype.createItems = function createItems() {
     var items = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var TrackMenuItem = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : TextTrackMenuItem;
-
 
     // Label is an overide for the [track] off label
     // USed to localise captions/subtitles
@@ -16712,7 +16318,6 @@ var TextTrackButton = function (_TrackButton) {
 
       // only add tracks that are of an appropriate kind and have a label
       if (this.kinds_.indexOf(track.kind) > -1) {
-
         var item = new TrackMenuItem(this.player_, {
           track: track,
           // MenuItem is selectable
@@ -16785,7 +16390,6 @@ var ChaptersTrackMenuItem = function (_MenuItem) {
    * @listens click
    */
 
-
   ChaptersTrackMenuItem.prototype.handleClick = function handleClick(event) {
     _MenuItem.prototype.handleClick.call(this);
     this.player_.currentTime(this.cue.startTime);
@@ -16800,7 +16404,6 @@ var ChaptersTrackMenuItem = function (_MenuItem) {
    *
    * @listens TextTrack#cuechange
    */
-
 
   ChaptersTrackMenuItem.prototype.update = function update(event) {
     var cue = this.cue;
@@ -16853,7 +16456,6 @@ var ChaptersButton = function (_TextTrackButton) {
    *         The DOM `className` for this object.
    */
 
-
   ChaptersButton.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-chapters-button ' + _TextTrackButton.prototype.buildCSSClass.call(this);
   };
@@ -16873,7 +16475,6 @@ var ChaptersButton = function (_TextTrackButton) {
    * @listens TextTrackList#change
    */
 
-
   ChaptersButton.prototype.update = function update(event) {
     if (!this.track_ || event && (event.type === 'addtrack' || event.type === 'removetrack')) {
       this.setTrack(this.findChaptersTrack());
@@ -16888,7 +16489,6 @@ var ChaptersButton = function (_TextTrackButton) {
    *        The new track to select. Nothing will change if this is the currently selected
    *        track.
    */
-
 
   ChaptersButton.prototype.setTrack = function setTrack(track) {
     if (this.track_ === track) {
@@ -16931,7 +16531,6 @@ var ChaptersButton = function (_TextTrackButton) {
    *         The current track or undefined if none was found.
    */
 
-
   ChaptersButton.prototype.findChaptersTrack = function findChaptersTrack() {
     var tracks = this.player_.textTracks() || [];
 
@@ -16953,7 +16552,6 @@ var ChaptersButton = function (_TextTrackButton) {
    *         The tracks current label or the localized track kind.
    */
 
-
   ChaptersButton.prototype.getMenuCaption = function getMenuCaption() {
     if (this.track_ && this.track_.label) {
       return this.track_.label;
@@ -16968,7 +16566,6 @@ var ChaptersButton = function (_TextTrackButton) {
    *         New menu for the chapter buttons
    */
 
-
   ChaptersButton.prototype.createMenu = function createMenu() {
     this.options_.title = this.getMenuCaption();
     return _TextTrackButton.prototype.createMenu.call(this);
@@ -16980,7 +16577,6 @@ var ChaptersButton = function (_TextTrackButton) {
    * @return {TextTrackMenuItem[]}
    *         Array of menu items
    */
-
 
   ChaptersButton.prototype.createItems = function createItems() {
     var items = [];
@@ -17014,7 +16610,6 @@ var ChaptersButton = function (_TextTrackButton) {
  * @type {string}
  * @private
  */
-
 
 ChaptersButton.prototype.kind_ = 'chapters';
 
@@ -17076,7 +16671,6 @@ var DescriptionsButton = function (_TextTrackButton) {
    * @listens TextTrackList#change
    */
 
-
   DescriptionsButton.prototype.handleTracksChange = function handleTracksChange(event) {
     var tracks = this.player().textTracks();
     var disabled = false;
@@ -17106,7 +16700,6 @@ var DescriptionsButton = function (_TextTrackButton) {
    *         The DOM `className` for this object.
    */
 
-
   DescriptionsButton.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-descriptions-button ' + _TextTrackButton.prototype.buildCSSClass.call(this);
   };
@@ -17124,7 +16717,6 @@ var DescriptionsButton = function (_TextTrackButton) {
  * @type {string}
  * @private
  */
-
 
 DescriptionsButton.prototype.kind_ = 'descriptions';
 
@@ -17174,7 +16766,6 @@ var SubtitlesButton = function (_TextTrackButton) {
    *         The DOM `className` for this object.
    */
 
-
   SubtitlesButton.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-subtitles-button ' + _TextTrackButton.prototype.buildCSSClass.call(this);
   };
@@ -17192,7 +16783,6 @@ var SubtitlesButton = function (_TextTrackButton) {
  * @type {string}
  * @private
  */
-
 
 SubtitlesButton.prototype.kind_ = 'subtitles';
 
@@ -17263,7 +16853,6 @@ var CaptionSettingsMenuItem = function (_TextTrackMenuItem) {
    * @listens click
    */
 
-
   CaptionSettingsMenuItem.prototype.handleClick = function handleClick(event) {
     this.player().getChild('textTrackSettings').open();
   };
@@ -17309,7 +16898,6 @@ var CaptionsButton = function (_TextTrackButton) {
    *         The DOM `className` for this object.
    */
 
-
   CaptionsButton.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-captions-button ' + _TextTrackButton.prototype.buildCSSClass.call(this);
   };
@@ -17324,7 +16912,6 @@ var CaptionsButton = function (_TextTrackButton) {
    * @return {CaptionSettingsMenuItem[]}
    *         The array of current menu items.
    */
-
 
   CaptionsButton.prototype.createItems = function createItems() {
     var items = [];
@@ -17347,7 +16934,6 @@ var CaptionsButton = function (_TextTrackButton) {
  * @type {string}
  * @private
  */
-
 
 CaptionsButton.prototype.kind_ = 'captions';
 
@@ -17435,7 +17021,6 @@ var SubsCapsButton = function (_TextTrackButton) {
    *         The DOM `className` for this object.
    */
 
-
   SubsCapsButton.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-subs-caps-button ' + _TextTrackButton.prototype.buildCSSClass.call(this);
   };
@@ -17450,7 +17035,6 @@ var SubsCapsButton = function (_TextTrackButton) {
    * @return {CaptionSettingsMenuItem[]}
    *         The array of current menu items.
    */
-
 
   SubsCapsButton.prototype.createItems = function createItems() {
     var items = [];
@@ -17474,7 +17058,6 @@ var SubsCapsButton = function (_TextTrackButton) {
  * @type {array}
  * @private
  */
-
 
 SubsCapsButton.prototype.kinds_ = ['captions', 'subtitles'];
 
@@ -17551,7 +17134,6 @@ var AudioTrackMenuItem = function (_MenuItem) {
    * @listens click
    */
 
-
   AudioTrackMenuItem.prototype.handleClick = function handleClick(event) {
     var tracks = this.player_.audioTracks();
 
@@ -17572,7 +17154,6 @@ var AudioTrackMenuItem = function (_MenuItem) {
    *
    * @listens AudioTrackList#change
    */
-
 
   AudioTrackMenuItem.prototype.handleTracksChange = function handleTracksChange(event) {
     this.selected(this.track.enabled);
@@ -17620,7 +17201,6 @@ var AudioTrackButton = function (_TrackButton) {
    *         The DOM `className` for this object.
    */
 
-
   AudioTrackButton.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-audio-button ' + _TrackButton.prototype.buildCSSClass.call(this);
   };
@@ -17638,7 +17218,6 @@ var AudioTrackButton = function (_TrackButton) {
    * @return {AudioTrackMenuItem[]}
    *         An array of menu items
    */
-
 
   AudioTrackButton.prototype.createItems = function createItems() {
     var items = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -17670,7 +17249,6 @@ var AudioTrackButton = function (_TrackButton) {
  * @type {string}
  * @private
  */
-
 
 AudioTrackButton.prototype.controlText_ = 'Audio Track';
 Component.registerComponent('AudioTrackButton', AudioTrackButton);
@@ -17728,7 +17306,6 @@ var PlaybackRateMenuItem = function (_MenuItem) {
    * @listens click
    */
 
-
   PlaybackRateMenuItem.prototype.handleClick = function handleClick(event) {
     _MenuItem.prototype.handleClick.call(this);
     this.player().playbackRate(this.rate);
@@ -17743,7 +17320,6 @@ var PlaybackRateMenuItem = function (_MenuItem) {
    * @listens Player#ratechange
    */
 
-
   PlaybackRateMenuItem.prototype.update = function update(event) {
     this.selected(this.player().playbackRate() === this.rate);
   };
@@ -17757,7 +17333,6 @@ var PlaybackRateMenuItem = function (_MenuItem) {
  * @type {string}
  * @private
  */
-
 
 PlaybackRateMenuItem.prototype.contentElType = 'button';
 
@@ -17804,7 +17379,6 @@ var PlaybackRateMenuButton = function (_MenuButton) {
    *         The element that was created.
    */
 
-
   PlaybackRateMenuButton.prototype.createEl = function createEl$$1() {
     var el = _MenuButton.prototype.createEl.call(this);
 
@@ -17831,7 +17405,6 @@ var PlaybackRateMenuButton = function (_MenuButton) {
    *         The DOM `className` for this object.
    */
 
-
   PlaybackRateMenuButton.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-playback-rate ' + _MenuButton.prototype.buildCSSClass.call(this);
   };
@@ -17846,7 +17419,6 @@ var PlaybackRateMenuButton = function (_MenuButton) {
    * @return {Menu}
    *         Menu object populated with {@link PlaybackRateMenuItem}s
    */
-
 
   PlaybackRateMenuButton.prototype.createMenu = function createMenu() {
     var menu = new Menu(this.player());
@@ -17865,7 +17437,6 @@ var PlaybackRateMenuButton = function (_MenuButton) {
    * Updates ARIA accessibility attributes
    */
 
-
   PlaybackRateMenuButton.prototype.updateARIAAttributes = function updateARIAAttributes() {
     // Current playback rate
     this.el().setAttribute('aria-valuenow', this.player().playbackRate());
@@ -17882,7 +17453,6 @@ var PlaybackRateMenuButton = function (_MenuButton) {
    * @listens tap
    * @listens click
    */
-
 
   PlaybackRateMenuButton.prototype.handleClick = function handleClick(event) {
     // select next rate option
@@ -17908,7 +17478,6 @@ var PlaybackRateMenuButton = function (_MenuButton) {
    *         All possible playback rates
    */
 
-
   PlaybackRateMenuButton.prototype.playbackRates = function playbackRates() {
     return this.options_.playbackRates || this.options_.playerOptions && this.options_.playerOptions.playbackRates;
   };
@@ -17920,7 +17489,6 @@ var PlaybackRateMenuButton = function (_MenuButton) {
    * @return {boolean}
    *         Whether changing playback rate is supported
    */
-
 
   PlaybackRateMenuButton.prototype.playbackRateSupported = function playbackRateSupported() {
     return this.player().tech_ && this.player().tech_.featuresPlaybackRate && this.playbackRates() && this.playbackRates().length > 0;
@@ -17934,7 +17502,6 @@ var PlaybackRateMenuButton = function (_MenuButton) {
    *
    * @listens Player#loadstart
    */
-
 
   PlaybackRateMenuButton.prototype.updateVisibility = function updateVisibility(event) {
     if (this.playbackRateSupported()) {
@@ -17953,7 +17520,6 @@ var PlaybackRateMenuButton = function (_MenuButton) {
    * @listens Player#ratechange
    */
 
-
   PlaybackRateMenuButton.prototype.updateLabel = function updateLabel(event) {
     if (this.playbackRateSupported()) {
       this.labelEl_.innerHTML = this.player().playbackRate() + 'x';
@@ -17969,7 +17535,6 @@ var PlaybackRateMenuButton = function (_MenuButton) {
  * @type {string}
  * @private
  */
-
 
 PlaybackRateMenuButton.prototype.controlText_ = 'Playback Rate';
 
@@ -18009,7 +17574,6 @@ var Spacer = function (_Component) {
    * @return {Element}
    *         The element that was created.
    */
-
 
   Spacer.prototype.createEl = function createEl() {
     return _Component.prototype.createEl.call(this, 'div', {
@@ -18055,7 +17619,6 @@ var CustomControlSpacer = function (_Spacer) {
    * @return {Element}
    *         The element that was created.
    */
-
 
   CustomControlSpacer.prototype.createEl = function createEl() {
     var el = _Spacer.prototype.createEl.call(this, {
@@ -18118,7 +17681,6 @@ var ControlBar = function (_Component) {
  * @private
  */
 
-
 ControlBar.prototype.options_ = {
   children: ['playToggle', 'volumePanel', 'currentTimeDisplay', 'timeDivider', 'durationDisplay', 'progressControl', 'liveDisplay', 'remainingTimeDisplay', 'customControlSpacer', 'playbackRateMenuButton', 'chaptersButton', 'descriptionsButton', 'subsCapsButton', 'audioTrackButton', 'fullscreenToggle']
 };
@@ -18165,7 +17727,6 @@ var ErrorDisplay = function (_ModalDialog) {
    * @deprecated Since version 5.
    */
 
-
   ErrorDisplay.prototype.buildCSSClass = function buildCSSClass() {
     return 'vjs-error-display ' + _ModalDialog.prototype.buildCSSClass.call(this);
   };
@@ -18176,7 +17737,6 @@ var ErrorDisplay = function (_ModalDialog) {
    * @return {string}
    *         The `Player`s error message localized or an empty string.
    */
-
 
   ErrorDisplay.prototype.content = function content() {
     var error = this.player().error();
@@ -18192,7 +17752,6 @@ var ErrorDisplay = function (_ModalDialog) {
  *
  * @private
  */
-
 
 ErrorDisplay.prototype.options_ = mergeOptions(ModalDialog.prototype.options_, {
   pauseOnOpen: false,
@@ -18462,7 +18021,6 @@ var TextTrackSettings = function (_ModalDialog) {
    * @private
    */
 
-
   TextTrackSettings.prototype.createElSelect_ = function createElSelect_(key) {
     var _this2 = this;
 
@@ -18488,7 +18046,6 @@ var TextTrackSettings = function (_ModalDialog) {
    * @private
    */
 
-
   TextTrackSettings.prototype.createElFgColor_ = function createElFgColor_() {
     var legendId = 'captions-text-legend-' + this.id_;
 
@@ -18503,7 +18060,6 @@ var TextTrackSettings = function (_ModalDialog) {
    *
    * @private
    */
-
 
   TextTrackSettings.prototype.createElBgColor_ = function createElBgColor_() {
     var legendId = 'captions-background-' + this.id_;
@@ -18520,7 +18076,6 @@ var TextTrackSettings = function (_ModalDialog) {
    * @private
    */
 
-
   TextTrackSettings.prototype.createElWinColor_ = function createElWinColor_() {
     var legendId = 'captions-window-' + this.id_;
 
@@ -18535,7 +18090,6 @@ var TextTrackSettings = function (_ModalDialog) {
    *
    * @private
    */
-
 
   TextTrackSettings.prototype.createElColors_ = function createElColors_() {
     return createEl('div', {
@@ -18553,7 +18107,6 @@ var TextTrackSettings = function (_ModalDialog) {
    * @private
    */
 
-
   TextTrackSettings.prototype.createElFont_ = function createElFont_() {
     return createEl('div', {
       className: 'vjs-track-settings-font">',
@@ -18569,7 +18122,6 @@ var TextTrackSettings = function (_ModalDialog) {
    *
    * @private
    */
-
 
   TextTrackSettings.prototype.createElControls_ = function createElControls_() {
     var defaultsDescription = this.localize('restore all settings to the default values');
@@ -18603,7 +18155,6 @@ var TextTrackSettings = function (_ModalDialog) {
    *         An object with config values parsed from the DOM or localStorage.
    */
 
-
   TextTrackSettings.prototype.getValues = function getValues() {
     var _this3 = this;
 
@@ -18625,7 +18176,6 @@ var TextTrackSettings = function (_ModalDialog) {
    *        An object with config values parsed from the DOM or localStorage.
    */
 
-
   TextTrackSettings.prototype.setValues = function setValues(values) {
     var _this4 = this;
 
@@ -18637,7 +18187,6 @@ var TextTrackSettings = function (_ModalDialog) {
   /**
    * Sets all `<select>` elements to their default values.
    */
-
 
   TextTrackSettings.prototype.setDefaults = function setDefaults() {
     var _this5 = this;
@@ -18652,7 +18201,6 @@ var TextTrackSettings = function (_ModalDialog) {
   /**
    * Restore texttrack settings from localStorage
    */
-
 
   TextTrackSettings.prototype.restoreSettings = function restoreSettings() {
     var values = void 0;
@@ -18671,7 +18219,6 @@ var TextTrackSettings = function (_ModalDialog) {
   /**
    * Save text track settings to localStorage
    */
-
 
   TextTrackSettings.prototype.saveSettings = function saveSettings() {
     if (!this.options_.persistTextTrackSettings) {
@@ -18695,7 +18242,6 @@ var TextTrackSettings = function (_ModalDialog) {
    * Update display of text track settings
    */
 
-
   TextTrackSettings.prototype.updateDisplay = function updateDisplay() {
     var ttDisplay = this.player_.getChild('textTrackDisplay');
 
@@ -18709,7 +18255,6 @@ var TextTrackSettings = function (_ModalDialog) {
    *
    * @private
    */
-
 
   TextTrackSettings.prototype.conditionalBlur_ = function conditionalBlur_() {
     this.previouslyActiveEl_ = null;
@@ -18774,7 +18319,6 @@ var Html5 = function (_Tech) {
     }
 
     if (_this.el_.hasChildNodes()) {
-
       var nodes = _this.el_.childNodes;
       var nodesLength = nodes.length;
       var removeNodes = [];
@@ -18835,7 +18379,6 @@ var Html5 = function (_Tech) {
    * Dispose of `HTML5` media element and remove all tracks.
    */
 
-
   Html5.prototype.dispose = function dispose() {
     Html5.disposeMediaElement(this.el_);
     this.options_ = null;
@@ -18852,7 +18395,6 @@ var Html5 = function (_Tech) {
    *
    * @private
    */
-
 
   Html5.prototype.restoreMetadataTracksInIOSNativePlayer_ = function restoreMetadataTracksInIOSNativePlayer_() {
     var textTracks = this.textTracks();
@@ -18922,7 +18464,6 @@ var Html5 = function (_Tech) {
    *
    * @private
    */
-
 
   Html5.prototype.proxyNativeTracks_ = function proxyNativeTracks_() {
     var _this2 = this;
@@ -18998,7 +18539,6 @@ var Html5 = function (_Tech) {
    *         The element that gets created.
    */
 
-
   Html5.prototype.createEl = function createEl$$1() {
     var el = this.options_.tag;
 
@@ -19007,7 +18547,6 @@ var Html5 = function (_Tech) {
     // So we have to create a brand new element.
     // If we ingested the player div, we do not need to move the media element.
     if (!el || !(this.options_.playerElIngest || this.movingMediaElementInDOM)) {
-
       // If the original tag is still there, clone and remove it.
       if (el) {
         var clone = el.cloneNode(true);
@@ -19076,7 +18615,6 @@ var Html5 = function (_Tech) {
    * @return {undefined}
    *         returns nothing.
    */
-
 
   Html5.prototype.handleLateInit_ = function handleLateInit_(el) {
     if (el.networkState === 0 || el.networkState === 3) {
@@ -19165,7 +18703,6 @@ var Html5 = function (_Tech) {
    *        Set the current time of the media to this.
    */
 
-
   Html5.prototype.setCurrentTime = function setCurrentTime(seconds) {
     try {
       this.el_.currentTime = seconds;
@@ -19181,7 +18718,6 @@ var Html5 = function (_Tech) {
    * @return {number}
    *         The duration of the media or 0 if there is no duration.
    */
-
 
   Html5.prototype.duration = function duration() {
     var _this3 = this;
@@ -19216,7 +18752,6 @@ var Html5 = function (_Tech) {
    *         The width of the HTML5 media element.
    */
 
-
   Html5.prototype.width = function width() {
     return this.el_.offsetWidth;
   };
@@ -19227,7 +18762,6 @@ var Html5 = function (_Tech) {
    * @return {number}
    *         The heigth of the HTML5 media element.
    */
-
 
   Html5.prototype.height = function height() {
     return this.el_.offsetHeight;
@@ -19243,7 +18777,6 @@ var Html5 = function (_Tech) {
    * @listens webkitbeginfullscreen
    * @listens webkitbeginfullscreen
    */
-
 
   Html5.prototype.proxyWebkitFullscreen_ = function proxyWebkitFullscreen_() {
     var _this4 = this;
@@ -19279,7 +18812,6 @@ var Html5 = function (_Tech) {
    *         - False if fullscreen is not supported.
    */
 
-
   Html5.prototype.supportsFullScreen = function supportsFullScreen() {
     if (typeof this.el_.webkitEnterFullScreen === 'function') {
       var userAgent = window_1.navigator && window_1.navigator.userAgent || '';
@@ -19295,7 +18827,6 @@ var Html5 = function (_Tech) {
   /**
    * Request that the `HTML5` Tech enter fullscreen.
    */
-
 
   Html5.prototype.enterFullScreen = function enterFullScreen() {
     var video = this.el_;
@@ -19320,7 +18851,6 @@ var Html5 = function (_Tech) {
    * Request that the `HTML5` Tech exit fullscreen.
    */
 
-
   Html5.prototype.exitFullScreen = function exitFullScreen() {
     this.el_.webkitExitFullScreen();
   };
@@ -19339,7 +18869,6 @@ var Html5 = function (_Tech) {
    * @deprecated Since version 5.
    */
 
-
   Html5.prototype.src = function src(_src) {
     if (_src === undefined) {
       return this.el_.src;
@@ -19354,7 +18883,6 @@ var Html5 = function (_Tech) {
    * {@link Html5.resetMediaElement}.
    */
 
-
   Html5.prototype.reset = function reset() {
     Html5.resetMediaElement(this.el_);
   };
@@ -19367,7 +18895,6 @@ var Html5 = function (_Tech) {
    *         The current source object from the HTML5 tech. With a fallback to the
    *         elements source.
    */
-
 
   Html5.prototype.currentSrc = function currentSrc() {
     if (this.currentSource_) {
@@ -19382,7 +18909,6 @@ var Html5 = function (_Tech) {
    * @param {string} val
    *        Value to set the controls attribute to
    */
-
 
   Html5.prototype.setControls = function setControls(val) {
     this.el_.controls = !!val;
@@ -19403,7 +18929,6 @@ var Html5 = function (_Tech) {
    * @return {TextTrack}
    *         The TextTrack that gets created.
    */
-
 
   Html5.prototype.addTextTrack = function addTextTrack(kind, label, language) {
     if (!this.featuresNativeTextTracks) {
@@ -19441,7 +18966,6 @@ var Html5 = function (_Tech) {
    * @return {HTMLTrackElement}
    *         The track element that gets created.
    */
-
 
   Html5.prototype.createRemoteTextTrack = function createRemoteTextTrack(options) {
     if (!this.featuresNativeTextTracks) {
@@ -19484,7 +19008,6 @@ var Html5 = function (_Tech) {
    * to "false" in upcoming versions of Video.js
    */
 
-
   Html5.prototype.addRemoteTextTrack = function addRemoteTextTrack(options, manualCleanup) {
     var htmlTrackElement = _Tech.prototype.addRemoteTextTrack.call(this, options, manualCleanup);
 
@@ -19501,7 +19024,6 @@ var Html5 = function (_Tech) {
    * @param {TextTrack} track
    *        `TextTrack` object to remove
    */
-
 
   Html5.prototype.removeRemoteTextTrack = function removeRemoteTextTrack(track) {
     _Tech.prototype.removeRemoteTextTrack.call(this, track);
@@ -19528,7 +19050,6 @@ var Html5 = function (_Tech) {
    * @return {Object}
    *         An object with supported media playback quality metrics
    */
-
 
   Html5.prototype.getVideoPlaybackQuality = function getVideoPlaybackQuality() {
     if (typeof this.el().getVideoPlaybackQuality === 'function') {
@@ -19557,7 +19078,6 @@ var Html5 = function (_Tech) {
 /* HTML5 Support Testing ---------------------------------------------------- */
 
 if (isReal()) {
-
   /**
    * Element for testing browser HTML5 media capabilities
    *
@@ -19788,7 +19308,6 @@ var mpegurlRE = /^application\/(?:x-|vnd\.apple\.)mpegurl/i;
 var mp4RE = /^video\/mp4/i;
 
 Html5.patchCanPlayType = function () {
-
   // Android 4.0 and above can play HLS to some extent but it reports being unable to do so
   if (ANDROID_VERSION >= 4.0 && !IS_FIREFOX) {
     Html5.TEST_VID.constructor.prototype.canPlayType = function (type) {
@@ -20496,7 +20015,6 @@ Html5.nativeSourceHandler.canPlayType = function (type) {
  *         'probably', 'maybe', or '' (empty string).
  */
 Html5.nativeSourceHandler.canHandleSource = function (source, options) {
-
   // If a type was provided we should rely on that
   if (source.type) {
     return Html5.nativeSourceHandler.canPlayType(source.type);
@@ -20984,7 +20502,6 @@ var Player = function (_Component) {
    * @fires Player#dispose
    */
 
-
   Player.prototype.dispose = function dispose() {
     /**
      * Called when the player is being disposed of.
@@ -21034,7 +20551,6 @@ var Player = function (_Component) {
    * @return {Element}
    *         The DOM element that gets created.
    */
-
 
   Player.prototype.createEl = function createEl$$1() {
     var tag = this.tag;
@@ -21172,7 +20688,6 @@ var Player = function (_Component) {
    *         The current width of the `Player` when getting.
    */
 
-
   Player.prototype.width = function width(value, skipListeners) {
     return this.dimension('width', value, skipListeners);
   };
@@ -21190,7 +20705,6 @@ var Player = function (_Component) {
    * @return {number}
    *         The current height of the `Player` when getting.
    */
-
 
   Player.prototype.height = function height(value, skipListeners) {
     return this.dimension('height', value, skipListeners);
@@ -21215,7 +20729,6 @@ var Player = function (_Component) {
    * @return {number}
    *         The dimension arguments value when getting (width/height).
    */
-
 
   Player.prototype.dimension = function dimension(_dimension, value, skipListeners) {
     var privDimension = _dimension + '_';
@@ -21266,7 +20779,6 @@ var Player = function (_Component) {
    *         - `undefined` when setting.
    */
 
-
   Player.prototype.fluid = function fluid(bool) {
     if (bool === undefined) {
       return !!this.fluid_;
@@ -21304,7 +20816,6 @@ var Player = function (_Component) {
    *         - undefined when setting
    */
 
-
   Player.prototype.aspectRatio = function aspectRatio(ratio) {
     if (ratio === undefined) {
       return this.aspectRatio_;
@@ -21329,7 +20840,6 @@ var Player = function (_Component) {
    * @private
    * @listens Tech#loadedmetadata
    */
-
 
   Player.prototype.updateStyleEl_ = function updateStyleEl_() {
     if (window_1.VIDEOJS_NO_DYNAMIC_STYLE === true) {
@@ -21414,7 +20924,6 @@ var Player = function (_Component) {
    *
    * @private
    */
-
 
   Player.prototype.loadTech_ = function loadTech_(techName, source) {
     var _this2 = this;
@@ -21535,7 +21044,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.unloadTech_ = function unloadTech_() {
     var _this3 = this;
 
@@ -21565,7 +21073,6 @@ var Player = function (_Component) {
    * @return {Tech}
    *         The Tech
    */
-
 
   Player.prototype.tech = function tech(safety) {
     if (safety === undefined) {
@@ -21597,7 +21104,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.addTechControlsListeners_ = function addTechControlsListeners_() {
     // Make sure to remove all the previous listeners in case we are called multiple times.
     this.removeTechControlsListeners_();
@@ -21627,7 +21133,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.removeTechControlsListeners_ = function removeTechControlsListeners_() {
     // We don't want to just use `this.off()` because there might be other needed
     // listeners added by techs that extend this.
@@ -21643,7 +21148,6 @@ var Player = function (_Component) {
    *
    * @private
    */
-
 
   Player.prototype.handleTechReady_ = function handleTechReady_() {
     this.triggerReady();
@@ -21683,7 +21187,6 @@ var Player = function (_Component) {
    * @listens Tech#loadstart
    * @private
    */
-
 
   Player.prototype.handleTechLoadStart_ = function handleTechLoadStart_() {
     // TODO: Update to use `emptied` event instead. See #1277.
@@ -21726,7 +21229,6 @@ var Player = function (_Component) {
    *         the boolean value of hasStarted_
    */
 
-
   Player.prototype.hasStarted = function hasStarted(request) {
     if (request === undefined) {
       // act as getter, if we have no request to change
@@ -21756,7 +21258,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.handleTechPlay_ = function handleTechPlay_() {
     this.removeClass('vjs-ended');
     this.removeClass('vjs-paused');
@@ -21781,7 +21282,6 @@ var Player = function (_Component) {
    * @listens Tech#waiting
    * @private
    */
-
 
   Player.prototype.handleTechWaiting_ = function handleTechWaiting_() {
     var _this4 = this;
@@ -21808,7 +21308,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.handleTechCanPlay_ = function handleTechCanPlay_() {
     this.removeClass('vjs-waiting');
     /**
@@ -21827,7 +21326,6 @@ var Player = function (_Component) {
    * @listens Tech#canplaythrough
    * @private
    */
-
 
   Player.prototype.handleTechCanPlayThrough_ = function handleTechCanPlayThrough_() {
     this.removeClass('vjs-waiting');
@@ -21849,7 +21347,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.handleTechPlaying_ = function handleTechPlaying_() {
     this.removeClass('vjs-waiting');
     /**
@@ -21869,7 +21366,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.handleTechSeeking_ = function handleTechSeeking_() {
     this.addClass('vjs-seeking');
     /**
@@ -21888,7 +21384,6 @@ var Player = function (_Component) {
    * @listens Tech#seeked
    * @private
    */
-
 
   Player.prototype.handleTechSeeked_ = function handleTechSeeked_() {
     this.removeClass('vjs-seeking');
@@ -21910,7 +21405,6 @@ var Player = function (_Component) {
    * @deprecated As of 6.0 passing the `starttime` option to the player and the firstplay event are deprecated.
    * @private
    */
-
 
   Player.prototype.handleTechFirstPlay_ = function handleTechFirstPlay_() {
     // If the first starttime attribute is specified
@@ -21941,7 +21435,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.handleTechPause_ = function handleTechPause_() {
     this.removeClass('vjs-playing');
     this.addClass('vjs-paused');
@@ -21961,7 +21454,6 @@ var Player = function (_Component) {
    * @listens Tech#ended
    * @private
    */
-
 
   Player.prototype.handleTechEnded_ = function handleTechEnded_() {
     this.addClass('vjs-ended');
@@ -21988,7 +21480,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.handleTechDurationChange_ = function handleTechDurationChange_() {
     this.duration(this.techGet_('duration'));
   };
@@ -22002,7 +21493,6 @@ var Player = function (_Component) {
    * @listens Tech#mousedown
    * @private
    */
-
 
   Player.prototype.handleTechClick_ = function handleTechClick_(event) {
     if (!isSingleLeftClick(event)) {
@@ -22030,7 +21520,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.handleTechTap_ = function handleTechTap_() {
     this.userActive(!this.userActive());
   };
@@ -22042,7 +21531,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.handleTechTouchStart_ = function handleTechTouchStart_() {
     this.userWasActive = this.userActive();
   };
@@ -22053,7 +21541,6 @@ var Player = function (_Component) {
    * @listens Tech#touchmove
    * @private
    */
-
 
   Player.prototype.handleTechTouchMove_ = function handleTechTouchMove_() {
     if (this.userWasActive) {
@@ -22072,7 +21559,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.handleTechTouchEnd_ = function handleTechTouchEnd_(event) {
     // Stop the mouse events from also happening
     event.preventDefault();
@@ -22084,7 +21570,6 @@ var Player = function (_Component) {
    * @private
    * @listens Player#fullscreenchange
    */
-
 
   Player.prototype.handleFullscreenChange_ = function handleFullscreenChange_() {
     if (this.isFullscreen()) {
@@ -22101,7 +21586,6 @@ var Player = function (_Component) {
    * @private
    * @listens stageclick
    */
-
 
   Player.prototype.handleStageClick_ = function handleStageClick_() {
     this.reportUserActivity();
@@ -22120,7 +21604,6 @@ var Player = function (_Component) {
    * @listens Tech#fullscreenchange
    * @fires Player#fullscreenchange
    */
-
 
   Player.prototype.handleTechFullscreenChange_ = function handleTechFullscreenChange_(event, data) {
     if (data) {
@@ -22142,7 +21625,6 @@ var Player = function (_Component) {
    * @listens Tech#error
    */
 
-
   Player.prototype.handleTechError_ = function handleTechError_() {
     var error = this.tech_.error();
 
@@ -22156,7 +21638,6 @@ var Player = function (_Component) {
    * @listens Tech#textdata
    * @private
    */
-
 
   Player.prototype.handleTechTextData_ = function handleTechTextData_() {
     var data = null;
@@ -22181,7 +21662,6 @@ var Player = function (_Component) {
    *         get the current object cache
    */
 
-
   Player.prototype.getCache = function getCache() {
     return this.cache_;
   };
@@ -22197,7 +21677,6 @@ var Player = function (_Component) {
    *
    * @private
    */
-
 
   Player.prototype.techCall_ = function techCall_(method, arg) {
     // If it's not ready yet, call method when it is
@@ -22230,7 +21709,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.techGet_ = function techGet_(method) {
     if (!this.tech_ || !this.tech_.isReady_) {
       return;
@@ -22246,7 +21724,6 @@ var Player = function (_Component) {
     try {
       return this.tech_[method]();
     } catch (e) {
-
       // When building additional tech libs, an expected method may not be defined yet
       if (this.tech_[method] === undefined) {
         log$1('Video.js: ' + method + ' method not defined for ' + this.techName_ + ' playback technology.', e);
@@ -22275,7 +21752,6 @@ var Player = function (_Component) {
    *         situations, this will return `undefined`.
    */
 
-
   Player.prototype.play = function play() {
     var _this5 = this;
 
@@ -22289,7 +21765,6 @@ var Player = function (_Component) {
     // when it is. This will loop back into this method for another attempt at
     // playback when the tech is ready.
     if (!this.isReady_) {
-
       // Bail out if we're already waiting for `ready`!
       if (this.playWaitingForReady_) {
         return;
@@ -22312,7 +21787,6 @@ var Player = function (_Component) {
       // This can happen if `play()` is called while changing sources or before
       // one has been set on the player.
     } else {
-
       this.playOnLoadstart_ = function () {
         _this5.playOnLoadstart_ = null;
         silencePromise(_this5.play());
@@ -22329,7 +21803,6 @@ var Player = function (_Component) {
    *         A reference to the player object this function was called on
    */
 
-
   Player.prototype.pause = function pause() {
     this.techCall_('pause');
   };
@@ -22341,7 +21814,6 @@ var Player = function (_Component) {
    *         - false: if the media is currently playing
    *         - true: if media is not currently playing
    */
-
 
   Player.prototype.paused = function paused() {
     // The initial state of paused should be true (in Safari it's actually false)
@@ -22356,7 +21828,6 @@ var Player = function (_Component) {
    *         A time range object that represents all the increments of time that have
    *         been played.
    */
-
 
   Player.prototype.played = function played() {
     return this.techGet_('played') || createTimeRanges(0, 0);
@@ -22373,7 +21844,6 @@ var Player = function (_Component) {
    * @return {boolean}
    *         The value of scrubbing when getting
    */
-
 
   Player.prototype.scrubbing = function scrubbing(isScrubbing) {
     if (typeof isScrubbing === 'undefined') {
@@ -22397,7 +21867,6 @@ var Player = function (_Component) {
    * @return {number}
    *         - the current time in seconds when getting
    */
-
 
   Player.prototype.currentTime = function currentTime(seconds) {
     if (typeof seconds !== 'undefined') {
@@ -22434,7 +21903,6 @@ var Player = function (_Component) {
    * @return {number}
    *         - The duration of the video in seconds when getting
    */
-
 
   Player.prototype.duration = function duration(seconds) {
     if (seconds === undefined) {
@@ -22474,7 +21942,6 @@ var Player = function (_Component) {
    *         The time remaining in seconds
    */
 
-
   Player.prototype.remainingTime = function remainingTime() {
     return this.duration() - this.currentTime();
   };
@@ -22486,7 +21953,6 @@ var Player = function (_Component) {
    * @return {number}
    *         The rounded time remaining in seconds
    */
-
 
   Player.prototype.remainingTimeDisplay = function remainingTimeDisplay() {
     return Math.floor(this.duration()) - Math.floor(this.currentTime());
@@ -22505,7 +21971,6 @@ var Player = function (_Component) {
    * @return {TimeRange}
    *         A mock TimeRange object (following HTML spec)
    */
-
 
   Player.prototype.buffered = function buffered() {
     var buffered = this.techGet_('buffered');
@@ -22526,7 +21991,6 @@ var Player = function (_Component) {
    *         that is bufferred 0 being 0% and 1 being 100%
    */
 
-
   Player.prototype.bufferedPercent = function bufferedPercent$$1() {
     return bufferedPercent(this.buffered(), this.duration());
   };
@@ -22538,7 +22002,6 @@ var Player = function (_Component) {
    * @return {number}
    *         The end of the last buffered time range
    */
-
 
   Player.prototype.bufferedEnd = function bufferedEnd() {
     var buffered = this.buffered();
@@ -22564,7 +22027,6 @@ var Player = function (_Component) {
    * @return {number}
    *         The current volume as a percent when getting
    */
-
 
   Player.prototype.volume = function volume(percentAsDecimal) {
     var vol = void 0;
@@ -22598,7 +22060,6 @@ var Player = function (_Component) {
    *         - true if mute is on and getting
    *         - false if mute is off and getting
    */
-
 
   Player.prototype.muted = function muted(_muted) {
     if (_muted !== undefined) {
@@ -22635,7 +22096,6 @@ var Player = function (_Component) {
    *         - A reference to the current player when setting
    */
 
-
   Player.prototype.defaultMuted = function defaultMuted(_defaultMuted) {
     if (_defaultMuted !== undefined) {
       return this.techCall_('setDefaultMuted', _defaultMuted);
@@ -22658,7 +22118,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.lastVolume_ = function lastVolume_(percentAsDecimal) {
     if (percentAsDecimal !== undefined && percentAsDecimal !== 0) {
       this.cache_.lastVolume = percentAsDecimal;
@@ -22674,7 +22133,6 @@ var Player = function (_Component) {
    * @return {boolean}
    *         if native fullscreen is supported
    */
-
 
   Player.prototype.supportsFullScreen = function supportsFullScreen() {
     return this.techGet_('supportsFullScreen') || false;
@@ -22696,7 +22154,6 @@ var Player = function (_Component) {
    *         - false if fullscreen is off and getting
    */
 
-
   Player.prototype.isFullscreen = function isFullscreen(isFS) {
     if (isFS !== undefined) {
       this.isFullscreen_ = !!isFS;
@@ -22716,7 +22173,6 @@ var Player = function (_Component) {
    *
    * @fires Player#fullscreenchange
    */
-
 
   Player.prototype.requestFullscreen = function requestFullscreen() {
     var fsApi = FullscreenApi;
@@ -22769,7 +22225,6 @@ var Player = function (_Component) {
    * @fires Player#fullscreenchange
    */
 
-
   Player.prototype.exitFullscreen = function exitFullscreen() {
     var fsApi = FullscreenApi;
 
@@ -22796,7 +22251,6 @@ var Player = function (_Component) {
    *
    * @fires Player#enterFullWindow
    */
-
 
   Player.prototype.enterFullWindow = function enterFullWindow() {
     this.isFullWindow = true;
@@ -22828,7 +22282,6 @@ var Player = function (_Component) {
    *        Event to check for key press
    */
 
-
   Player.prototype.fullWindowOnEscKey = function fullWindowOnEscKey(event) {
     if (event.keyCode === 27) {
       if (this.isFullscreen() === true) {
@@ -22844,7 +22297,6 @@ var Player = function (_Component) {
    *
    * @fires Player#exitFullWindow
    */
-
 
   Player.prototype.exitFullWindow = function exitFullWindow() {
     this.isFullWindow = false;
@@ -22876,7 +22328,6 @@ var Player = function (_Component) {
    * @return {string}
    *         'probably', 'maybe', or '' (empty string)
    */
-
 
   Player.prototype.canPlayType = function canPlayType(type) {
     var can = void 0;
@@ -22922,7 +22373,6 @@ var Player = function (_Component) {
    * @return {Object|boolean}
    *         Object of source and tech order or false
    */
-
 
   Player.prototype.selectSource = function selectSource(sources) {
     var _this6 = this;
@@ -23008,7 +22458,6 @@ var Player = function (_Component) {
    *         URL. Otherwise, returns nothing/undefined.
    */
 
-
   Player.prototype.src = function src(source) {
     var _this7 = this;
 
@@ -23082,7 +22531,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.src_ = function src_(source) {
     var sourceTech = this.selectSource([source]);
 
@@ -23100,7 +22548,6 @@ var Player = function (_Component) {
 
     // wait until the tech is ready to set the source
     this.ready(function () {
-
       // The setSource tech method was added with source handlers
       // so older techs won't support it
       // We need to check the direct prototype for the case where subclasses
@@ -23125,7 +22572,6 @@ var Player = function (_Component) {
    * Begin loading the src data.
    */
 
-
   Player.prototype.load = function load() {
     this.techCall_('load');
   };
@@ -23134,7 +22580,6 @@ var Player = function (_Component) {
    * Reset the player. Loads the first tech in the techOrder,
    * and calls `reset` on the tech`.
    */
-
 
   Player.prototype.reset = function reset() {
     this.loadTech_(this.options_.techOrder[0], null);
@@ -23147,7 +22592,6 @@ var Player = function (_Component) {
    * @return {Tech~SourceObject[]}
    *         The current source objects
    */
-
 
   Player.prototype.currentSources = function currentSources() {
     var source = this.currentSource();
@@ -23168,7 +22612,6 @@ var Player = function (_Component) {
    *         The current source object
    */
 
-
   Player.prototype.currentSource = function currentSource() {
     return this.cache_.source || {};
   };
@@ -23180,7 +22623,6 @@ var Player = function (_Component) {
    * @return {string}
    *         The current source
    */
-
 
   Player.prototype.currentSrc = function currentSrc() {
     return this.currentSource() && this.currentSource().src || '';
@@ -23194,7 +22636,6 @@ var Player = function (_Component) {
    * @return {string}
    *         The source MIME type
    */
-
 
   Player.prototype.currentType = function currentType() {
     return this.currentSource() && this.currentSource().type || '';
@@ -23210,7 +22651,6 @@ var Player = function (_Component) {
    * @return {string}
    *         The preload attribute value when getting
    */
-
 
   Player.prototype.preload = function preload(value) {
     if (value !== undefined) {
@@ -23232,7 +22672,6 @@ var Player = function (_Component) {
    *         The current value of autoplay when getting
    */
 
-
   Player.prototype.autoplay = function autoplay(value) {
     if (value !== undefined) {
       this.techCall_('setAutoplay', value);
@@ -23250,7 +22689,6 @@ var Player = function (_Component) {
    *
    * @private
    */
-
 
   Player.prototype.forceAutoplayInChrome_ = function forceAutoplayInChrome_() {
     if (this.paused() && (
@@ -23279,7 +22717,6 @@ var Player = function (_Component) {
    * @see [Spec]{@link https://html.spec.whatwg.org/#attr-video-playsinline}
    */
 
-
   Player.prototype.playsinline = function playsinline(value) {
     if (value !== undefined) {
       this.techCall_('setPlaysinline', value);
@@ -23299,7 +22736,6 @@ var Player = function (_Component) {
    * @return {string}
    *         The current value of loop when getting
    */
-
 
   Player.prototype.loop = function loop(value) {
     if (value !== undefined) {
@@ -23321,7 +22757,6 @@ var Player = function (_Component) {
    * @return {string}
    *         The current value of poster when getting
    */
-
 
   Player.prototype.poster = function poster(src) {
     if (src === undefined) {
@@ -23363,7 +22798,6 @@ var Player = function (_Component) {
    * @private
    */
 
-
   Player.prototype.handleTechPosterChange_ = function handleTechPosterChange_() {
     if (!this.poster_ && this.tech_ && this.tech_.poster) {
       this.poster_ = this.tech_.poster() || '';
@@ -23385,7 +22819,6 @@ var Player = function (_Component) {
    * @return {boolean}
    *         The current value of controls when getting
    */
-
 
   Player.prototype.controls = function controls(bool) {
     if (bool === undefined) {
@@ -23448,7 +22881,6 @@ var Player = function (_Component) {
    *         The current value of native controls when getting
    */
 
-
   Player.prototype.usingNativeControls = function usingNativeControls(bool) {
     if (bool === undefined) {
       return !!this.usingNativeControls_;
@@ -23499,7 +22931,6 @@ var Player = function (_Component) {
    *         The current MediaError when getting (or null)
    */
 
-
   Player.prototype.error = function error(err) {
     if (err === undefined) {
       return this.error_ || null;
@@ -23540,7 +22971,6 @@ var Player = function (_Component) {
    *        Event object
    */
 
-
   Player.prototype.reportUserActivity = function reportUserActivity(event) {
     this.userActivity_ = true;
   };
@@ -23558,7 +22988,6 @@ var Player = function (_Component) {
    * @return {boolean}
    *         The current value of userActive when getting
    */
-
 
   Player.prototype.userActive = function userActive(bool) {
     if (bool === undefined) {
@@ -23615,7 +23044,6 @@ var Player = function (_Component) {
    *
    * @private
    */
-
 
   Player.prototype.listenForUserActivity_ = function listenForUserActivity_() {
     var mouseInProgress = void 0;
@@ -23716,7 +23144,6 @@ var Player = function (_Component) {
    *         The current playback rate when getting or 1.0
    */
 
-
   Player.prototype.playbackRate = function playbackRate(rate) {
     if (rate !== undefined) {
       this.techCall_('setPlaybackRate', rate);
@@ -23745,7 +23172,6 @@ var Player = function (_Component) {
    *         - the player when setting
    */
 
-
   Player.prototype.defaultPlaybackRate = function defaultPlaybackRate(rate) {
     if (rate !== undefined) {
       return this.techCall_('setDefaultPlaybackRate', rate);
@@ -23767,7 +23193,6 @@ var Player = function (_Component) {
    * @return {boolean}
    *         The current value of isAudio when getting
    */
-
 
   Player.prototype.isAudio = function isAudio(bool) {
     if (bool !== undefined) {
@@ -23800,7 +23225,6 @@ var Player = function (_Component) {
    *         if there is no tech
    */
 
-
   Player.prototype.addTextTrack = function addTextTrack(kind, label, language) {
     if (this.tech_) {
       return this.tech_.addTextTrack(kind, label, language);
@@ -23827,7 +23251,6 @@ var Player = function (_Component) {
    *             to "false" in upcoming versions of Video.js
    */
 
-
   Player.prototype.addRemoteTextTrack = function addRemoteTextTrack(options, manualCleanup) {
     if (this.tech_) {
       return this.tech_.addRemoteTextTrack(options, manualCleanup);
@@ -23844,7 +23267,6 @@ var Player = function (_Component) {
    * @return {undefined}
    *         does not return anything
    */
-
 
   Player.prototype.removeRemoteTextTrack = function removeRemoteTextTrack() {
     var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
@@ -23870,7 +23292,6 @@ var Player = function (_Component) {
    *         is no tech or the tech does not support it.
    */
 
-
   Player.prototype.getVideoPlaybackQuality = function getVideoPlaybackQuality() {
     return this.techGet_('getVideoPlaybackQuality');
   };
@@ -23882,7 +23303,6 @@ var Player = function (_Component) {
    *         current video width
    */
 
-
   Player.prototype.videoWidth = function videoWidth() {
     return this.tech_ && this.tech_.videoWidth && this.tech_.videoWidth() || 0;
   };
@@ -23893,7 +23313,6 @@ var Player = function (_Component) {
    * @return {number}
    *         current video height
    */
-
 
   Player.prototype.videoHeight = function videoHeight() {
     return this.tech_ && this.tech_.videoHeight && this.tech_.videoHeight() || 0;
@@ -23912,7 +23331,6 @@ var Player = function (_Component) {
    *         The current language code when getting
    */
 
-
   Player.prototype.language = function language(code) {
     if (code === undefined) {
       return this.language_;
@@ -23930,7 +23348,6 @@ var Player = function (_Component) {
    *         An array of of supported languages
    */
 
-
   Player.prototype.languages = function languages() {
     return mergeOptions(Player.prototype.options_.languages, this.languages_);
   };
@@ -23942,7 +23359,6 @@ var Player = function (_Component) {
    * @return {Object}
    *         Object representing the current of track info
    */
-
 
   Player.prototype.toJSON = function toJSON() {
     var options = mergeOptions(this.options_);
@@ -23979,7 +23395,6 @@ var Player = function (_Component) {
    *         the {@link ModalDialog} that was created
    */
 
-
   Player.prototype.createModal = function createModal(content, options) {
     var _this8 = this;
 
@@ -24007,7 +23422,6 @@ var Player = function (_Component) {
    *         An object containing all of the settings
    *         for a player tag
    */
-
 
   Player.getTagSettings = function getTagSettings(tag) {
     var baseOptions = {
@@ -24065,7 +23479,6 @@ var Player = function (_Component) {
    *         - true if flexbox is supported
    *         - false if flexbox is not supported
    */
-
 
   Player.prototype.flexNotSupported_ = function flexNotSupported_() {
     var elem = document_1.createElement('i');
@@ -24438,7 +23851,6 @@ var triggerSetupEvent = function triggerSetupEvent(player, hash, before) {
  */
 var createBasicPlugin = function createBasicPlugin(name, plugin) {
   var basicPluginWrapper = function basicPluginWrapper() {
-
     // We trigger the "beforepluginsetup" and "pluginsetup" events on the player
     // regardless, but we want the hash to be consistent with the hash provided
     // for advanced plugins.
@@ -24479,7 +23891,6 @@ var createBasicPlugin = function createBasicPlugin(name, plugin) {
  * @returns {Function}
  */
 var createPluginFactory = function createPluginFactory(name, PluginSubClass) {
-
   // Add a `name` property to the plugin prototype so that each plugin can
   // refer to itself by name.
   PluginSubClass.prototype.name = name;
@@ -24520,7 +23931,6 @@ var createPluginFactory = function createPluginFactory(name, PluginSubClass) {
  */
 
 var Plugin = function () {
-
   /**
    * Creates an instance of this class.
    *
@@ -24558,7 +23968,6 @@ var Plugin = function () {
    * Get the version of the plugin that was set on <pluginName>.VERSION
    */
 
-
   Plugin.prototype.version = function version() {
     return this.constructor.VERSION;
   };
@@ -24575,7 +23984,6 @@ var Plugin = function () {
    * @returns {Plugin~PluginEventHash}
    *          An event hash object with provided properties mixed-in.
    */
-
 
   Plugin.prototype.getEventHash = function getEventHash() {
     var hash = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -24601,7 +24009,6 @@ var Plugin = function () {
    *          Whether or not default was prevented.
    */
 
-
   Plugin.prototype.trigger = function trigger$$1(event) {
     var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
@@ -24621,7 +24028,6 @@ var Plugin = function () {
    *           event.
    */
 
-
   Plugin.prototype.handleStateChanged = function handleStateChanged(e) {};
 
   /**
@@ -24632,7 +24038,6 @@ var Plugin = function () {
    *
    * @fires Plugin#dispose
    */
-
 
   Plugin.prototype.dispose = function dispose() {
     var name = this.name,
@@ -24671,7 +24076,6 @@ var Plugin = function () {
    *          Whether or not a plugin is a basic plugin.
    */
 
-
   Plugin.isBasic = function isBasic(plugin) {
     var p = typeof plugin === 'string' ? getPlugin(plugin) : plugin;
 
@@ -24693,7 +24097,6 @@ var Plugin = function () {
    *          For advanced plugins, a factory function for that plugin. For
    *          basic plugins, a wrapper function that initializes the plugin.
    */
-
 
   Plugin.registerPlugin = function registerPlugin(name, plugin) {
     if (typeof name !== 'string') {
@@ -24732,7 +24135,6 @@ var Plugin = function () {
    *        The name of the plugin to be deregistered.
    */
 
-
   Plugin.deregisterPlugin = function deregisterPlugin(name) {
     if (name === BASE_PLUGIN_NAME) {
       throw new Error('Cannot de-register base plugin.');
@@ -24754,7 +24156,6 @@ var Plugin = function () {
    *          An object containing plugin(s) associated with their name(s) or
    *          `undefined` if no matching plugins exist).
    */
-
 
   Plugin.getPlugins = function getPlugins() {
     var names = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Object.keys(pluginStorage);
@@ -24783,7 +24184,6 @@ var Plugin = function () {
    *          The plugin's version or an empty string.
    */
 
-
   Plugin.getPluginVersion = function getPluginVersion(name) {
     var plugin = getPlugin(name);
 
@@ -24805,7 +24205,6 @@ var Plugin = function () {
  * @returns  {Function|undefined}
  *           The plugin (or `undefined`).
  */
-
 
 Plugin.getPlugin = getPlugin;
 
@@ -25010,7 +24409,6 @@ function videojs(id, options, ready) {
 
     // If a player instance has already been created for this ID return it.
     if (players[id]) {
-
       // If options or ready function are passed, warn
       if (options) {
         log$1.warn('Player "' + id + '" is already initialised. Options will not be applied.');
@@ -25668,7 +25066,6 @@ videojs.dom = Dom;
 videojs.url = Url;
 
 return videojs;
-
 })));
 
 !function(){!function(a){var b=a&&a.videojs;b&&(b.CDN_VERSION="6.6.3")}(window),function(a,b,c,d,e,f,g){b&&b.HELP_IMPROVE_VIDEOJS!==!1&&(e.random()>.01||(f=b.location,g=b.videojs||{},a.src="//www.google-analytics.com/__utm.gif?utmwv=5.4.2&utmac=UA-16505296-3&utmn=1&utmhn="+d(f.hostname)+"&utmsr="+b.screen.availWidth+"x"+b.screen.availHeight+"&utmul="+(c.language||c.userLanguage||"").toLowerCase()+"&utmr="+d(f.href)+"&utmp="+d(f.hostname+f.pathname)+"&utmcc=__utma%3D1."+e.floor(1e10*e.random())+".1.1.1.1%3B&utme=8(vjsv*cdnv)9("+g.VERSION+"*"+g.CDN_VERSION+")"))}(new Image,window,navigator,encodeURIComponent,Math)}();

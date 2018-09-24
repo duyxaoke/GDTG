@@ -13,7 +13,6 @@ namespace Web
             AutoMapper.Mapper.Initialize(cfg => cfg.AddProfile<MappingProfile>());
         }
 
-
         public void Configuration(IAppBuilder app)
         {
             //app.MapSignalR();

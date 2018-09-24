@@ -35,5 +35,4 @@ $.validator.addMethod( "nieES", function( value, element ) {
 	number = value.length === 9 ? value.substr( 0, 8 ) : value.substr( 0, 9 );
 
 	return validChars.charAt( parseInt( number, 10 ) % 23 ) === letter;
-
 }, "Please specify a valid NIE number." );

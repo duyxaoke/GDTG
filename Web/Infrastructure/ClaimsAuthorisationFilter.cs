@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-
 namespace Web.Infrastructure
 {
     public class WeborisationFilter : AuthorizeAttribute
@@ -51,7 +50,6 @@ namespace Web.Infrastructure
                         { "area", null}
                     });
                 }
-
             }
         }
     }

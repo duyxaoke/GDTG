@@ -4,13 +4,11 @@
 //using System.Web.Mvc;
 //using System.Web.Routing;
 
-
 //namespace Web.Infrastructure
 //{
 //    public class WeborizeAttribute : AuthorizeAttribute
 //    {
 //        public string Name { get; private set; }
-
 
 //        public WeborizeAttribute(string name)
 //        {

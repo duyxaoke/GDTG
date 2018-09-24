@@ -20,7 +20,6 @@ namespace Web.Controllers
             this.signInManager = signInManager;
         }
 
-
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -46,10 +45,13 @@ namespace Web.Controllers
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
+
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
@@ -57,14 +59,12 @@ namespace Web.Controllers
             }
         }
 
-
         [AllowAnonymous]
         public ActionResult LoginWithManager(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
 
         [HttpPost]
         [AllowAnonymous]
@@ -75,7 +75,6 @@ namespace Web.Controllers
             {
                 return View("Login", model);
             }
-
 
             var signinStatus = await signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, true);
 
@@ -97,7 +96,6 @@ namespace Web.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
 
         [AllowAnonymous]
         public ActionResult Register()
@@ -179,7 +177,7 @@ namespace Web.Controllers
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                 // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
                 // return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
@@ -331,7 +329,6 @@ namespace Web.Controllers
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
-
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
@@ -357,7 +354,6 @@ namespace Web.Controllers
             }
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LinkLogin(string provider)
@@ -365,7 +361,6 @@ namespace Web.Controllers
             // Request a redirect to the external login provider to link a login for the current user
             return new ChallengeResult(provider, Url.Action("LinkLoginCallback", "Account"), User.Identity.GetUserId());
         }
-
 
         public async Task<ActionResult> LinkLoginCallback()
         {
@@ -381,7 +376,6 @@ namespace Web.Controllers
             }
             return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
         }
-
 
         [HttpPost]
         [AllowAnonymous]
@@ -426,13 +420,11 @@ namespace Web.Controllers
             return View(model);
         }
 
-
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
-
 
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
@@ -448,8 +440,8 @@ namespace Web.Controllers
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
         }
 
-
         #region Helpers
+
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -460,7 +452,6 @@ namespace Web.Controllers
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
-
 
         private void AddErrors(IdentityResult result)
         {
@@ -479,7 +470,6 @@ namespace Web.Controllers
             }
             return false;
         }
-
 
         public enum ManageMessageId
         {
@@ -529,6 +519,7 @@ namespace Web.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
-        #endregion
+
+        #endregion Helpers
     }
 }

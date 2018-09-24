@@ -2,19 +2,16 @@
 using System.Web.Mvc;
 using Web.Infrastructure;
 
-
 namespace Web.Areas.Admin.Controllers
 {
     public class ClaimsController : Controller
     {
         private readonly ClaimedActionsProvider claimedActionsProvider;
 
-
         public ClaimsController(ClaimedActionsProvider claimedActionsProvider)
         {
             this.claimedActionsProvider = claimedActionsProvider;
         }
-
 
         public ActionResult Index()
         {
@@ -26,7 +23,6 @@ namespace Web.Areas.Admin.Controllers
             return View(viewModel);
         }
     }
-
 
     public class ClaimsIndexViewModel
     {

@@ -1,21 +1,16 @@
 ﻿using Core.Data;
-using Data.Models;
 using Data.Mapping;
-using Microsoft.AspNet.Identity.EntityFramework;
+using Data.Models;
 using System;
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Data.Entity.Validation;
 using System.Text;
 
 namespace Data.DAL
 {
     public class DatabaseContext : IdentityDbContext<ApplicationUser>
     {
-
         public DatabaseContext() : base("name=DbConnect")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext, DatabaseInitializer>());//initial database use test data            
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext, DatabaseInitializer>());//initial database use test data
         }
 
         public static DatabaseContext Create()
@@ -25,6 +20,7 @@ namespace Data.DAL
 
         //DbContext
         public DbSet<Config> Config { get; set; }
+
         public DbSet<Menu> Menu { get; set; }
         public DbSet<MenuInRoles> MenuInRoles { get; set; }
         public DbSet<DB_LOG> Logs { get; set; }

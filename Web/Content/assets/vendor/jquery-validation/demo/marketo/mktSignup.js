@@ -104,8 +104,6 @@ $(document).ready(function(){
         subTableDiv.slideDown("medium");
       }
   });
-
-
 });
 
 $.fn.vjustify = function() {

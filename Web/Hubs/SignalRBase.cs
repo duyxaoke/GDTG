@@ -8,7 +8,7 @@ namespace Web.Hubs
 {
     /// <summary>
     /// This code was shamelessly stolen from a presentation by Brad Wilson at
-    /// the 2012 Norwegian Developer's Conference (NDC). The video is hosted 
+    /// the 2012 Norwegian Developer's Conference (NDC). The video is hosted
     /// online here: http://vimeo.com/43603472
     /// </summary>
     /// <typeparam name="THub"></typeparam>
