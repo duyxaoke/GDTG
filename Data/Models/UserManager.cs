@@ -1,11 +1,7 @@
-﻿using System;
+﻿using Data.DAL;
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Data.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Data.DAL;
-using Microsoft.Owin.Security;
 
 namespace Data.Models
 {
@@ -51,7 +47,6 @@ namespace Data.Models
             this.UserLockoutEnabledByDefault = true;
         }
 
-
         public async Task SignInAsync(IAuthenticationManager authenticationManager, ApplicationUser applicationUser, bool isPersistent)
         {
             authenticationManager.SignOut(
@@ -67,7 +62,6 @@ namespace Data.Models
             authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
 
-
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(ApplicationUser applicationUser)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -81,12 +75,10 @@ namespace Data.Models
     {
         private readonly RoleManager roleManager;
 
-
         public MyFirstClaimsIdentityFactory(RoleManager roleManager)
         {
             this.roleManager = roleManager;
         }
-
 
         public override async Task<ClaimsIdentity> CreateAsync(UserManager<ApplicationUser, string> userManager, ApplicationUser user, string authenticationType)
         {
@@ -104,7 +96,6 @@ namespace Data.Models
         }
     }
 
-
     public class MyClaimsIdentityFactory : ClaimsIdentityFactory<ApplicationUser, string>
     {
         public override async Task<ClaimsIdentity> CreateAsync(UserManager<ApplicationUser, string> userManager, ApplicationUser user, string authenticationType)
@@ -116,5 +107,4 @@ namespace Data.Models
             return claimsIdentity;
         }
     }
-
 }

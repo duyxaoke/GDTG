@@ -6,10 +6,14 @@ namespace Service.CacheService
     public interface ICacheProviderService
     {
         object Get(string key);
+
         void Set(string key, object data);
+
         bool IsSet(string key);
+
         void Invalidate(string key);
     }
+
     public class CacheProviderService : ICacheProviderService
     {
         private static ObjectCache Cache => MemoryCache.Default;

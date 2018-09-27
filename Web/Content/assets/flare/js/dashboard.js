@@ -35,7 +35,7 @@
           }],
           yAxes: [{
             gridLines: {
-              color: '#f3f6f9'             
+              color: '#f3f6f9'
             },
             ticks: {
               display: true,
@@ -59,7 +59,6 @@
             bottom: 0
           }
         },
-    
       };
       var earningReportChartCanvas = $("#earning-report-chart").get(0).getContext("2d");
       // This will get the first returned node in the jQuery collection.
@@ -70,7 +69,6 @@
       });
     }
       if ($("#issues-chart").length) {
-
           // register plugin
           //Chart.plugins.register({
           //    beforeDraw: function (chart) {
@@ -83,7 +81,7 @@
           //            ctx = chart.chart.ctx;
           //        ctx.restore();
           //        var fontSize = (height / 10).toFixed(2);
-          //        ctx.font = fontSize + "px Segoe UI";  
+          //        ctx.font = fontSize + "px Segoe UI";
           //        ctx.fillStyle = "#ff8c00";
           //        ctx.textBaseline = "middle";
           //        var text = "$156",
@@ -93,7 +91,6 @@
           //        ctx.save();
           //    }
           //});
-
 
       var issuesChartData = {
         datasets: [{
@@ -105,7 +102,7 @@
           ],
           borderWidth: 0
         }],
-    
+
         // These labels appear in the legend and in the tooltips when hovering different arcs
         labels: [
           'Closed',
@@ -123,7 +120,7 @@
         legend: {
           display: false
         },
-        legendCallback: function(chart) { 
+        legendCallback: function(chart) {
           var text = [];
           text.push('<ul class="legend'+ chart.id +'">');
           for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
@@ -137,7 +134,7 @@
           text.push('</ul>');
           return text.join("");
         },
-        cutoutPercentage: 70     
+        cutoutPercentage: 70
       };
       var issuesChartCanvas = $("#issues-chart").get(0).getContext("2d");
       var issuesChart = new Chart(issuesChartCanvas, {

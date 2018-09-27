@@ -1,5 +1,4 @@
 (function() {
-
 var parts = document.location.search.slice( 1 ).split( "&" ),
 	length = parts.length,
 	scripts = document.getElementsByTagName("script"),
@@ -21,7 +20,5 @@ if (version != "git") {
 	file = src.replace(/jquery\.js$/, "jquery-" + version + ".js");
 }
 
-
 document.write( "<script src='" + file + "'></script>" );
-
 })();

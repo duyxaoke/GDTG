@@ -1,7 +1,6 @@
 ﻿var lstDependency = [];
 lstDependency.push("ngRoute");
 
-
 var MyApp = angular.module("MyApp", lstDependency);
 MyApp.value('$', $);
 ////#region Khai báo Factories

@@ -63,6 +63,5 @@ namespace Web.Api
             _configServices.Save();
             return ApiHelper.ReturnHttpAction(result, this);
         }
-
     }
 }

@@ -28,7 +28,6 @@
 
 $localstorage.$inject = ["$window"];
 
-
 var ApiHelper = function ($rootScope, $localstorage, $timeout, $q, $http) {
     var service = {};
     service.CheckCacheExist = (CacheKeyClient) => {
@@ -116,9 +115,7 @@ var ApiHelper = function ($rootScope, $localstorage, $timeout, $q, $http) {
         return defer.promise;
     };
 
-
     service.PostMethod = function (url, data) {
-
         let codeStep = jQuery.extend({}, ApiHelper.CodeStep);
         let defer = $q.defer();
 
@@ -144,7 +141,6 @@ var ApiHelper = function ($rootScope, $localstorage, $timeout, $q, $http) {
     };
 
     service.PutMethod = function (url, data) {
-
         let codeStep = jQuery.extend({}, ApiHelper.CodeStep);
         let defer = $q.defer();
 
@@ -170,7 +166,6 @@ var ApiHelper = function ($rootScope, $localstorage, $timeout, $q, $http) {
     };
 
     service.DeleteMethod = function (url, data) {
-
         let codeStep = jQuery.extend({}, ApiHelper.CodeStep);
         let defer = $q.defer();
 
@@ -268,7 +263,6 @@ var ApiHelper = function ($rootScope, $localstorage, $timeout, $q, $http) {
         }
         return strMessage;
     };
-
 
     service.ConfirmRedirectLogin = function () {
         if ($rootScope.IsShowConfirmRedirectLogin) {

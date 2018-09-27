@@ -11,19 +11,16 @@ using Data.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-
 namespace Web.Areas.Admin.Controllers
 {
     public class ProfilerController : Controller
     {
         private readonly UserManager userManager;
 
-
         public ProfilerController(UserManager userManager)
         {
             this.userManager = userManager;
         }
-
 
         public ActionResult Index()
         {
@@ -31,7 +28,6 @@ namespace Web.Areas.Admin.Controllers
             var claims = ClaimsPrincipal.Current.Claims.ToList();
 
             var claimsTextLength = claims.Sum(c => c.Type.Length + c.Value.Length);
-
 
             var appCookie = cookies["jumpingjacks"] ?? new HttpCookie("No App Cookie!", "I said nothing!");
 
@@ -46,17 +42,13 @@ namespace Web.Areas.Admin.Controllers
                 Claims = claims,
             };
 
-
-
             return View(model);
         }
-
 
         public ActionResult AddClaims()
         {
             return View();
         }
-
 
         [HttpPost]
         public async Task<ActionResult> AddClaims(AddProfileClaimsViewModel viewModel)
@@ -71,12 +63,10 @@ namespace Web.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-
         public ActionResult AddRandomClaims()
         {
             return View();
         }
-
 
         [HttpPost]
         public async Task<ActionResult> AddRandomClaims(AddRandomClaims model)
@@ -92,12 +82,10 @@ namespace Web.Areas.Admin.Controllers
                 await userManager.AddClaimAsync(userId, new Claim(claim, claimValue));
             }
 
-
             await userManager.SignInAsync(AuthenticationManager, user, true);
 
             return RedirectToAction("Index");
         }
-
 
         [HttpPost]
         public async Task<ActionResult> DeleteAllClaims()
@@ -117,7 +105,6 @@ namespace Web.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-
         private IAuthenticationManager AuthenticationManager
         {
             get
@@ -126,19 +113,16 @@ namespace Web.Areas.Admin.Controllers
             }
         }
 
-
         private static String GenerateRandomString(int length)
         {
             RandomNumberGenerator rng = new RNGCryptoServiceProvider();
-            var tokenData = new byte[2*length];
+            var tokenData = new byte[2 * length];
             rng.GetBytes(tokenData);
 
             var token = Convert.ToBase64String(tokenData);
             return token.Substring(0, length);
         }
     }
-
-
 
     public class AddProfileClaimsViewModel
     {
@@ -157,7 +141,6 @@ namespace Web.Areas.Admin.Controllers
         [Display(Name = "Length of Claim Value")]
         public int LengthOfValue { get; set; }
     }
-
 
     public class ProfilerIndexViewModel
     {

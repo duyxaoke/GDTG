@@ -46,11 +46,11 @@ var getWidth = function ($timeout, $interval) {
 
         link: function (scope, element, attrs) {
             $(function () {
-                scope.getWidth = element[0].offsetWidth; 
+                scope.getWidth = element[0].offsetWidth;
 
                 $interval(function () {
                     scope.getWidth = element[0].offsetWidth;
-                }, 500); 
+                }, 500);
             });
         }
     };
@@ -67,8 +67,8 @@ var getHeight = function ($timeout, $interval) {
         },
 
         link: function (scope, element, attrs) {
-            $(function () { 
-                scope.getHeight = element[0].offsetHeight; 
+            $(function () {
+                scope.getHeight = element[0].offsetHeight;
 
                 $interval(function () {
                     scope.getHeight = element[0].offsetHeight;
@@ -88,17 +88,16 @@ var lazyLoad = function ($timeout, $window) {
 
         link: function (scope, element, attrs) {
             scope.IsLoaded = false;
-            scope.raw = element[0];  
+            scope.raw = element[0];
             angular.element($window).bind("scroll", function (e) {
                 var IsVisible = $(scope.raw).is(':visible');
                 if (!scope.IsLoaded && IsVisible) {
                     var PositionYofElement = $(scope.raw).position().top;
                     if (this.pageYOffset + this.innerHeight >= PositionYofElement) {
                         scope.fncallback();
-                        scope.IsLoaded = true; 
+                        scope.IsLoaded = true;
                         scope.$apply();
                     }
-
                 }
             });
         }
@@ -106,21 +105,21 @@ var lazyLoad = function ($timeout, $window) {
 };
 
 lazyLoad.$inject = ["$timeout", "$window"];
- 
+
 var noInput = function () {
     return {
         restrict: 'A',
 
         scope: {
             noInput: "="
-        }, 
+        },
 
-        link: function (scope, element, attrs) {  
-            element.bind("keydown keypress", function (event) { 
+        link: function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
                 var c = String.fromCharCode(event.which);
-                if (_.contains(scope.noInput, c)) { 
+                if (_.contains(scope.noInput, c)) {
                     event.preventDefault();
-                } 
+                }
             });
 
             //scope.KeyCode = [];
@@ -134,7 +133,7 @@ var noInput = function () {
             //    }
             //});
         }
-    }; 
+    };
 };
 noInput.$inject = [];
 var whenEnter = function () {

@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace Shared.Models
 {
@@ -25,13 +20,13 @@ namespace Shared.Models
 
         public IEnumerable<String> SelectedClaims { get; set; }
 
-
         public class ClaimGroup
         {
             public ClaimGroup()
             {
                 GroupClaimsCheckboxes = new List<SelectListViewModel>();
             }
+
             public String GroupName { get; set; }
 
             public int GroupId { get; set; }

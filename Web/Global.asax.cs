@@ -15,13 +15,12 @@ namespace Web
     {
         protected void Application_Start()
         {
-
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             ModelBinders.Binders.Add(typeof(DataTablesRequest), new DataTablesModelBinder());
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);  
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutofacConfig.Register();
             //SimpleInjector.Configure();
         }

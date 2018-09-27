@@ -12,7 +12,8 @@ namespace Web.Controllers
         #region Fields
 
         private readonly UserManager _userManager;
-        #endregion
+
+        #endregion Fields
 
         #region Constructor
 
@@ -22,7 +23,7 @@ namespace Web.Controllers
             _userManager = userManager;
         }
 
-        #endregion
+        #endregion Constructor
 
         // GET: /Home/
         public ActionResult Index(int? room = 1)
@@ -43,7 +44,5 @@ namespace Web.Controllers
         {
             return View();
         }
-
-
     }
 }

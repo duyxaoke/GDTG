@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Security.Claims;
 using System.Web.Mvc;
 
-
 namespace Web.Infrastructure
 {
     public class ClaimedActionsProvider
@@ -30,13 +29,11 @@ namespace Web.Infrastructure
             return claimedGroups;
         }
 
-
         private String GetGroupName(Type controllerType)
         {
             var result = controllerType.GetCustomAttribute<ClaimsGroupAttribute>().Resource.GetDisplayName();
             return result;
         }
-
 
         private int GetGroupId(Type controllerType)
         {
@@ -44,7 +41,6 @@ namespace Web.Infrastructure
             var result = (int)claimsGroupAttribute.Resource;
             return result;
         }
-
 
         private List<String> GetActionClaims(Type controllerType)
         {
@@ -55,11 +51,10 @@ namespace Web.Infrastructure
                 .Distinct()
                 .Select(a => a.ToString())
                 .ToList();
-                
+
             return result;
         }
     }
-
 
     public class ClaimsGroup
     {

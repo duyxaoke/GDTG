@@ -17,7 +17,6 @@ if ( $.ajaxPrefilter ) {
 		}
 	} );
 } else {
-
 	// Proxy ajax
 	ajax = $.ajax;
 	$.ajax = function( settings ) {

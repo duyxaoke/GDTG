@@ -1,10 +1,8 @@
 /* Extra Large Devices, Wide Screens */
 @media only screen and (max-width : 1600px) {
-
 }
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
-
 }
 
 /* Medium Devices, Desktops */
@@ -41,7 +39,7 @@
 	.video-des .deslidt ul li .serials:before,.video-des .deslidt ul li .serials span.cre:before,.video-des .deslidt ul li .serials span.cre:after{display: none;}
 }
 
-/* Extra Small Devices, Phones */ 
+/* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
 	.my-video-dimensions{width: 400px;height: 207px;}
 	.video-area .videos-heding .videos-box .video-js .vjs-big-play-button{top: 24%;}
@@ -57,7 +55,7 @@
 	.team2-area .team-list{margin-bottom:50px !important; height:550px !important;}
 }
 
-/* Custom, iPhone Retina */ 
+/* Custom, iPhone Retina */
 @media only screen and (max-width : 320px) {
 	.my-video-dimensions{width: 300px;height: 155px;}
 	.video-area .videos-heding .videos-box .video-js .vjs-big-play-button{top: 24%;}
@@ -69,8 +67,6 @@
 	.token-details .cart-list .label-chatrs{padding: 30px 25px;}
 	.team-area .team-list{height: auto;padding-bottom: 30px;}
 	.team2-area .team-list{height: auto;padding-bottom: 30px;}
-	
-
 }
 @media (max-width: 1199px){
 	header .menu-area nav ul li a{
@@ -98,7 +94,6 @@
 	.slider-area .slider-content h2{
 		font-size:40px;
 	}
-	
 }
 @media (max-width: 767px){
 	.logo-area{

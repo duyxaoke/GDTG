@@ -34,7 +34,6 @@ namespace Web
 
         private static bool IsApiRequest(IOwinRequest request)
         {
-
             string apiPath = VirtualPathUtility.ToAbsolute("~/api/");
             return request.Uri.LocalPath.StartsWith(apiPath);
         }
@@ -47,7 +46,7 @@ namespace Web
         private static CookieAuthenticationProvider GetMyCookieAuthenticationProvider()
         {
             var cookieAuthenticationProvider = new CookieAuthenticationProvider();
-            
+
             cookieAuthenticationProvider.OnValidateIdentity = async context =>
             {
                 var cookieValidatorFunc = SecurityStampValidator.OnValidateIdentity<UserManager, ApplicationUser>(
@@ -94,7 +93,6 @@ namespace Web
             return cookieAuthenticationProvider;
         }
 
-
         /// <summary>
         /// This is run of the mill cookie authentication provider
         /// with invalidating the cookie on security stamp change every 10 minutes
@@ -114,7 +112,6 @@ namespace Web
             };
         }
 
-
         //private static CookieAuthenticationProvider RoleUpdatingAuthenticationProvider()
         //{
         //    var cookieAuthenticationProvider = new CookieAuthenticationProvider();
@@ -125,7 +122,6 @@ namespace Web
         //                validateInterval: TimeSpan.FromMinutes(30),
         //                regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager));
         //        await invalidateBySecirityStamp.Invoke(context);
-
 
         //        if (context.Identity == null || !context.Identity.IsAuthenticated)
         //        {

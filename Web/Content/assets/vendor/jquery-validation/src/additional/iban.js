@@ -5,7 +5,6 @@
  * Validation is case-insensitive. Please make sure to normalize input yourself.
  */
 $.validator.addMethod( "iban", function( value, element ) {
-
 	// Some quick simple tests to prevent needless work
 	if ( this.optional( element ) ) {
 		return true;

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shared.Models
 {
@@ -11,6 +7,5 @@ namespace Shared.Models
     {
         public Guid RoleId { get; set; }
         public List<int> MenuIds { get; set; }
-       
     }
 }

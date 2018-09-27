@@ -32,6 +32,5 @@ namespace Web.Areas.Admin.Controllers
                 response.Write(serializedObject);
             }
         }
-
     }
 }

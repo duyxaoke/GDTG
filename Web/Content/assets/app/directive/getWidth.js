@@ -8,11 +8,11 @@
 
         link: function (scope, element, attrs) {
             $(function () {
-                scope.getWidth = element[0].offsetWidth; 
+                scope.getWidth = element[0].offsetWidth;
 
                 $interval(function () {
                     scope.getWidth = element[0].offsetWidth;
-                }, 500); 
+                }, 500);
             });
         }
     };
@@ -29,8 +29,8 @@ var getHeight = function ($timeout, $interval) {
         },
 
         link: function (scope, element, attrs) {
-            $(function () { 
-                scope.getHeight = element[0].offsetHeight; 
+            $(function () {
+                scope.getHeight = element[0].offsetHeight;
 
                 $interval(function () {
                     scope.getHeight = element[0].offsetHeight;

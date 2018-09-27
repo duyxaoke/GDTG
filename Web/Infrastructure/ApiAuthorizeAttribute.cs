@@ -16,6 +16,5 @@ namespace Web.Infrastructure
                 actionContext.Response = new HttpResponseMessage(System.Net.HttpStatusCode.Forbidden);
             }
         }
-
     }
 }

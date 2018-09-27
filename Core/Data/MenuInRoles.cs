@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Core.Data
 {
     public class MenuInRoles

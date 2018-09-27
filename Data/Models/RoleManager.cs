@@ -1,13 +1,8 @@
-﻿using System;
+﻿using Data.DAL;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Data.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Data.DAL;
 
 namespace Data.Models
 {
@@ -15,13 +10,11 @@ namespace Data.Models
     {
         private readonly DatabaseContext context;
 
-
         public RoleManager(DatabaseContext context)
             : base(new RoleStore<ApplicationRole>(context))
         {
             this.context = context;
         }
-
 
         public async Task<List<Claim>> GetClaimsAsync(string roleName)
         {
@@ -36,7 +29,6 @@ namespace Data.Models
             return claims;
         }
 
-
         public async Task AddClaimAsync(string roleId, Claim claim)
         {
             var roleClaim = new RoleClaim()
@@ -50,7 +42,6 @@ namespace Data.Models
 
             await context.SaveChangesAsync();
         }
-
 
         public async Task RemoveClaimAsync(string roleId, Claim claim)
         {

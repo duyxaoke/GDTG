@@ -33,9 +33,8 @@
           navItemClicked.removeClass('show-submenu');
         }
         $(this).toggleClass('show-submenu');
-      }        
+      }
     })
-    
 
     //checkbox and radios
     $(".form-check .form-check-label,.form-radio .form-check-label").not(".todo-form-check .form-check-label").append('<i class="input-helper"></i>');
@@ -48,7 +47,6 @@
 
         function initilizeModel() {
             $("#modal-action").on('shown.bs.modal', function (e) {
-
             }).on('hidden.bs.modal', function (e) {
                 $(this).removeData('bs.modal');
             });

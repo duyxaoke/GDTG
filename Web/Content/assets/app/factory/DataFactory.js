@@ -50,7 +50,7 @@
         return defer.promise;
     };
     //#endregion
-    
+
     //#region Ward
     service.Stores_Get = function () {
         let defer = $q.defer();

@@ -1,6 +1,5 @@
 /*jshint node:true*/
 module.exports = function( grunt ) {
-
 "use strict";
 
 var banner,
@@ -42,7 +41,6 @@ umdLocalizationDefine = "\t\tdefine( [\"jquery\", \"../jquery.validate\"], facto
 grunt.initConfig( {
 	pkg: grunt.file.readJSON( "package.json" ),
 	concat: {
-
 		// Used to copy to dist folder
 		dist: {
 			options: {
@@ -147,7 +145,6 @@ grunt.initConfig( {
 	copy: {
 		dist: {
 			options: {
-
 				// Append UMD wrapper
 				process: function( content ) {
 					return umdStart + umdLocalizationDefine + umdMiddle + content + umdEnd;
@@ -187,5 +184,4 @@ grunt.loadNpmTasks( "grunt-text-replace" );
 grunt.registerTask( "default", [ "concat", "copy", "jscs", "jshint", "qunit" ] );
 grunt.registerTask( "release", [ "default", "uglify", "replace", "compress" ] );
 grunt.registerTask( "start", [ "concat", "watch" ] );
-
 };

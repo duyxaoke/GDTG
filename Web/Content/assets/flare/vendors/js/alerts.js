@@ -11,7 +11,6 @@
                     className: "btn btn-primary"
                 }
             })
-
         } else if (type === 'title-and-text') {
             swal({
                 title: 'Read the alert!',
@@ -23,7 +22,6 @@
                     className: "btn btn-primary"
                 }
             })
-
         } else if (type === 'success-message') {
             swal({
                 title: 'Congratulations!',
@@ -36,7 +34,6 @@
                     className: "btn btn-primary"
                 }
             })
-
         } else if (type === 'auto-close') {
             swal({
                 title: 'Auto close alert!',
@@ -78,7 +75,6 @@
                     }
                 }
             })
-
         } else if (type === 'custom-html') {
             swal({
                 content: {
@@ -98,5 +94,4 @@
             })
         }
     }
-
 })(jQuery);

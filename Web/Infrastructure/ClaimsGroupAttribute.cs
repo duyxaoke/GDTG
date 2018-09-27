@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace Web.Infrastructure
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
@@ -19,7 +18,6 @@ namespace Web.Infrastructure
             return ((int)Resource).ToString();
         }
     }
-
 
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public class ClaimsActionAttribute : Attribute
@@ -41,7 +39,6 @@ namespace Web.Infrastructure
         Delete,
         HolidayRequest
     }
-
 
     public enum ClaimResources
     {

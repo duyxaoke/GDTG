@@ -147,7 +147,6 @@ QUnit.test( "rules(), evaluate dynamic parameters", function( assert ) {
 } );
 
 QUnit.test( "rules(), class and attribute combinations", function( assert ) {
-
 	$.validator.addMethod( "customMethod1", function() {
 		return false;
 	}, "" );
@@ -239,7 +238,6 @@ QUnit.test( "rules(), add and remove", function( assert ) {
 } );
 
 QUnit.test( "rules(), add and remove static rules", function( assert ) {
-
 	$( "#testForm1clean" ).validate( {
 		rules: {
 			firstnamec: "required date"
@@ -318,10 +316,8 @@ QUnit.test( "rules(), global/local normalizer", function( assert ) {
 	urlc.val( "" );
 
 	v = $( "#testForm1clean" ).validate( {
-
 		// Using the normalizer to trim the value of all elements before validating them.
 		normalizer: function( value ) {
-
 			// This normalizer should only be called for the username element, and nothing else.
 			assert.notEqual( this, urlc[ 0 ], "This normalizer should not be called for urlc element." );
 			assert.equal( this, username[ 0 ], "`this` in this normalizer should be the username element." );
@@ -349,7 +345,6 @@ QUnit.test( "rules(), global/local normalizer", function( assert ) {
 					if ( url && url.substr( 0, 7 ) !== "http://" &&
 						url.substr( 0, 8 ) !== "https://" &&
 						url.substr( 0, 6 ) !== "ftp://" ) {
-
 						// Then prefix with http:// or even https://
 						url = "https://" + url;
 					}

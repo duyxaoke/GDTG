@@ -32,6 +32,5 @@ namespace Web.Areas.Admin.Controllers
             var formattedList = dataTableParser.Process();
             return Json(formattedList, JsonRequestBehavior.AllowGet);
         }
-
     }
 }

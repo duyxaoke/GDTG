@@ -18,7 +18,6 @@
 		CALLBACK_REGEX = /=\?(&|$)/,
 		jsc = (new Date()).getTime();
 
-
 	// Parse the given XML string.
 	function parseXML(xml) {
 		if ( window.DOMParser == undefined && window.ActiveXObject ) {
@@ -133,7 +132,6 @@
 
 	// Process the xhr objects send operation
 	function _xhrSend(mockHandler, requestSettings, origSettings) {
-
 		// This is a substitute for < 1.4 which lacks $.proxy
 		var process = (function(that) {
 			return function() {
@@ -323,12 +321,10 @@
 		var callbackContext = origSettings && origSettings.context || requestSettings,
 			newMock = null;
 
-
 		// If the response handler on the moock is a function, call it
 		if ( mockHandler.response && $.isFunction(mockHandler.response) ) {
 			mockHandler.response(origSettings);
 		} else {
-
 			// Evaluate the responseText javascript in a global context
 			if( typeof mockHandler.responseText === 'object' ) {
 				$.globalEval( '(' + JSON.stringify( mockHandler.responseText ) + ')');
@@ -354,7 +350,6 @@
 		return newMock;
 	}
 
-
 	// Create the required JSONP callback function for the request
 	function createJsonpCallback( requestSettings, mockHandler, origSettings ) {
 		var callbackContext = origSettings && origSettings.context || requestSettings;
@@ -366,7 +361,6 @@
 		}
 
 		requestSettings.url = requestSettings.url.replace(CALLBACK_REGEX, "=" + jsonp + "$1");
-
 
 		// Handle JSONP-style loading
 		window[ jsonp ] = window[ jsonp ] || function( tmp ) {
@@ -417,7 +411,6 @@
 		}
 	}
 
-
 	// The core $.ajax replacement.
 	function handleAjax( url, origSettings ) {
 		var mockRequest, requestSettings, mockHandler;
@@ -452,14 +445,12 @@
 			// If logging is enabled, log the mock to the console
 			$.mockjaxSettings.log( mockHandler, requestSettings );
 
-
 			if ( requestSettings.dataType === "jsonp" ) {
 				if ((mockRequest = processJsonpMock( requestSettings, mockHandler, origSettings ))) {
 					// This mock will handle the JSONP request
 					return mockRequest;
 				}
 			}
-
 
 			// Removed to fix #54 - keep the mocking data object intact
 			//mockHandler.data = requestSettings.data;
@@ -522,7 +513,6 @@
 		}
 		origSettings.urlParams = paramValues;
 	}
-
 
 	// Public
 

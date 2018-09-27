@@ -1,70 +1,75 @@
-﻿using System.Collections.Generic;
-using Core.Data;
-
-using System.Data.SqlClient;
-using System.Data;
-using System.Transactions;
-using Service.CacheService;
-using System.Linq;
-using Shared.Models;
+﻿using Core.Data;
 using System;
-using Core.DTO.Response;
+using System.Collections.Generic;
 
 namespace Service
 {
     public interface IMenuInRolesServices
     {
         CRUDResult<MenuInRoles> GetById(int id);
+
         CRUDResult<IEnumerable<MenuInRoles>> GetAll();
+
         CRUDResult<bool> Add(MenuInRoles model);
+
         CRUDResult<bool> Update(MenuInRoles model);
+
         CRUDResult<bool> Delete(int id);
+
         void Save();
+
         void Dispose();
+
         CRUDResult<bool> AddOrUpdateMenuInRoles(Guid roleId, List<int> menuIds);
+
         CRUDResult<IEnumerable<MenuInRoles>> GetMenuByRoleId(Guid roleId);
     }
+
     public class MenuInRolesServices : IMenuInRolesServices
     {
         private readonly UnitOfWork _unitOfWork;
+
         public MenuInRolesServices(UnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
+
         public CRUDResult<IEnumerable<MenuInRoles>> GetMenuByRoleId(Guid roleId)
         {
             var result = _unitOfWork.MenuInRolesRepository.GetMany(c => c.RoleId == roleId);
             return new CRUDResult<IEnumerable<MenuInRoles>> { StatusCode = CRUDStatusCodeRes.Success, Data = result };
-
         }
 
         public CRUDResult<MenuInRoles> GetById(int id)
         {
             var result = _unitOfWork.MenuInRolesRepository.GetById(id);
             return new CRUDResult<MenuInRoles> { StatusCode = CRUDStatusCodeRes.Success, Data = result };
-
         }
+
         public CRUDResult<IEnumerable<MenuInRoles>> GetAll()
         {
             var result = _unitOfWork.MenuInRolesRepository.GetAll();
             return new CRUDResult<IEnumerable<MenuInRoles>> { StatusCode = CRUDStatusCodeRes.Success, Data = result };
         }
+
         public CRUDResult<bool> Add(MenuInRoles model)
         {
             var result = _unitOfWork.MenuInRolesRepository.Insert(model);
             return new CRUDResult<bool> { StatusCode = CRUDStatusCodeRes.Success, Data = result };
         }
+
         public CRUDResult<bool> Update(MenuInRoles model)
         {
             var result = _unitOfWork.MenuInRolesRepository.Update(model);
             return new CRUDResult<bool> { StatusCode = CRUDStatusCodeRes.Success, Data = result };
-
         }
+
         public CRUDResult<bool> Delete(int id)
         {
             var result = _unitOfWork.MenuInRolesRepository.Delete(id);
             return new CRUDResult<bool> { StatusCode = CRUDStatusCodeRes.Success, Data = result };
         }
+
         public CRUDResult<bool> AddOrUpdateMenuInRoles(Guid roleId, List<int> menuIds)
         {
             bool result = false;
@@ -106,6 +111,7 @@ namespace Service
         {
             _unitOfWork.Save();
         }
+
         public void Dispose()
         {
             _unitOfWork.Dispose();

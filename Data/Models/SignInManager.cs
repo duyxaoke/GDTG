@@ -1,6 +1,4 @@
 ﻿using System;
-using Data.Models;
-using Microsoft.Owin.Security;
 
 namespace Data.Models
 {

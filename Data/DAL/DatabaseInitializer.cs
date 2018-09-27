@@ -1,18 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Data.Models;
-using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Data.Models;
 using System;
-
-using System.Collections.Generic;
-
-
-using System.Reflection;
-
-using Shared.Common;
-
+using System.Linq;
 
 namespace Data.DAL
 {
@@ -23,12 +11,11 @@ namespace Data.DAL
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
         }
+
         protected override void Seed(DatabaseContext context)
         {
-
             if (!context.Roles.Any(r => r.Name == "Administrator"))
             {
-
                 var store = new RoleStore<ApplicationRole>(context);
                 var manager = new RoleManager<ApplicationRole>(store);
 
@@ -66,7 +53,12 @@ namespace Data.DAL
                 var user = new ApplicationUser
                 {
                     Id = Guid.NewGuid().ToString(),
-                    UserName = "admin", Name = "Tran Duy", Email = "duytran1402@gmail.com", Balance = 0, EmailConfirmed = true };
+                    UserName = "admin",
+                    Name = "Tran Duy",
+                    Email = "duytran1402@gmail.com",
+                    Balance = 0,
+                    EmailConfirmed = true
+                };
 
                 manager.Create(user, "123456");
                 manager.AddToRole(user.Id, "Administrator");
@@ -93,6 +85,5 @@ namespace Data.DAL
 
             base.Seed(context);
         }
-
     }
 }

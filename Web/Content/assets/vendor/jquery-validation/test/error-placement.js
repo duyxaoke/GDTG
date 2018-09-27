@@ -183,7 +183,6 @@ QUnit.test( "test label used as error container", function( assert ) {
 
 	form.validate( {
 		errorPlacement: function( error, element ) {
-
 			// Append error within linked label
 			$( "label[for='" + element.attr( "id" ) + "']" ).append( error );
 		},
@@ -302,7 +301,6 @@ QUnit.test( "test aria-describedby with input names contains CSS-selector meta-c
 	form.validate( {
 		errorElement: "span",
 		errorPlacement: function() {
-
 			// Do something
 		}
 	} );
