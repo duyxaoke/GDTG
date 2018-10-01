@@ -1,4 +1,5 @@
 ﻿using Core.Data;
+using System.Data.Entity.ModelConfiguration;
 
 namespace Data.Mapping
 {

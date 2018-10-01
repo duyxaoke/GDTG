@@ -105,7 +105,6 @@ var lazyLoad = function ($timeout, $window) {
 };
 
 lazyLoad.$inject = ["$timeout", "$window"];
-
 var noInput = function () {
     return {
         restrict: 'A',

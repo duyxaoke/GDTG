@@ -1,4 +1,6 @@
-﻿namespace Data.Models
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+
+namespace Data.Models
 {
     public class ApplicationUser : IdentityUser
     {

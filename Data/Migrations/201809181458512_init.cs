@@ -1,3 +1,5 @@
+using System.Data.Entity.Migrations;
+
 namespace Data.DAL
 {
     public partial class init : DbMigration

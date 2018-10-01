@@ -1,4 +1,6 @@
-﻿using Core.Data;
+﻿using AutoMapper;
+using Core.Data;
+using Core.DTO.Response;
 using Shared.Models;
 using System.Collections.Generic;
 using System.Data;

@@ -1,6 +1,7 @@
 ﻿using Core.Data;
 using Data.DAL;
 using Data.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Shared.Models;
 using System;
 

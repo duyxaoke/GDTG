@@ -1,5 +1,8 @@
-﻿using Data.DAL;
+﻿using Core.DTO.Response;
+using Data.DAL;
 using Data.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 
 namespace Service

@@ -1,3 +1,4 @@
+using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 
 namespace Data.Models

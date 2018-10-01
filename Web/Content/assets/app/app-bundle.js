@@ -109,7 +109,6 @@ var lazyLoad = function ($timeout, $window) {
 };
 
 lazyLoad.$inject = ["$timeout", "$window"];
-
 var noInput = function () {
     return {
         restrict: 'A',
@@ -531,7 +530,6 @@ var CommonHelper = function ($rootScope, $localstorage, $timeout, $q, $http) {
     return service;
 }
 CommonHelper.$inject = ["$rootScope", "$localstorage", "$timeout", "$q", "$http"];
-
 var DataFactory = function ($rootScope, $localstorage, $timeout, UtilFactory, $q, $http, ApiHelper, CommonHelper) {
     var service = {};
     service.CheckCacheExist = (CacheKeyClient) => {

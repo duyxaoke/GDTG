@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Owin.Security;
+using System;
 
 namespace Data.Models
 {
